@@ -1,0 +1,228 @@
+---
+title: "Regressão para pesquisas sociais"
+subtitle: "<span style='font-size:2em;'> Introdução </span>"
+author: "Thiago Cordeiro Almeida"
+institute: "Doutorando, Centre d'Estudis Demogràfics (CED, Espanha) <br> Pesquisador Assistente, Cebrap <br>"
+date: today
+date-format: long
+footer: "cebrap.lab - Introdução à análise de regressão para pesquisas sociais"
+logo: "images/cebrap-imagem.png"
+code-link: true
+format:
+  revealjs:
+    theme: template/cebrap2025.scss
+    math: mathjax
+    # scrollable: true
+    # standalone: true
+    # embed-resources: true
+    chalkboard: true
+    transition: fade
+    background-transition: fade
+    highlight-style: ayu-mirage
+    slide-number: "c"
+    controls-layout: bottom-right
+    fig-cap-location: top
+    # fig-format: svg
+    pdf-separate-fragments: false
+    auto-stretch: true
+    
+    # fig-align: center
+editor: visual
+execute:
+  freeze: auto
+  echo: true
+---
+
+# Sejam bem-vinds! {.theme-first}
+
+## Estrutura do curso {.theme-next}
+
+:::::: columns
+::: {.column width="30%"}
+Forma de organização em termos dos dias:
+:::
+
+:::: {.column width="70%"}
+::: {style="text-align: left;"}
+**Dia 1** - Segunda, 14 de Setembro - Síncrono
+
+**Dia 2** - Terça, 15 de Setembro - Síncrono
+
+**Dia 3** - Quarta, 16 de Setembro - Assíncrono
+
+**Dia 4** - Quinta, 17 de Setembro - Síncrono
+
+**Dia 5** - Sexta, 18 de Setembro - Assíncrono (e opcional)
+:::
+::::
+::::::
+
+## Dia 1, Segunda {.theme-subtopic .smaller}
+
+### Fundamentos para modelagem de dados quantitativos
+
+::: incremental
+- Definições e noções acerca de dados quantitativos
+
+- Conceitos estatísticos importantes
+
+- Noção de correlação e causalidade
+
+- Modelagem de fenônemos sociais
+
+  - Intuição
+
+  - Limites
+
+  - Fundamentos
+:::
+
+## Dia 2, Terça {.theme-subtopic .smaller}
+
+### Modelagem de dados contínuos - regressão linear
+
+::: incremental
+- Conceitos, noções e jargões utilizados em econometria
+
+- Fluxo de análise de dados contínuos com o uso de modelagem
+
+- Regressão linear simples
+
+  - Intuição e formalização
+
+  - Propriedade e pressupostos
+
+  - Mão na massa!
+
+- Regressão linear multivariada
+
+  - Intuição e formalização
+
+  - Novidades em relação à regressão linear simples
+
+  - Mão na massa!: interpretação
+:::
+
+## Dia 3, Quarta {.theme-subtopic .smaller}
+
+### Modelagem de dados contínuos - regressão linear multivariada com variáveis independentes qualitativas
+
+::: incremental
+- Exercício de interpretação dos modelos de regressão linear multivariada
+
+- Leituras
+
+  - Variáveis independentes qualitativas
+
+    - Variável binária (*dummy*) em modelos de regressão linear
+:::
+
+## Dia 4, Quinta {.theme-subtopic .smaller}
+
+### Modelagem de variáveis binárias - regressão logística
+
+::: incremental
+- Modelagem de fenômenos sociais categóricos
+
+- Conceitos e definições adaptados à nova configuração da variável de interesse
+
+- Regressão logística
+
+  - Introdução aos modelos lineares generalizados (MLG)
+
+  - Intuição e formalização
+
+  - Propriedade e pressupostos
+
+  - Mão na massa!
+
+- Regressão logística multivariada
+
+  - Intuição e formalização
+
+  - Formalização
+
+  - Mão na massa!: interpretação
+:::
+
+## Dia 5, Sexta {.theme-subtopic .smaller}
+
+### Próximos passos e aplicação na vida real
+
+::: incremental
+- Apresentação dos próximos passos de estudo e aprofundamentos
+
+- Exercício de aplicação empírica
+
+  - Exercício a ser explicado na aula anterior
+:::
+
+# Questões operacionais {.theme-first}
+
+## Organização do material {.theme-next}
+
+::::::: columns
+::: {.column width="30%"}
+Para cada dia de aula, vocês encontrarão a seguinte organização:
+:::
+
+::::: {.column width="70%"}
+::: fragment
+Materiais auxiliares (leituras, outros e vídeos)
+
+Prática
+
+Slide
+:::
+
+::: fragment
+**Confiram sempre os materiais de cada dia**, eles serão atualizados à medida que o curso acontecer!
+:::
+:::::
+:::::::
+
+## Regras do curso {.theme-next .smaller}
+
+::: incremental
+1.  Aulas síncronas com duração de 3 horas, com *uma pausa* durante;
+
+2.  Aulas não podem ser gravadas, são diretrizes do `cebrap.lab`;
+
+3.  Há um formulário de confirmação de presença a ser preenchido **em cada aula síncrona**;
+
+4.  Nos dias de aula assíncrona, fiquem à vontade para fazer contato via e-mail;
+
+5.  Nos dias de aula síncrona também fiquem à vontade para fazer contato :);
+
+6.  Certificados serão enviados em até 2 semanas após a finalização das aulas.
+:::
+
+# Quebrando o gelo! {.theme-stop .smaller}
+
+:::::: columns
+::: {.column width="40%"}
+Bate bola, jogo rápido!
+
+- Quem é você?
+
+- Qual sua história com análise de dados quantitativos (e regressão)?
+
+- O que te trouxe até esse curso?
+
+- Já fez algum outro curso da trilha quanti do `cebrap.lab`? Qual?
+
+- Qual a afinidade com R?
+:::
+
+:::: {.column width="60%"}
+::: {style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;"}
+<img src="images/ice.gif" style="border-radius: 50%; border:5px solid #708d81; width:450px; height:auto;"/>
+:::
+::::
+::::::
+
+# Vamos lá? {.cebrap-fim}
+
+Dúvidas?
+
+Comentários?
