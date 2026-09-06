@@ -1,0 +1,5 @@
+# cebrap-2026-regressao
+
+Material referente ao curso de **Introdução à regressão aplicado ao estudo de fenômenos sociais** no [cebrap.lab](https://cebrap.org.br/cebrap-lab/).
+
+Este curso tem por objetivo introduzir pesquisadoras/es na utilização de modelos de análise de regressão à investigação de fenômenos sociais. Serão abordadas técnicas para análise de dados contínuos (regressão linear) e categóricos (regressão logística), com a exposição de suas propriedades, procedimentos de implementação usando o software R e a realização de exercícios práticos a partir de bases de dados disponíveis gratuitamente online. Ao fim do curso, os/as participantes estarão familiarizados com os procedimentos necessários para a implementação de modelos de regressão, de forma que possam adaptar para cada problema de pesquisa que trabalhem. Para participar do curso é necessário ter noções básicas dos softwares Excel, R e ter instalado o RStudio em seu computador. É recomendado ter noções de estatística básica (frequências, tabelas cruzadas, médias, medianas, etc.).
