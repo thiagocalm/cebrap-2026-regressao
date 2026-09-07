@@ -98,9 +98,9 @@ Forma de organização em termos dos dias:
 
   - Intuição e formalização
 
-  - Novidades em relação à regressão linear simples
+  - O que muda em relação à regressão linear simples
 
-  - Mão na massa!: interpretação
+  - Mão na massa!: interpretação dos modelos multivariados
 :::
 
 ## Dia 3, Quarta {.theme-subtopic .smaller}
@@ -114,12 +114,12 @@ Forma de organização em termos dos dias:
 
   - Variáveis independentes qualitativas
 
-    - Variável binária (*dummy*) em modelos de regressão linear
+    - Variável independente binária (*dummy*) em modelos de regressão linear
 :::
 
 ## Dia 4, Quinta {.theme-subtopic .smaller}
 
-### Modelagem de variáveis binárias - regressão logística
+### Variáveis binárias dependentes - modelos de regressão logística
 
 ::: incremental
 - Modelagem de fenômenos sociais categóricos
