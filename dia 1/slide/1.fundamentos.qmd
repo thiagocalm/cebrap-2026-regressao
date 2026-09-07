@@ -1,0 +1,926 @@
+---
+title: "Regressão para pesquisas sociais"
+subtitle: "<span style='font-size:1em;'> Aula 1 - Fundamentos para modelagem de dados quantitativos </span>"
+author: "Thiago Cordeiro Almeida"
+institute: "Doutorando, Centre d'Estudis Demogràfics (CED, Espanha) <br> Pesquisador Assistente, Cebrap <br>"
+date: today
+date-format: long
+footer: "cebrap.lab - Introdução à análise de regressão para pesquisas sociais"
+logo: "images/cebrap-imagem.png"
+code-link: true
+format:
+  revealjs:
+    theme: template/cebrap2025.scss
+    math: mathjax
+    incremental: true
+    # scrollable: true
+    # standalone: true
+    # embed-resources: true
+    chalkboard: true
+    transition: fade
+    background-transition: fade
+    highlight-style: ayu-mirage
+    slide-number: "c"
+    controls-layout: bottom-right
+    fig-cap-location: top
+    # fig-format: svg
+    pdf-separate-fragments: false
+    auto-stretch: true
+    # fig-align: center
+editor: visual
+execute:
+  freeze: auto
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Antes de começar...
+
+lista de presença!
+
+![](images/attention.gif){.absolute bottom="10" right="50" width="240" height="240"}
+
+## Estrutura da aula {.theme-next}
+
+:::::: columns
+::: {.column width="30%"}
+Tópicos que vamos cobrir hoje são:
+:::
+
+:::: {.column width="70%"}
+::: {style="text-align: left;"}
+- Definições e noções acerca de dados quantitativos
+
+- Conceitos estatísticos importantes
+
+- Noção de correlação e causalidade
+
+- Modelagem de fenônemos sociais
+
+  - Intuição
+
+  - Limites
+
+  - Fundamentos
+:::
+::::
+::::::
+
+# Algumas definições acerca de dados quantitativos {.theme-first}
+
+::: {style="text-align: left;"}
+Natureza dos dados quantitativos
+:::
+
+## Natureza dos dados quantitativos {.theme-subtopic .smaller}
+
+está ligada à forma de classificação dos tipos de dados existentes.
+
+::::::: columns
+:::: {.column width="50%"}
+::: nonincremental
+Qualitativa
+
+- Passível de ser compreendida
+
+- Passível de ser "interpretada"
+
+- Possível de ser **s**ubjetivamente captada
+
+**Exemplos**: [expressões culturais, interações sociais]{.gap}
+:::
+::::
+
+:::: {.column .fragment width="50%"}
+::: nonincremental
+Quantitativa
+
+- Passível de ser contada/enumerada
+
+- Passível de ser "precisada"
+
+- Possível de ser **o**bjetivamente captada
+
+**Exemplos**: [Fluxos de atividades culturais, peso das pessoas ao nascer]{.gap}
+:::
+::::
+:::::::
+
+## Natureza dos dados quantitativos {.theme-subtopic .smaller}
+
+está ligada à forma de classificação dos tipos de dados existentes.
+
+::::::: columns
+:::: {.column width="50%"}
+::: nonincremental
+Qualitativa
+
+- Passível de ser compreendida
+
+- Passível de ser "interpretada"
+
+- Possível de ser **s**ubjetivamente captada
+
+**Exemplos**: [expressões culturais, interações sociais]{.gap}
+:::
+::::
+
+:::: {.column .fragment width="50%"}
+::: nonincremental
+Quantitativa
+
+- Passível de ser contada/enumerada
+
+- Passível de ser "precisada"
+
+- Possível de ser **o**bjetivamente captada
+
+**Exemplos**: [Fluxos de atividades culturais, peso das pessoas ao nascer]{.gap}
+:::
+::::
+:::::::
+
+![](images/question.gif){.absolute bottom="20" right="450" width="300" height="300"}
+
+# Algumas definições acerca de dados quantitativos {.theme-first}
+
+::: {style="text-align: left;"}
+Tipos de dados quantitativos
+:::
+
+## Tipos de dados quantitativos {.theme-subtopic .smaller}
+
+podem ser divididos entre **primários X secundários**, **públicos X privados**, ...
+
+::::: columns
+::: {.column width="50%"}
+### Dados primários
+
+Associado à coleta *direta* dos dados de interesse.
+
+- Observação (não) participante;
+
+- Questionário;
+
+- Entrevistas; etc.
+:::
+
+::: {.column width="50%"}
+### Dados secundários
+
+Outro/a pesquisador/a ou instituição coletou o dado anteriormente sem a participação do/a pesquisador/a ou projeto que o utilizará.
+
+- Podem ser dados quantitativos ou qualitativos (!!!)
+:::
+:::::
+
+## Tipos de dados quantitativos {.theme-subtopic .smaller}
+
+podem ser divididos entre **primários X secundários**, **públicos X privados**, ...
+
+::::: columns
+### Dados públicos
+
+::: {.column width="50%"}
+São fontes de informação produzidas por instituições governamentais ou que estão sob a governança de instituições do governo.
+
+*Em geral...*
+
+- Permitem acesso mais rápido e fácil às informações;
+
+- Garantem uma maior confiabilidade dos dados;
+
+- Asseguram um maior rigor metodológico de sua coleta.
+:::
+
+::: {.column width="50%"}
+Limitações
+
+- Coleta dos dados não segue exatamente a proposta do uso do/a pesquisador/a;
+
+- Questões éticas envolvidas;
+
+- Validade dos dados; ...
+:::
+:::::
+
+## Tipos de dados quantitativos {.theme-subtopic}
+
+#### Brainstorming de dados públicos!:
+
+# Conceitos estatísticos importantes {.theme-first}
+
+## População e amostra {.theme-subtopic .smaller}
+
+Não somente relacionado ao desenho de coleta dos dados, mas todas as estatísticas que calculamos estão associadas a esses conceitos
+
+### População
+
+Um conjunto de elementos (animados ou inanimados) que compartilham de alguma característica definida e que seja relevante para o/a pesquisador/a ou pesquisa.
+
+### Amostra
+
+Um fragmento, parte, subconjunto da população estudada. É definida, em geral, através de critérios explícitos.
+
+![](images/pop-amostra.png){.absolute .r-stretch bottom="20" right="50" width="500" height="300"}
+
+## Variáveis {.theme-subtopic .smaller}
+
+::: nonincremental
+São características específicas extraídas de uma determinada população ou amostra.
+
+**Exemplos:**
+
+- sexo,
+
+- raça,
+
+- renda,
+
+- peso,
+
+- ano de nascimento,
+
+- local de residência,
+
+- número de animais de estimação em casa, ...
+
+No mundo real, é necessário que "simplifiquemos" sua complexidade para que seja possível a sua análise.
+:::
+
+## Natureza das variáveis {.theme-subtopic .smaller}
+
+São categorizações excludentes, *todavia, uma variável pode ser transformada em outra natureza/tipo*.
+
+::::: columns
+::: {.column width="50%"}
+### Qualitativa {style="text-align: center;"}
+
+Valores representam atributos ou qualidades.
+
+- **Nominal** (não ordenado) - pode ainda ser dividida em binária ou não.
+
+  - Ex.: sexo/gênero, UF, nomes.
+
+- **Ordinal** (ordenado/graduado)
+
+  - Ex.: nível de escolaridade, [faixa de renda]{.fragment .highlight-red}, faixa de tamanho de cidade
+:::
+
+::: {.column width="50%"}
+### Quantitativa {style="text-align: center;"}
+
+Valores são expressos em números, apresentam quantidades.
+
+- **Discreta** (contagem) - expressa em números inteiros, "indivisíveis".
+
+  - Ex.: anos de estudos, número de filhos, pessoas no domicílio.
+
+- **Contínua** (medidas) - expressa em números infinitesimais.
+
+  - Ex.: Altura, peso, [renda]{.fragment .highlight-red}
+:::
+:::::
+
+## Tipos de medidas {.theme-subtopic .smaller}
+
+::: nonincremental
+Para cada tipo de variável, há um tipo de medida que se adequa melhor à sua análise.
+
+- **Números absolutos**
+
+- **Números relativos** (distribuição relativa; composição)
+
+- **Proporção** (numerador está contido no denominador)
+
+- **Taxa** (numerador **não** está contido no denominador)
+
+- **Razão** (divisão de duas grandezas quaisquer)
+
+- **Medidas de tendência central** (média, moda, mediana)
+
+- **Medidas de variabilidade/dispersão** (variância, desvio padrão, coeficiente de variação)
+:::
+
+## Tipos de análises {.theme-subtopic .smaller}
+
+Há níveis de análises que são necessários de serem explorados na interação de fenômenos/variáveis.
+
+:::::: columns
+::: {.column width="30%"}
+### Univariada {style="text-align: center;"}
+
+Variável qualitativa (binária, ordinal)
+
+Variável quantitativa (contínua, discreta)
+:::
+
+::: {.column width="30%"}
+### Bivariada {style="text-align: center;"}
+
+Quali X Quanti
+
+Quali X Quali
+
+Quanti X Quanti
+:::
+
+::: {.column width="30%"}
+### Multivariada {style="text-align: center;"}
+
+Quali X Quali X Quali
+
+Quali X Quali X Quanti
+
+Quanti X Quanti X Quali
+
+Quanti X Quanti X Quati
+:::
+::::::
+
+## Tipos de análises {.theme-subtopic .smaller}
+
+Há níveis de análises que são necessários de serem explorados na interação de fenômenos/variáveis.
+
+:::::: columns
+::: {.column width="30%"}
+### Univariada {style="text-align: center;"}
+
+```{r, echo=FALSE}
+data("iris")
+library(pacman)
+p_load(ggplot2,dplyr)
+
+# plot
+iris |> 
+  ggplot() +
+  aes(x = Sepal.Width) +
+  geom_density(linewidth = 1.5) +
+  labs(x="",y="") +
+  theme_minimal()
+```
+
+```{r, echo=FALSE}
+data("iris")
+library(pacman)
+p_load(ggplot2,dplyr)
+
+# plot
+iris |> 
+  filter(Sepal.Width >= 3.2) |> 
+  mutate(value = 1) |>
+  summarise(n = sum(value), .by = Species) |> 
+  ggplot() +
+  aes(x = Species, y = n) +
+  geom_col() +
+  labs(x="",y="") +
+  theme_minimal() +
+  theme(axis.text = element_blank())
+```
+:::
+
+::: {.column width="30%"}
+### Bivariada {style="text-align: center;"}
+
+```{r, echo=FALSE}
+data("iris")
+library(pacman)
+p_load(ggplot2,dplyr)
+
+# plot
+iris |> 
+  ggplot() +
+  aes(x = Sepal.Width, y = Sepal.Length) +
+  geom_point(size = 3) +
+  labs(x="",y="") +
+  theme_minimal()
+```
+
+```{r, echo=FALSE}
+data("iris")
+library(pacman)
+p_load(ggplot2,dplyr)
+
+# plot
+iris |> 
+  filter(Sepal.Width >= 3.2) |> 
+  mutate(value = 1, grande = ifelse(Sepal.Width >= 3.300, "Sim", "Não")) |>
+  summarise(n = sum(value), .by = c(Species, grande)) |> 
+  ggplot() +
+  aes(x = Species, y = n, fill = grande) +
+  geom_col(show.legend = FALSE) +
+  coord_flip() +
+  labs(x="",y="") +
+  scale_fill_viridis_d() +
+  theme_minimal() +
+  theme(axis.text = element_blank())
+```
+:::
+
+::: {.column width="30%"}
+### Multivariada {style="text-align: center;"}
+
+```{r, echo=FALSE}
+data("iris")
+library(pacman)
+p_load(ggplot2,dplyr)
+
+# plot
+iris |> 
+  ggplot() +
+  aes(x = Sepal.Width, y = Sepal.Length, color = Species) +
+  geom_point(size = 3, show.legend = FALSE) +
+  labs(x="",y="") +
+  scale_color_viridis_d() +
+  theme_minimal()
+```
+:::
+::::::
+
+# Pausa! {.theme-stop}
+
+::: {style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;"}
+```{=html}
+<img src="images/stop.gif" 
+       style="border-radius: 50%; border:5px solid #708d81; width:450px; height:auto;" />
+```
+:::
+
+# Relação entre fenômenos sociais: associação ou efeito? {.theme-first}
+
+Quando e como podemos dizer que um fenômeno social interage com o outro?
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .r-fit-text}
+
+O principal intuíto por trás da ideia de analisar dois fenômenos sociais conjuntamente está na possível **relação entre eles**.
+
+- Isso carrega uma ideia subjacente de que eles apresentam uma **dependência**/**interação** um com o outro.
+
+- Partindo dessa ideia, como se quantifica a interação entre fenômenos sociais?
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+1.  Estabeleça a natureza da relação entre eles
+
+- Em geral, podemos estabelecer a relação entre fenômenos sociais através de: (i) **abordagem teórica**; (ii) **evidênciais empíricas**; ou (iii) ambos!
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+1.  Estabeleça a natureza da relação entre eles
+
+- Em geral, podemos estabelecer a relação entre fenômenos sociais através de: (i) **abordagem teórica**; (ii) **evidênciais empíricas**; ou (iii) ambos!
+
+![](images/programa-pe-meia.png){.absolute bottom="20" right="150" width="500" height="300"}
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+.2. Explore a relação entre eles empíricamente
+
+::::: columns
+::: {.column width="40%"}
+Há diferentes tipos de análises que podem ser feitas para explorar a relação entre dois fenômenos sociais a depender da natureza dos fenômenos analisados.
+:::
+
+::: {.column width="60%"}
+:::
+:::::
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-text-fit}
+
+Quantificação da interação entre fenômenos sociais
+
+.2. Explore a relação entre eles empíricamente
+
+::::: columns
+::: {.column width="40%"}
+Há diferentes tipos de análises que podem ser feitas para explorar a relação entre dois fenômenos sociais a depender da natureza dos fenômenos analisados.
+:::
+
+::: {.column width="60%"}
+```{r, echo=FALSE}
+# library
+library(pacman)
+p_load(dplyr, ggplot2)
+
+# variables
+renda <- rnorm(1000, mean = 1512, sd = 400)
+renda <- renda[renda >= 0]
+
+e <- runif(1000, 0, 1000)
+
+enem_mat <- 200 + renda * 0.5 + 0.3 * e + 0.001 * e^2
+enem_mat <- (enem_mat - mean(enem_mat))/sd(enem_mat)
+
+# plot
+ggplot() +
+  aes(x = renda, y = enem_mat) +
+  geom_point() +
+  labs(
+    x = "Renda mensal domiciliar per capita do aluno",
+    y = "Nota do enem em matemática"
+  )
+
+```
+:::
+:::::
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+3.  Avalie a magnitude da interação estatísticamente
+
+- Há diferentes medidas estatísticas para avaliar se há e a magnitude da relação entre fenômenos sociais.
+
+- Elas nos apontam (i) se há diferença estatisticamente significativa; (ii) a força dessa diferença; e (iii) a direção dessa diferença.
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+:::::: columns
+::: {.column width="30%"}
+### Significância estatística {.r-fit-text style="text-align: center;"}
+:::
+
+::: {.column width="30%"}
+### Força da relação entre elas {.r-fit-text style="text-align: center;"}
+:::
+
+::: {.column width="30%"}
+### Direção da diferença {.r-fit-text style="text-align: center;"}
+:::
+::::::
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+:::::: columns
+::: {.column width="30%"}
+### Significância estatística {.r-fit-text style="text-align: center;"}
+
+É medida através da diferença entre as distribuições estatísticas das variáveis (Qui-Quadrado, P-Pearson)
+
+Nos dis se temos evidênciais suficientes para aceitar a hipótese de que há diferença entre elas.
+:::
+
+::: {.column width="30%"}
+### Força da relação entre elas {.r-fit-text style="text-align: center;"}
+:::
+
+::: {.column width="30%"}
+### Direção da diferença {.r-fit-text style="text-align: center;"}
+:::
+::::::
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+:::::: columns
+::: {.column width="30%"}
+### Significância estatística {.r-fit-text style="text-align: center;"}
+
+É medida através da diferença entre as distribuições estatísticas das variáveis (Qui-Quadrado, P-Pearson)
+
+Nos diz se temos evidênciais suficientes para aceitar a hipótese de que há diferença entre elas.
+:::
+
+::: {.column width="30%"}
+### Força da relação entre elas {.r-fit-text style="text-align: center;"}
+
+Após analisar a magnitude, a análise da força nos diz se, além de estatisticamente significante, há uma expressiva diferença entre elas.
+:::
+
+::: {.column width="30%"}
+### Direção da diferença {.r-fit-text style="text-align: center;"}
+:::
+::::::
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais
+
+:::::: columns
+::: {.column width="30%"}
+### Significância estatística {.r-fit-text style="text-align: center;"}
+
+É medida através da diferença entre as distribuições estatísticas das variáveis (Qui-Quadrado, P-Pearson)
+
+Nos dis se temos evidênciais suficientes para aceitar a hipótese de que há diferença entre elas.
+:::
+
+::: {.column width="30%"}
+### Força da relação entre elas {.r-fit-text style="text-align: center;"}
+
+Após analisar a magnitude, a análise da força nos diz se além de estatisticamente significante, há uma expressiva diferença entre elas.
+:::
+
+::: {.column width="30%"}
+### Direção da diferença {.r-fit-text style="text-align: center;"}
+
+A direção da relação nos diz se é:
+
+- **Relação direta:** aumento em $X$ leva a um aumento em $Y$ (vice-versa).
+
+- **Relação indireta:** aumento em $X$ leva a uma redução em $Y$ (vice-versa).
+:::
+::::::
+
+## Formas de se captar a interação entre fenômenos sociais {.theme-subtopic .smaller .r-fit-text}
+
+Quantificação da interação entre fenômenos sociais: **O exemplo do programa pé-de-meia**.
+
+```{r}
+
+cor.test(renda, enem_mat) # teste de correlação, default 'Pearson'
+
+```
+
+Qual a conclusão que teríamos?
+
+a.  Um aumento da renda teria um efeito direto de ~45% no aumento da nota de matemática.
+
+b.  Um aumento da nota de matemática teria um efeito direto de ~45% no aumento da renda.
+
+## Slide extra!!! {.theme-subtopic .smaller .r-fit-text}
+
+Explicando o código `cor.test()`
+
+```{r, eval=FALSE}
+
+cor.test(renda, enem_mat) # teste de correlação, default 'Pearson'
+
+```
+
+Conforme conversamos em aula, a depender da natureza da variável há tipos de testes de correlação mais adequados:
+
+- `cor.test(VARIAVEL1,VARIAVEL2, method = 'pearson')`: é utilizado quando se tem duas variáveis quantitativas, preferencialmente contínuas.
+
+- `cor.test(VARIAVEL1,VARIAVEL2, method = 'spearman')`: é utilizado quando se tem ao menos uma variável ordinal, pode ser usado para discretas também.
+
+- `cor.test(VARIAVEL1,VARIAVEL2, method = 'kendall')`: assemelha-se ao `spearman`, mas é adequado para pequenas amostras.
+
+- `chisq.test(VARIAVEL1,VARIAVEL2)`: utilizado quando se tem variáveis qualitativas nominais ou binárias.
+
+# Relação entre fenômenos sociais: associação ou efeito? {.theme-first}
+
+Correlação e causalidade
+
+## Correlação e causalidade {.theme-subtopic .smaller}
+
+Em pesquisas sociais, o estabelecimento da relação entre um determinado fenômeno $X$ e $Y$ é tema de muitas áreas de pesquisa.
+
+## Correlação e causalidade {.theme-subtopic .smaller}
+
+Em pesquisas sociais, o estabelecimento da relação entre um determinado fenômeno $X$ e $Y$ é tema de muitas áreas de pesquisa.
+
+### Correlação {style="text-align: center;"}
+
+Estabelece uma relação entre dois fenômenos, apresentando sua significância estatística, força da relação e direção, **sem afirmar a ordem desta relação**.
+
+::::: columns
+::: {.column width="50%"}
+#### Potencialidades {style="text-align: center;"}
+
+- Sabe-se em que medida ambos os fenômenos se interagem!
+:::
+
+::: {.column width="50%"}
+#### Limitações {style="text-align: center;"}
+
+- Não se sabe se mudanças em $X$ levam a mudanças em $Y$ ou o contrário.
+:::
+:::::
+
+## Correlação e causalidade {.theme-subtopic .smaller}
+
+### Causalidade {style="text-align: center;"}
+
+Além de estabelecer significância, força da relação e direção, também pressupõe o estabelecimento de uma ordem para que a relação seja observada.
+
+::::: columns
+::: {.column width="50%"}
+#### Potencialidades {style="text-align: center;"}
+
+- Mudanças em $X$ levam à mudanças em $Y$, e não o contrário.
+
+- É muito mais poderoso quando se pensa em alocação de recursos públicos, privados ou até mesmo o estabelecimento de relações teóricas.
+:::
+
+::: {.column width="50%"}
+#### Limitações {style="text-align: center;"}
+
+- Embora poderoso, estabelecer relações diretas entre fenômenos sociais é muito difícil de ser feito na vida real de pesquisa.
+
+- Fenômenos sociais estão intrínsecamente relacionados entre eles, sendo necessário abordagens mais complexas para endereçar a causalidade (e até mesmo a associação).
+:::
+:::::
+
+# Modelagem de fenômenos sociais {.theme-first}
+
+Intuição
+
+## O que é e por que modelar? {.theme-subtopic .r-fit-text .smaller}
+
+![](images/models-augmented-reality.png){.absolute bottom="20" right="5" width="300" height="300"}
+
+A modelagem estatística é um exercício de estabelecimento da relação entre diferentes fenômenos, neste caso sociais.
+
+## O que é e por que modelar? {.theme-subtopic .r-fit-text .smaller}
+
+![](images/models-augmented-reality.png){.absolute bottom="20" right="5" width="300" height="300"}
+
+A modelagem estatística é um exercício de estabelecimento da relação entre diferentes fenômenos, neste caso sociais.
+
+Isso parte do pressuposto de que *conhecemos* a *verdadeira* **fórmula/lei** que rege a relação entre os fenômenos estabelecidos. Elas podem ser:
+
+- Lineares;
+
+- Quadráticas;
+
+- Logarítmicas;
+
+- Exponenciais; ...
+
+## O que é e por que modelar? {.theme-subtopic .r-fit-text .smaller}
+
+![](images/models-augmented-reality.png){.absolute bottom="20" right="5" width="300" height="300"} A modelagem estatística é um exercício de estabelecimento da relação entre diferentes fenômenos, neste caso sociais.
+
+Isso parte do pressuposto de que *conhecemos* a *verdadeira* **fórmula/lei** que rege a relação entre os fenômenos estabelecidos. Elas podem ser:
+
+- Lineares;
+
+- Quadráticas;
+
+- Logarítmicas;
+
+- Exponenciais; ...
+
+#### "Todos os modelos estão errados, mas alguns são úteis" George E. P. Box
+
+## O que é e por que modelar? {.theme-subtopic .r-fit-text .smaller}
+
+A partir da realidade em que conhecemos, formulamos uma relação matemática que nos permita avaliar e, *se assegurados alguns pressupostos*, generalizar as relações estabelecidas em uma pequena **amostra** da realidade para toda a **população** a que nossos dados são representativos.
+
+Para isso, precisamos:
+
+1.  Saber o motivo pelo qual estamos modelando: qual a motivação?
+
+2.  Estabelecer a relação entre os fenômenos a serem modelados: qual tipo de relação eles têm?
+
+3.  Explorar e descrever a relação entre eles: análise exploratória dos dados!
+
+4.  Construir o modelo para a população a que queremos generalizar
+
+5.  Implementar o modelo populacionar para a amostra da população que temos acesso
+
+6.  Avaliar a validade do nosso modelo
+
+7.  Estabelecer as conclusões possíveis com nossos modelos
+
+## Motivações para se modelar fenômenos sociais {.theme-subtopic .r-fit-text .smaller}
+
+Pode-se estar interessado em predizer tendências futuras para determinado fenômeno sociais de interesse -- **PREDIÇÃO** -- ou compreender em que medida um fenômeno afeta outro -- **RELAÇÃO ENTRE FENÔMENOS**.
+
+## Motivações para se modelar fenômenos sociais {.theme-subtopic .r-fit-text .smaller}
+
+::::: columns
+::: {.column width="50%"}
+### Predição {style="text-align: center;"}
+
+Sabendo-se quais são os fatores que determinam um fenômeno social $Y$, pode-se predizer o comportamento futuro $\hat{Y}$ com base nas mudanças que ocorrerão em seus fatores determinantes.
+
+- São chamados de modelos preditivos.
+
+- Muito utilizados, atualmente, em modelos de aprendizado de máquina (*machine learning*)[^1].
+:::
+
+::: {.column width="50%"}
+### Relação entre fenômenos {style="text-align: center;"}
+
+Buscam estabelcer a relação entre um fenômeno $X_1$ e o fenômeno de interesse $Y$ a partir do *controle* por outras variáveis que também podem afetar $Y$[^2]
+
+- Mais comuns em estudos de políticas públicas para desenho de programas sociais, em estudos acadêmicos ou em estudos de mercado.
+:::
+:::::
+
+[^1]: Ver texto complementar na leitura da aula de hoje.
+
+[^2]: Ver texto do ENAP (2019) presente na leitura da aula de hoje.
+
+## Limites {.theme-subtopic .r-fit-text .smaller}
+
+Quais são os limites da modelagem de dados?
+
+![](images/question.gif){.absolute bottom="20" right="50" width="300" height="300"}
+
+## Limites {.theme-subtopic .r-fit-text .smaller}
+
+Quais são os limites da modelagem de dados?
+
+#### Dados disponíveis
+
+Se não há dados ou os dados são ruins, a modelagem vai ser diretamente afetada por isso.
+
+## Limites {.theme-subtopic .r-fit-text .smaller}
+
+Quais são os limites da modelagem de dados?
+
+#### Dados disponíveis
+
+Se não há dados ou os dados são ruins, a modelagem vai ser diretamente afetada por isso.
+
+#### Conhecimento teórico sobre a relação entre fenômenos
+
+Se não há um embasamento teórico ou empírico suficiente para estabelecer as relações entre os fenômenos, o modelo terá alcance limitado.
+
+## Limites {.theme-subtopic .r-fit-text .smaller}
+
+Quais são os limites da modelagem de dados?
+
+#### Dados disponíveis
+
+Se não há dados ou os dados são ruins, a modelagem vai ser diretamente afetada por isso.
+
+#### Conhecimento teórico sobre a relação entre fenômenos
+
+Se não há um embasamento teórico ou empírico suficiente para estabelecer as relações entre os fenômenos, o modelo terá alcance limitado.
+
+#### Conhecimento técnico sobre a relação entre fenômenos
+
+Mesmo havendo conhecimento teórico suficiente, em muitos casos, o conhecimento técnico dos modelos que conhecemos não permitem que testemos certas hipóteses.
+
+## Isso é tudo para hoje! {.theme-next}
+
+Para próxima aula:
+
+1.  Exercício sobre correlação espúria
+2.  Leitura de material para aula de hoje (caso não tenha lido)
+3.  Leitura de material para a aula seguinte (Ver ementa)
+
+## Isso é tudo para hoje! {.theme-next}
+
+Orientações sobre o exercício:
+
+- Explore os dados contidos na pasta `pratica > dados_correlacao.csv`
+
+- Plot um gráfico das duas variáveis disponíveis
+
+- Analise a correlação de Pearson
+
+- Apresente suas hipóteses sobre o que explica isso.
+
+#  {.cebrap-fim .smaller}
+
+![](images/cebrap50.png){.absolute top="-90" right="460" width="100" height="100"}
+
+:::::: columns
+:::: {.column width="50%"}
+::: {style="text-align: right;"}
+**Presidência**
+
+**Diretoria Administrativa**
+
+**Diretoria Científica**
+
+**Coordenação de Seminários**
+
+**Coordenação de Cursos**
+:::
+::::
+
+::: {.column width="50%"}
+Adrian Gurza Lavalle
+
+Victor Callil
+
+Arilson Favareto
+
+Bianca Tavolari
+
+Monise Fernandes Picanço
+:::
+::::::
+
+::: {style="text-align: center;"}
+**Curso**
+
+Introdução à análise de regressão para pesquisas sociais
+
+**Ministrante**
+
+Thiago Cordeiro Almeida
+
+E-mail: [thiagocordalmeida\@gmail.com](thiagocordalmeida@gmail.com)
+
+Github: [\@thiagocalm](github.com/thiagocalm)
+:::

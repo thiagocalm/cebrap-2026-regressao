@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="1.fundamentos_files/libs/clipboard/clipboard.min.js"></script>
+<script src="1.fundamentos_files/libs/quarto-html/tabby.min.js"></script>
+<script src="1.fundamentos_files/libs/quarto-html/popper.min.js"></script>
+<script src="1.fundamentos_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="1.fundamentos_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="1.fundamentos_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="1.fundamentos_files/libs/quarto-html/quarto-syntax-highlighting-be8263ff1b6b897a8d97feb209c764ac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+<meta name="author" content="Thiago Cordeiro Almeida">
+<meta name="dcterms.date" content="2026-09-07">
+<title>Regressão para pesquisas sociais</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="1.fundamentos_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="1.fundamentos_files/libs/revealjs/dist/reveal.css">
+<style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cbccc6; background-color: #1f2430; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cbccc6; } /* Normal */
+    code span.al { color: #ff3333; background-color: #332430; font-weight: bold; } /* Alert */
+    code span.an { color: #ffe6b3; } /* Annotation */
+    code span.at { color: #73d0ff; } /* Attribute */
+    code span.bn { color: #ffcc66; } /* BaseN */
+    code span.bu { color: #95e6cb; } /* BuiltIn */
+    code span.cf { color: #ffa759; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #95e6cb; } /* Char */
+    code span.cn { color: #d4bfff; } /* Constant */
+    code span.co { color: #5c6773; font-style: italic; } /* Comment */
+    code span.cv { color: #d4bfff; } /* CommentVar */
+    code span.do { color: #5c6773; } /* Documentation */
+    code span.dt { color: #ffa759; } /* DataType */
+    code span.dv { color: #ffcc66; } /* DecVal */
+    code span.er { color: #ff3333; text-decoration: underline; } /* Error */
+    code span.ex { color: #73d0ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #ffcc66; } /* Float */
+    code span.fu { color: #ffd580; } /* Function */
+    code span.im { color: #bae67e; } /* Import */
+    code span.in { color: #ffcc66; } /* Information */
+    code span.kw { color: #ffa759; font-weight: bold; } /* Keyword */
+    code span.op { color: #f29e74; } /* Operator */
+    code span.ot { color: #5ccfe6; } /* Other */
+    code span.pp { color: #f28779; } /* Preprocessor */
+    code span.re { color: #73d0ff; background-color: #2a4254; } /* RegionMarker */
+    code span.sc { color: #95e6cb; } /* SpecialChar */
+    code span.ss { color: #95e6cb; } /* SpecialString */
+    code span.st { color: #bae67e; } /* String */
+    code span.va { color: #5ccfe6; } /* Variable */
+    code span.vs { color: #bae67e; } /* VerbatimString */
+    code span.wa { color: #f28779; } /* Warning */
+  </style>
+<link rel="stylesheet" href="1.fundamentos_files/libs/revealjs/dist/theme/quarto-58354c6c92279b4d453c3bab48d3786f.css">
+<link href="1.fundamentos_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="1.fundamentos_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="1.fundamentos_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="1.fundamentos_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="1.fundamentos_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="1.fundamentos_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Regressão para pesquisas sociais</h1>
+  <p class="subtitle"><span style="font-size:1em;"> Aula 1 - Fundamentos para modelagem de dados quantitativos </span></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Thiago Cordeiro Almeida 
+</div>
+        <p class="quarto-title-affiliation">
+            Doutorando, Centre d’Estudis Demogràfics (CED, Espanha) <br> Pesquisador Assistente, Cebrap <br></p>
+    </div>
+</div>
+
+  <p class="date">September 7, 2026</p>
+</section><section><section id="antes-de-começar" class="title-slide slide level1 center"><h1>Antes de começar…</h1>
+<p>lista de presença!</p>
+<p><img data-src="images/attention.gif" class="absolute" style="bottom: 10px; right: 50px; width: 240px; height: 240px; "></p>
+</section><section id="estrutura-da-aula" class="slide level2 theme-next"><h2>Estrutura da aula</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Tópicos que vamos cobrir hoje são:</p>
+</div><div class="column" style="width:70%;">
+<div style="text-align: left;">
+<ul>
+<li class="fragment"><p>Definições e noções acerca de dados quantitativos</p></li>
+<li class="fragment"><p>Conceitos estatísticos importantes</p></li>
+<li class="fragment"><p>Noção de correlação e causalidade</p></li>
+<li class="fragment">
+<p>Modelagem de fenônemos sociais</p>
+<ul>
+<li class="fragment"><p>Intuição</p></li>
+<li class="fragment"><p>Limites</p></li>
+<li class="fragment"><p>Fundamentos</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+</section></section><section><section id="algumas-definições-acerca-de-dados-quantitativos" class="title-slide slide level1 theme-first center"><h1>Algumas definições acerca de dados quantitativos</h1>
+<div style="text-align: left;">
+<p>Natureza dos dados quantitativos</p>
+</div>
+</section><section id="natureza-dos-dados-quantitativos" class="slide level2 theme-subtopic smaller"><h2>Natureza dos dados quantitativos</h2>
+<p>está ligada à forma de classificação dos tipos de dados existentes.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Qualitativa</p>
+<ul>
+<li><p>Passível de ser compreendida</p></li>
+<li><p>Passível de ser “interpretada”</p></li>
+<li><p>Possível de ser <strong>s</strong>ubjetivamente captada</p></li>
+</ul>
+<p><strong>Exemplos</strong>: <span class="gap">expressões culturais, interações sociais</span></p>
+</div><div class="column fragment" style="width:50%;">
+<p>Quantitativa</p>
+<ul>
+<li><p>Passível de ser contada/enumerada</p></li>
+<li><p>Passível de ser “precisada”</p></li>
+<li><p>Possível de ser <strong>o</strong>bjetivamente captada</p></li>
+</ul>
+<p><strong>Exemplos</strong>: <span class="gap">Fluxos de atividades culturais, peso das pessoas ao nascer</span></p>
+</div></div>
+</section><section id="natureza-dos-dados-quantitativos-1" class="slide level2 theme-subtopic smaller"><h2>Natureza dos dados quantitativos</h2>
+<p>está ligada à forma de classificação dos tipos de dados existentes.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Qualitativa</p>
+<ul>
+<li><p>Passível de ser compreendida</p></li>
+<li><p>Passível de ser “interpretada”</p></li>
+<li><p>Possível de ser <strong>s</strong>ubjetivamente captada</p></li>
+</ul>
+<p><strong>Exemplos</strong>: <span class="gap">expressões culturais, interações sociais</span></p>
+</div><div class="column fragment" style="width:50%;">
+<p>Quantitativa</p>
+<ul>
+<li><p>Passível de ser contada/enumerada</p></li>
+<li><p>Passível de ser “precisada”</p></li>
+<li><p>Possível de ser <strong>o</strong>bjetivamente captada</p></li>
+</ul>
+<p><strong>Exemplos</strong>: <span class="gap">Fluxos de atividades culturais, peso das pessoas ao nascer</span></p>
+</div></div>
+<p><img data-src="images/question.gif" class="absolute" style="bottom: 20px; right: 450px; width: 300px; height: 300px; "></p>
+</section></section><section><section id="algumas-definições-acerca-de-dados-quantitativos-1" class="title-slide slide level1 theme-first center"><h1>Algumas definições acerca de dados quantitativos</h1>
+<div style="text-align: left;">
+<p>Tipos de dados quantitativos</p>
+</div>
+</section><section id="tipos-de-dados-quantitativos" class="slide level2 theme-subtopic smaller"><h2>Tipos de dados quantitativos</h2>
+<p>podem ser divididos entre <strong>primários X secundários</strong>, <strong>públicos X privados</strong>, …</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="dados-primários">Dados primários</h3>
+<p>Associado à coleta <em>direta</em> dos dados de interesse.</p>
+<ul>
+<li class="fragment"><p>Observação (não) participante;</p></li>
+<li class="fragment"><p>Questionário;</p></li>
+<li class="fragment"><p>Entrevistas; etc.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 id="dados-secundários">Dados secundários</h3>
+<p>Outro/a pesquisador/a ou instituição coletou o dado anteriormente sem a participação do/a pesquisador/a ou projeto que o utilizará.</p>
+<ul>
+<li class="fragment">Podem ser dados quantitativos ou qualitativos (!!!)</li>
+</ul>
+</div></div>
+</section><section id="tipos-de-dados-quantitativos-1" class="slide level2 theme-subtopic smaller"><h2>Tipos de dados quantitativos</h2>
+<p>podem ser divididos entre <strong>primários X secundários</strong>, <strong>públicos X privados</strong>, …</p>
+<div class="columns">
+<h3 id="dados-públicos">Dados públicos</h3>
+<div class="column" style="width:50%;">
+<p>São fontes de informação produzidas por instituições governamentais ou que estão sob a governança de instituições do governo.</p>
+<p><em>Em geral…</em></p>
+<ul>
+<li class="fragment"><p>Permitem acesso mais rápido e fácil às informações;</p></li>
+<li class="fragment"><p>Garantem uma maior confiabilidade dos dados;</p></li>
+<li class="fragment"><p>Asseguram um maior rigor metodológico de sua coleta.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p>Limitações</p>
+<ul>
+<li class="fragment"><p>Coleta dos dados não segue exatamente a proposta do uso do/a pesquisador/a;</p></li>
+<li class="fragment"><p>Questões éticas envolvidas;</p></li>
+<li class="fragment"><p>Validade dos dados; …</p></li>
+</ul>
+</div></div>
+</section><section id="tipos-de-dados-quantitativos-2" class="slide level2 theme-subtopic"><h2>Tipos de dados quantitativos</h2>
+<h4 id="brainstorming-de-dados-públicos">Brainstorming de dados públicos!:</h4>
+</section></section><section><section id="conceitos-estatísticos-importantes" class="title-slide slide level1 theme-first center"><h1>Conceitos estatísticos importantes</h1>
+
+</section><section id="população-e-amostra" class="slide level2 theme-subtopic smaller"><h2>População e amostra</h2>
+<p>Não somente relacionado ao desenho de coleta dos dados, mas todas as estatísticas que calculamos estão associadas a esses conceitos</p>
+<h3 id="população">População</h3>
+<p>Um conjunto de elementos (animados ou inanimados) que compartilham de alguma característica definida e que seja relevante para o/a pesquisador/a ou pesquisa.</p>
+<h3 id="amostra">Amostra</h3>
+<p>Um fragmento, parte, subconjunto da população estudada. É definida, em geral, através de critérios explícitos.</p>
+<img data-src="images/pop-amostra.png" class="absolute r-stretch" style="bottom: 20px; right: 50px; width: 500px; height: 300px; "></section><section id="variáveis" class="slide level2 theme-subtopic smaller"><h2>Variáveis</h2>
+<p>São características específicas extraídas de uma determinada população ou amostra.</p>
+<p><strong>Exemplos:</strong></p>
+<ul>
+<li><p>sexo,</p></li>
+<li><p>raça,</p></li>
+<li><p>renda,</p></li>
+<li><p>peso,</p></li>
+<li><p>ano de nascimento,</p></li>
+<li><p>local de residência,</p></li>
+<li><p>número de animais de estimação em casa, …</p></li>
+</ul>
+<p>No mundo real, é necessário que “simplifiquemos” sua complexidade para que seja possível a sua análise.</p>
+</section><section id="natureza-das-variáveis" class="slide level2 theme-subtopic smaller"><h2>Natureza das variáveis</h2>
+<p>São categorizações excludentes, <em>todavia, uma variável pode ser transformada em outra natureza/tipo</em>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 style="text-align: center;" id="qualitativa">Qualitativa</h3>
+<p>Valores representam atributos ou qualidades.</p>
+<ul>
+<li class="fragment">
+<p><strong>Nominal</strong> (não ordenado) - pode ainda ser dividida em binária ou não.</p>
+<ul>
+<li class="fragment">Ex.: sexo/gênero, UF, nomes.</li>
+</ul>
+</li>
+<li class="fragment">
+<p><strong>Ordinal</strong> (ordenado/graduado)</p>
+<ul>
+<li class="fragment">Ex.: nível de escolaridade, <span class="fragment highlight-red">faixa de renda</span>, faixa de tamanho de cidade</li>
+</ul>
+</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 style="text-align: center;" id="quantitativa">Quantitativa</h3>
+<p>Valores são expressos em números, apresentam quantidades.</p>
+<ul>
+<li class="fragment">
+<p><strong>Discreta</strong> (contagem) - expressa em números inteiros, “indivisíveis”.</p>
+<ul>
+<li class="fragment">Ex.: anos de estudos, número de filhos, pessoas no domicílio.</li>
+</ul>
+</li>
+<li class="fragment">
+<p><strong>Contínua</strong> (medidas) - expressa em números infinitesimais.</p>
+<ul>
+<li class="fragment">Ex.: Altura, peso, <span class="fragment highlight-red">renda</span>
+</li>
+</ul>
+</li>
+</ul>
+</div></div>
+</section><section id="tipos-de-medidas" class="slide level2 theme-subtopic smaller"><h2>Tipos de medidas</h2>
+<p>Para cada tipo de variável, há um tipo de medida que se adequa melhor à sua análise.</p>
+<ul>
+<li><p><strong>Números absolutos</strong></p></li>
+<li><p><strong>Números relativos</strong> (distribuição relativa; composição)</p></li>
+<li><p><strong>Proporção</strong> (numerador está contido no denominador)</p></li>
+<li><p><strong>Taxa</strong> (numerador <strong>não</strong> está contido no denominador)</p></li>
+<li><p><strong>Razão</strong> (divisão de duas grandezas quaisquer)</p></li>
+<li><p><strong>Medidas de tendência central</strong> (média, moda, mediana)</p></li>
+<li><p><strong>Medidas de variabilidade/dispersão</strong> (variância, desvio padrão, coeficiente de variação)</p></li>
+</ul></section><section id="tipos-de-análises" class="slide level2 theme-subtopic smaller"><h2>Tipos de análises</h2>
+<p>Há níveis de análises que são necessários de serem explorados na interação de fenômenos/variáveis.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<h3 style="text-align: center;" id="univariada">Univariada</h3>
+<p>Variável qualitativa (binária, ordinal)</p>
+<p>Variável quantitativa (contínua, discreta)</p>
+</div><div class="column" style="width:30%;">
+<h3 style="text-align: center;" id="bivariada">Bivariada</h3>
+<p>Quali X Quanti</p>
+<p>Quali X Quali</p>
+<p>Quanti X Quanti</p>
+</div><div class="column" style="width:30%;">
+<h3 style="text-align: center;" id="multivariada">Multivariada</h3>
+<p>Quali X Quali X Quali</p>
+<p>Quali X Quali X Quanti</p>
+<p>Quanti X Quanti X Quali</p>
+<p>Quanti X Quanti X Quati</p>
+</div></div>
+</section><section id="tipos-de-análises-1" class="slide level2 theme-subtopic smaller"><h2>Tipos de análises</h2>
+<p>Há níveis de análises que são necessários de serem explorados na interação de fenômenos/variáveis.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<h3 style="text-align: center;" id="univariada-1">Univariada</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="1.fundamentos_files/figure-revealjs/unnamed-chunk-1-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="1.fundamentos_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<h3 style="text-align: center;" id="bivariada-1">Bivariada</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="1.fundamentos_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="1.fundamentos_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<h3 style="text-align: center;" id="multivariada-1">Multivariada</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="1.fundamentos_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section></section><section id="pausa" class="title-slide slide level1 theme-stop center"><h1>Pausa!</h1>
+<div style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;">
+<img src="images/stop.gif" style="border-radius: 50%; border:5px solid #708d81; width:450px; height:auto;">
+</div>
+</section><section><section id="relação-entre-fenômenos-sociais-associação-ou-efeito" class="title-slide slide level1 theme-first center"><h1>Relação entre fenômenos sociais: associação ou efeito?</h1>
+<p>Quando e como podemos dizer que um fenômeno social interage com o outro?</p>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais" class="slide level2 theme-subtopic"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>O principal intuíto por trás da ideia de analisar dois fenômenos sociais conjuntamente está na possível <strong>relação entre eles</strong>.</p>
+<ul>
+<li class="fragment"><p>Isso carrega uma ideia subjacente de que eles apresentam uma <strong>dependência</strong>/<strong>interação</strong> um com o outro.</p></li>
+<li class="fragment"><p>Partindo dessa ideia, como se quantifica a interação entre fenômenos sociais?</p></li>
+</ul></section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-1" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<ol type="1">
+<li class="fragment">Estabeleça a natureza da relação entre eles</li>
+</ol>
+<ul>
+<li class="fragment">Em geral, podemos estabelecer a relação entre fenômenos sociais através de: (i) <strong>abordagem teórica</strong>; (ii) <strong>evidênciais empíricas</strong>; ou (iii) ambos!</li>
+</ul></section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-2" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<ol type="1">
+<li class="fragment">Estabeleça a natureza da relação entre eles</li>
+</ol>
+<ul>
+<li class="fragment">Em geral, podemos estabelecer a relação entre fenômenos sociais através de: (i) <strong>abordagem teórica</strong>; (ii) <strong>evidênciais empíricas</strong>; ou (iii) ambos!</li>
+</ul>
+<p><img data-src="images/programa-pe-meia.png" class="absolute" style="bottom: 20px; right: 150px; width: 500px; height: 300px; "></p>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-3" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<p>.2. Explore a relação entre eles empíricamente</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Há diferentes tipos de análises que podem ser feitas para explorar a relação entre dois fenômenos sociais a depender da natureza dos fenômenos analisados.</p>
+</div><div class="column" style="width:60%;">
+
+</div></div>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-4" class="slide level2 theme-subtopic smaller r-text-fit"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<p>.2. Explore a relação entre eles empíricamente</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Há diferentes tipos de análises que podem ser feitas para explorar a relação entre dois fenômenos sociais a depender da natureza dos fenômenos analisados.</p>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure><p><img data-src="1.fundamentos_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-5" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<ol start="3" type="1">
+<li class="fragment">Avalie a magnitude da interação estatísticamente</li>
+</ol>
+<ul>
+<li class="fragment"><p>Há diferentes medidas estatísticas para avaliar se há e a magnitude da relação entre fenômenos sociais.</p></li>
+<li class="fragment"><p>Elas nos apontam (i) se há diferença estatisticamente significativa; (ii) a força dessa diferença; e (iii) a direção dessa diferença.</p></li>
+</ul></section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-6" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="significância-estatística">Significância estatística</h3>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="força-da-relação-entre-elas">Força da relação entre elas</h3>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="direção-da-diferença">Direção da diferença</h3>
+</div></div>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-7" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="significância-estatística-1">Significância estatística</h3>
+<p>É medida através da diferença entre as distribuições estatísticas das variáveis (Qui-Quadrado, P-Pearson)</p>
+<p>Nos dis se temos evidênciais suficientes para aceitar a hipótese de que há diferença entre elas.</p>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="força-da-relação-entre-elas-1">Força da relação entre elas</h3>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="direção-da-diferença-1">Direção da diferença</h3>
+</div></div>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-8" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="significância-estatística-2">Significância estatística</h3>
+<p>É medida através da diferença entre as distribuições estatísticas das variáveis (Qui-Quadrado, P-Pearson)</p>
+<p>Nos diz se temos evidênciais suficientes para aceitar a hipótese de que há diferença entre elas.</p>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="força-da-relação-entre-elas-2">Força da relação entre elas</h3>
+<p>Após analisar a magnitude, a análise da força nos diz se, além de estatisticamente significante, há uma expressiva diferença entre elas.</p>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="direção-da-diferença-2">Direção da diferença</h3>
+</div></div>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-9" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="significância-estatística-3">Significância estatística</h3>
+<p>É medida através da diferença entre as distribuições estatísticas das variáveis (Qui-Quadrado, P-Pearson)</p>
+<p>Nos dis se temos evidênciais suficientes para aceitar a hipótese de que há diferença entre elas.</p>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="força-da-relação-entre-elas-3">Força da relação entre elas</h3>
+<p>Após analisar a magnitude, a análise da força nos diz se além de estatisticamente significante, há uma expressiva diferença entre elas.</p>
+</div><div class="column" style="width:30%;">
+<h3 class="r-fit-text" style="text-align: center;" id="direção-da-diferença-3">Direção da diferença</h3>
+<p>A direção da relação nos diz se é:</p>
+<ul>
+<li class="fragment"><p><strong>Relação direta:</strong> aumento em <span class="math inline">\(X\)</span> leva a um aumento em <span class="math inline">\(Y\)</span> (vice-versa).</p></li>
+<li class="fragment"><p><strong>Relação indireta:</strong> aumento em <span class="math inline">\(X\)</span> leva a uma redução em <span class="math inline">\(Y\)</span> (vice-versa).</p></li>
+</ul>
+</div></div>
+</section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-10" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
+<p>Quantificação da interação entre fenômenos sociais: <strong>O exemplo do programa pé-de-meia</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">cor.test</span>(renda, enem_mat) <span class="co"># teste de correlação, default 'Pearson'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  renda and enem_mat
+t = 17.54, df = 998, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.4365573 0.5314150
+sample estimates:
+      cor 
+0.4854134 </code></pre>
+</div>
+</div>
+<p>Qual a conclusão que teríamos?</p>
+<ol type="a">
+<li class="fragment"><p>Um aumento da renda teria um efeito direto de ~45% no aumento da nota de matemática.</p></li>
+<li class="fragment"><p>Um aumento da nota de matemática teria um efeito direto de ~45% no aumento da renda.</p></li>
+</ol></section><section id="slide-extra" class="slide level2 theme-subtopic smaller"><h2>Slide extra!!!</h2>
+<p>Explicando o código <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">cor.test</span>(renda, enem_mat) <span class="co"># teste de correlação, default 'Pearson'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Conforme conversamos em aula, a depender da natureza da variável há tipos de testes de correlação mais adequados:</p>
+<ul>
+<li class="fragment"><p><code>cor.test(VARIAVEL1,VARIAVEL2, method = 'pearson')</code>: é utilizado quando se tem duas variáveis quantitativas, preferencialmente contínuas.</p></li>
+<li class="fragment"><p><code>cor.test(VARIAVEL1,VARIAVEL2, method = 'spearman')</code>: é utilizado quando se tem ao menos uma variável ordinal, pode ser usado para discretas também.</p></li>
+<li class="fragment"><p><code>cor.test(VARIAVEL1,VARIAVEL2, method = 'kendall')</code>: assemelha-se ao <code>spearman</code>, mas é adequado para pequenas amostras.</p></li>
+<li class="fragment"><p><code>chisq.test(VARIAVEL1,VARIAVEL2)</code>: utilizado quando se tem variáveis qualitativas nominais ou binárias.</p></li>
+</ul></section></section><section><section id="relação-entre-fenômenos-sociais-associação-ou-efeito-1" class="title-slide slide level1 theme-first center"><h1>Relação entre fenômenos sociais: associação ou efeito?</h1>
+<p>Correlação e causalidade</p>
+</section><section id="correlação-e-causalidade" class="slide level2 theme-subtopic smaller"><h2>Correlação e causalidade</h2>
+<p>Em pesquisas sociais, o estabelecimento da relação entre um determinado fenômeno <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é tema de muitas áreas de pesquisa.</p>
+</section><section id="correlação-e-causalidade-1" class="slide level2 theme-subtopic smaller"><h2>Correlação e causalidade</h2>
+<p>Em pesquisas sociais, o estabelecimento da relação entre um determinado fenômeno <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é tema de muitas áreas de pesquisa.</p>
+<h3 style="text-align: center;" id="correlação">Correlação</h3>
+<p>Estabelece uma relação entre dois fenômenos, apresentando sua significância estatística, força da relação e direção, <strong>sem afirmar a ordem desta relação</strong>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="potencialidades">Potencialidades</h4>
+<ul>
+<li class="fragment">Sabe-se em que medida ambos os fenômenos se interagem!</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="limitações">Limitações</h4>
+<ul>
+<li class="fragment">Não se sabe se mudanças em <span class="math inline">\(X\)</span> levam a mudanças em <span class="math inline">\(Y\)</span> ou o contrário.</li>
+</ul>
+</div></div>
+</section><section id="correlação-e-causalidade-2" class="slide level2 theme-subtopic smaller"><h2>Correlação e causalidade</h2>
+<h3 style="text-align: center;" id="causalidade">Causalidade</h3>
+<p>Além de estabelecer significância, força da relação e direção, também pressupõe o estabelecimento de uma ordem para que a relação seja observada.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="potencialidades-1">Potencialidades</h4>
+<ul>
+<li class="fragment"><p>Mudanças em <span class="math inline">\(X\)</span> levam à mudanças em <span class="math inline">\(Y\)</span>, e não o contrário.</p></li>
+<li class="fragment"><p>É muito mais poderoso quando se pensa em alocação de recursos públicos, privados ou até mesmo o estabelecimento de relações teóricas.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="limitações-1">Limitações</h4>
+<ul>
+<li class="fragment"><p>Embora poderoso, estabelecer relações diretas entre fenômenos sociais é muito difícil de ser feito na vida real de pesquisa.</p></li>
+<li class="fragment"><p>Fenômenos sociais estão intrínsecamente relacionados entre eles, sendo necessário abordagens mais complexas para endereçar a causalidade (e até mesmo a associação).</p></li>
+</ul>
+</div></div>
+</section></section><section><section id="modelagem-de-fenômenos-sociais" class="title-slide slide level1 theme-first center"><h1>Modelagem de fenômenos sociais</h1>
+<p>Intuição</p>
+</section><section id="o-que-é-e-por-que-modelar" class="slide level2 theme-subtopic smaller"><h2>O que é e por que modelar?</h2>
+<p><img data-src="images/models-augmented-reality.png" class="absolute" style="bottom: 20px; right: 5px; width: 300px; height: 300px; "></p>
+<p>A modelagem estatística é um exercício de estabelecimento da relação entre diferentes fenômenos, neste caso sociais.</p>
+</section><section id="o-que-é-e-por-que-modelar-1" class="slide level2 theme-subtopic smaller"><h2>O que é e por que modelar?</h2>
+<p><img data-src="images/models-augmented-reality.png" class="absolute" style="bottom: 20px; right: 5px; width: 300px; height: 300px; "></p>
+<p>A modelagem estatística é um exercício de estabelecimento da relação entre diferentes fenômenos, neste caso sociais.</p>
+<p>Isso parte do pressuposto de que <em>conhecemos</em> a <em>verdadeira</em> <strong>fórmula/lei</strong> que rege a relação entre os fenômenos estabelecidos. Elas podem ser:</p>
+<ul>
+<li class="fragment"><p>Lineares;</p></li>
+<li class="fragment"><p>Quadráticas;</p></li>
+<li class="fragment"><p>Logarítmicas;</p></li>
+<li class="fragment"><p>Exponenciais; …</p></li>
+</ul></section><section id="o-que-é-e-por-que-modelar-2" class="slide level2 theme-subtopic smaller"><h2>O que é e por que modelar?</h2>
+<p><img data-src="images/models-augmented-reality.png" class="absolute" style="bottom: 20px; right: 5px; width: 300px; height: 300px; "> A modelagem estatística é um exercício de estabelecimento da relação entre diferentes fenômenos, neste caso sociais.</p>
+<p>Isso parte do pressuposto de que <em>conhecemos</em> a <em>verdadeira</em> <strong>fórmula/lei</strong> que rege a relação entre os fenômenos estabelecidos. Elas podem ser:</p>
+<ul>
+<li class="fragment"><p>Lineares;</p></li>
+<li class="fragment"><p>Quadráticas;</p></li>
+<li class="fragment"><p>Logarítmicas;</p></li>
+<li class="fragment"><p>Exponenciais; …</p></li>
+</ul>
+<h4 id="todos-os-modelos-estão-errados-mas-alguns-são-úteis-george-e.-p.-box">“Todos os modelos estão errados, mas alguns são úteis” George E. P. Box</h4>
+</section><section id="o-que-é-e-por-que-modelar-3" class="slide level2 theme-subtopic smaller"><h2>O que é e por que modelar?</h2>
+<p>A partir da realidade em que conhecemos, formulamos uma relação matemática que nos permita avaliar e, <em>se assegurados alguns pressupostos</em>, generalizar as relações estabelecidas em uma pequena <strong>amostra</strong> da realidade para toda a <strong>população</strong> a que nossos dados são representativos.</p>
+<p>Para isso, precisamos:</p>
+<ol type="1">
+<li class="fragment"><p>Saber o motivo pelo qual estamos modelando: qual a motivação?</p></li>
+<li class="fragment"><p>Estabelecer a relação entre os fenômenos a serem modelados: qual tipo de relação eles têm?</p></li>
+<li class="fragment"><p>Explorar e descrever a relação entre eles: análise exploratória dos dados!</p></li>
+<li class="fragment"><p>Construir o modelo para a população a que queremos generalizar</p></li>
+<li class="fragment"><p>Implementar o modelo populacionar para a amostra da população que temos acesso</p></li>
+<li class="fragment"><p>Avaliar a validade do nosso modelo</p></li>
+<li class="fragment"><p>Estabelecer as conclusões possíveis com nossos modelos</p></li>
+</ol></section><section id="motivações-para-se-modelar-fenômenos-sociais" class="slide level2 theme-subtopic smaller"><h2>Motivações para se modelar fenômenos sociais</h2>
+<p>Pode-se estar interessado em predizer tendências futuras para determinado fenômeno sociais de interesse – <strong>PREDIÇÃO</strong> – ou compreender em que medida um fenômeno afeta outro – <strong>RELAÇÃO ENTRE FENÔMENOS</strong>.</p>
+</section><section id="motivações-para-se-modelar-fenômenos-sociais-1" class="slide level2 theme-subtopic smaller"><h2>Motivações para se modelar fenômenos sociais</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 style="text-align: center;" id="predição">Predição</h3>
+<p>Sabendo-se quais são os fatores que determinam um fenômeno social <span class="math inline">\(Y\)</span>, pode-se predizer o comportamento futuro <span class="math inline">\(\hat{Y}\)</span> com base nas mudanças que ocorrerão em seus fatores determinantes.</p>
+<ul>
+<li class="fragment"><p>São chamados de modelos preditivos.</p></li>
+<li class="fragment"><p>Muito utilizados, atualmente, em modelos de aprendizado de máquina (<em>machine learning</em>)<sup>1</sup>.</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h3 style="text-align: center;" id="relação-entre-fenômenos">Relação entre fenômenos</h3>
+<p>Buscam estabelcer a relação entre um fenômeno <span class="math inline">\(X_1\)</span> e o fenômeno de interesse <span class="math inline">\(Y\)</span> a partir do <em>controle</em> por outras variáveis que também podem afetar <span class="math inline">\(Y\)</span><sup>2</sup></p>
+<ul>
+<li class="fragment">Mais comuns em estudos de políticas públicas para desenho de programas sociais, em estudos acadêmicos ou em estudos de mercado.</li>
+</ul>
+</div></div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Ver texto complementar na leitura da aula de hoje.</p></li><li id="fn2"><p>Ver texto do ENAP (2019) presente na leitura da aula de hoje.</p></li></ol></aside></section><section id="limites" class="slide level2 theme-subtopic smaller"><h2>Limites</h2>
+<p>Quais são os limites da modelagem de dados?</p>
+<p><img data-src="images/question.gif" class="absolute" style="bottom: 20px; right: 50px; width: 300px; height: 300px; "></p>
+</section><section id="limites-1" class="slide level2 theme-subtopic smaller"><h2>Limites</h2>
+<p>Quais são os limites da modelagem de dados?</p>
+<h4 id="dados-disponíveis">Dados disponíveis</h4>
+<p>Se não há dados ou os dados são ruins, a modelagem vai ser diretamente afetada por isso.</p>
+</section><section id="limites-2" class="slide level2 theme-subtopic smaller"><h2>Limites</h2>
+<p>Quais são os limites da modelagem de dados?</p>
+<h4 id="dados-disponíveis-1">Dados disponíveis</h4>
+<p>Se não há dados ou os dados são ruins, a modelagem vai ser diretamente afetada por isso.</p>
+<h4 id="conhecimento-teórico-sobre-a-relação-entre-fenômenos">Conhecimento teórico sobre a relação entre fenômenos</h4>
+<p>Se não há um embasamento teórico ou empírico suficiente para estabelecer as relações entre os fenômenos, o modelo terá alcance limitado.</p>
+</section><section id="limites-3" class="slide level2 theme-subtopic smaller"><h2>Limites</h2>
+<p>Quais são os limites da modelagem de dados?</p>
+<h4 id="dados-disponíveis-2">Dados disponíveis</h4>
+<p>Se não há dados ou os dados são ruins, a modelagem vai ser diretamente afetada por isso.</p>
+<h4 id="conhecimento-teórico-sobre-a-relação-entre-fenômenos-1">Conhecimento teórico sobre a relação entre fenômenos</h4>
+<p>Se não há um embasamento teórico ou empírico suficiente para estabelecer as relações entre os fenômenos, o modelo terá alcance limitado.</p>
+<h4 id="conhecimento-técnico-sobre-a-relação-entre-fenômenos">Conhecimento técnico sobre a relação entre fenômenos</h4>
+<p>Mesmo havendo conhecimento teórico suficiente, em muitos casos, o conhecimento técnico dos modelos que conhecemos não permitem que testemos certas hipóteses.</p>
+</section><section id="isso-é-tudo-para-hoje" class="slide level2 theme-next"><h2>Isso é tudo para hoje!</h2>
+<p>Para próxima aula:</p>
+<ol type="1">
+<li class="fragment">Exercício sobre correlação espúria</li>
+<li class="fragment">Leitura de material para aula de hoje (caso não tenha lido)</li>
+<li class="fragment">Leitura de material para a aula seguinte (Ver ementa)</li>
+</ol></section><section id="isso-é-tudo-para-hoje-1" class="slide level2 theme-next"><h2>Isso é tudo para hoje!</h2>
+<p>Orientações sobre o exercício:</p>
+<ul>
+<li class="fragment"><p>Explore os dados contidos na pasta <code>pratica &gt; dados_correlacao.csv</code></p></li>
+<li class="fragment"><p>Plot um gráfico das duas variáveis disponíveis</p></li>
+<li class="fragment"><p>Analise a correlação de Pearson</p></li>
+<li class="fragment"><p>Apresente suas hipóteses sobre o que explica isso.</p></li>
+</ul></section></section><section id="section" class="title-slide slide level1 cebrap-fim smaller center"><h1></h1>
+<p><img data-src="images/cebrap50.png" class="absolute" style="top: -90px; right: 460px; width: 100px; height: 100px; "></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="text-align: right;">
+<p><strong>Presidência</strong></p>
+<p><strong>Diretoria Administrativa</strong></p>
+<p><strong>Diretoria Científica</strong></p>
+<p><strong>Coordenação de Seminários</strong></p>
+<p><strong>Coordenação de Cursos</strong></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Adrian Gurza Lavalle</p>
+<p>Victor Callil</p>
+<p>Arilson Favareto</p>
+<p>Bianca Tavolari</p>
+<p>Monise Fernandes Picanço</p>
+</div></div>
+<div style="text-align: center;">
+<p><strong>Curso</strong></p>
+<p>Introdução à análise de regressão para pesquisas sociais</p>
+<p><strong>Ministrante</strong></p>
+<p>Thiago Cordeiro Almeida</p>
+<p>E-mail: <a href="thiagocordalmeida@gmail.com">thiagocordalmeida@gmail.com</a></p>
+<p>Github: <a href="github.com/thiagocalm">@thiagocalm</a></p>
+</div>
+
+
+</section>
+</div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/cebrap-imagem.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>cebrap.lab - Introdução à análise de regressão para pesquisas sociais</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="1.fundamentos_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="1.fundamentos_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/notes/notes.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/search/search.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="1.fundamentos_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+    
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+    
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+    
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+    
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+
+
+</body></html>
