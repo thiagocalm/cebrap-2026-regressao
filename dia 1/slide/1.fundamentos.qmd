@@ -647,9 +647,9 @@ cor.test(renda, enem_mat) # teste de correlação, default 'Pearson'
 
 Qual a conclusão que teríamos?
 
-a.  Um aumento da renda teria um efeito direto de ~45% no aumento da nota de matemática.
+a.  Um aumento da renda teria um efeito direto de \~45% no aumento da nota de matemática.
 
-b.  Um aumento da nota de matemática teria um efeito direto de ~45% no aumento da renda.
+b.  Um aumento da nota de matemática teria um efeito direto de \~45% no aumento da renda.
 
 ## Slide extra!!! {.theme-subtopic .smaller .r-fit-text}
 

@@ -1,0 +1,1027 @@
+---
+title: "Regressão para pesquisas sociais"
+subtitle: "<span style='font-size:1em;'> Aula 2 - Modelagem de dados de natureza contínua </span>"
+author: "Thiago Cordeiro Almeida"
+institute: "Doutorando, Centre d'Estudis Demogràfics (CED, Espanha) <br> Pesquisador Assistente, Cebrap <br>"
+date: today
+date-format: long
+footer: "cebrap.lab - Introdução à análise de regressão para pesquisas sociais"
+logo: "images/cebrap-imagem.png"
+code-link: true
+format:
+  revealjs:
+    theme: template/cebrap2025.scss
+    math: mathjax
+    incremental: true
+    # scrollable: true
+    # standalone: true
+    # embed-resources: true
+    chalkboard: true
+    transition: fade
+    background-transition: fade
+    highlight-style: ayu-mirage
+    slide-number: "c"
+    controls-layout: bottom-right
+    fig-cap-location: top
+    # fig-format: svg
+    pdf-separate-fragments: false
+    auto-stretch: true
+    #incremental: true
+    # fig-align: center
+editor: visual
+execute:
+  freeze: auto
+  echo: true
+editor_options: 
+  chunk_output_type: console
+---
+
+# Antes de começar...
+
+lista de presença!
+
+![](images/attention.gif){.absolute bottom="10" right="50" width="240" height="240"}
+
+# Antes de começar (2)...
+
+- Dúvidas gerais sobre a aula anterior?
+
+- Exercício da aula anterior: dúvidas, comentários, considerações?
+
+![](images/question.gif){.absolute bottom="-150" right="0" width="200" height="200"}
+
+## Estrutura da aula {.theme-next .smaller}
+
+:::::: columns
+::: {.column width="30%"}
+Tópicos que vamos cobrir hoje são:
+:::
+
+:::: {.column width="70%"}
+::: {style="text-align: left;"}
+- Fluxo de análise de dados contínuos com o uso de modelagem
+
+- Conceitos, noções (e jargões) econométricos
+
+- Exemplo empírico do dia
+
+- Regressão linear simples
+
+  - Intuição e formalização
+
+  - Propriedade e pressupostos
+
+  - Mão na massa!
+
+- Regressão linear multivariada
+
+  - Intuição e formalização
+
+  - Novidades em relação à regressão linear simples
+
+  - Mão na massa!: interpretação
+:::
+::::
+::::::
+
+# Fluxo de análise de dados contínuos {.theme-first}
+
+::: {style="text-align: left;"}
+A partir do uso de modelos
+:::
+
+## Fluxo de análise de dados {.theme-subtopic .smaller}
+
+![](images/fluxo-analise.png){.absolute bottom="10" right="75" width="1300" height="650"}
+
+# Conceitos e definições estatísticas importantes {.theme-first}
+
+::: {style="text-align: left;"}
+Modelos probabilísticos
+:::
+
+## [Modelos probabilísticos]{.theme-subtopic .smaller}
+
+- Na aula anterior, exploramos diferentes formas de analisar descritivamente a distribuição de determinado fenômeno através de diferentes tipos de medida.
+
+- Em termos estatísticos, para cada distribuição observada em uma amostra, há (*ou haveria*) um modelo teórico que descreveria estatísticamente essa mesma distribuição.
+
+## []{.theme-subtopic} {.font-size-smallest}
+
+**Exemplo:** programa pé-de-meia.
+
+Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.
+
+::::: columns
+::: {.column width="50%"}
+#### Abordagem empírica
+:::
+
+::: {.column width="50%"}
+#### Abordagem probabilística
+:::
+:::::
+
+## []{.theme-subtopic} {.font-size-smallest}
+
+**Exemplo:** programa pé-de-meia.
+
+Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.
+
+::::: nonincremental
+:::: columns
+::: {.column width="50%"}
+
+#### Abordagem empírica
+
+1.  Calcularia a proporção de pessoas que tiveram a média acima como: $$p(X)=\frac{e}{n}$$
+
+Em que,
+
+- $e$: evento, no caso, num. acima da média;
+- $n$: observações, no caso, num. estudantes no ENEM.
+:::
+
+::: {.column width="50%"}
+#### Abordagem probabilística
+
+1.  Estabeleceria o evento de interesse e o universo amostral de análise
+
+- **Evento**: proporção de estudantes que participaram do ENEM **e** do programa os quais tiveram nota acima da média em matemática.
+
+- **Universo amostral**: estudantes que participaram do ENEM e do programa.
+
+2.  Estabeleceria o modelo probabilístico que se associa ao evento de interesse
+
+3.  Estimaria a probabilidade desse evento de interesse ocorrer.
+:::
+::::
+:::::
+
+## [Abordagem empírica = Abordagem probabilística]{.theme-subtopic} {.smaller}
+
+::::: nonincremental
+
+Sob o pressuposto de que nossa amostra de estudantes que participaram do ENEM e do programa é **i.i.d.**[^1], o que obteríamos calculando via abordagem empírica seria *exatamente* o mesmo ao calcular via abordagem probabilística!!!
+
+[^1]: **i.i.d.** = **i**ndependente e **i**dênticamente **d**istribuída.
+
+Ou seja,
+
+- Podemos estudar propriedades estatísticas dos fenômenos sociais em que trabalhamos não só restritos a uma determinada amostra em que temos, mas fazendo **generalizações** desses fenômenos;
+
+- Utilizando modelos que representem esses fenômenos, conseguimos ter estimativas do comportamento deles que incorporem **incertezas** inerentes a eles.
+
+Modelagens são formas de adicionar complexidade ao estudo desses fenômenos a partir das suas interações com outros fenômenos sociais.
+
+:::::
+
+## []{.theme-subtopic} {.smaller}
+
+### Relação entre modelos probabilísticos e modelos de regressão
+
+Estudo das propriedades da nossa **variável de estudo** através de relações associadas ao melhor modelo probabilístico que descreve essa variável.
+
+Com isso, podemos:
+
+- **Predição**: Prever resultados futuros condicionados a um conjunto de outras variáveis (probabilidade condicional a um conjunto de $X$);
+
+- **Associação/Causalidade**: Estabelecer em que medida variando uma das variáveis, os valores da variável de interesse também varia (probabilidade condicional a um $X$)
+
+- Obter valores esperados e incerteza de seus resultados (esperança e variância)
+
+# Conceitos e definições estatísticas importantes {.theme-first}
+
+::: {style="text-align: left;"}
+Variável aleatória (*v.a.*)
+:::
+
+## [Variável aleatória]{.theme-subtopic} {.smaller}
+
+Uma variável $X$ é aleatória se cada um de seus valores -- ou um intervalo entre valores -- está associado a uma probabilidade $p(X)$.
+
+## [Variável aleatória]{.theme-subtopic} {.smaller}
+
+Uma variável $X$ é aleatória se cada um de seus valores -- ou um intervalo entre valores -- está associado a uma probabilidade $p(X)$.
+
+### Exemplo
+
+Vamos voltar ao **pé-de-meia**.
+
+Poderíamos dizer que para a variável $X$ definida como ter nota de matemática no ENEM acima da média dos demais participantes do programa, há uma probabilidade $p(X)$, de modo que:
+
+```{r,echo=FALSE}
+
+# bibliotecas
+library(pacman)
+p_load(dplyr)
+
+px = c((1-0.33),0.33)
+x = c("Abaixo (x = 0)","Acima (x = 1)")
+
+tibble(x,px) |> 
+  select(x, "p(X)" = px) |> 
+  knitr::kable(
+               booktabs = T,
+               longtable=T,
+               align = 'c',
+  ) %>%
+  kableExtra::kable_styling(latex_options = c("hold_position"))
+```
+
+##  {.smaller}
+
+Variáveis aleatórias $v.a.$ apresentam algumas propiedades que serão importantes nos modelos que utilizaremos:
+
+#### Esperança de X
+
+Se uma determinada variável é aleatória e o seu seu modelo de probabilidade é conhecido, a sua *Esperança* -- também chamada de média -- pode ser conhecida.
+
+Geralmente é apresentada enquanto: $E(X)$, sendo $X$ uma variável aleatória.
+
+#### Variabilidade de X
+
+Do mesmo modo, se uma determinada variável é aleatória e é conhecido o seu modelo de probabilidade, a sua *variância* -- ou sua variabilidade em torno da média -- também pode ser conhecido.
+
+Geralmente é apresentada enquanto: $V(X) = E[X - E(X)]^2$, sendo $X$ uma variável aleatória.
+
+##  {.smaller}
+
+### Relação entre variáveis aleatórias
+
+Conhecendo-se as propriedades de uma variável aleatória, pode-se relacionar duas variáveis aleatórias, de modo que:
+
+$$Y = f(X_1, X_2) = X_1 + X_2$$
+
+Desse modo,
+
+$$E(Y) = E(X_1 + X_2)$$
+
+$$E(Y) = E(X_1) + E(X_2)$$
+
+Podemos ainda estender essa relação para mais variáveis aleatórias.
+
+##  {.smaller}
+
+### Relação entre variáveis aleatórias
+
+Estendendo a mesma relação:
+
+$$Y = f(X_1, X_2, X_3, X_4,...,X_n) = X_1 + X_2 + X_3 + X_4 + ... + X_n$$
+
+Desse modo,
+
+$$E(Y) = E(X_1 + X_2 + X_3 + X_4 + ... + X_n)$$
+
+$$E(Y) = E(X_1) + E(X_2) + E(X_3) + E(X_4) + ... + E(X_n)$$
+
+Portanto, tudo o que precisamos saber é qual o modelo probabilístico -- $f(\cdot)$ -- se associa a determinado fenômeno social, que trataremos como uma $v.a.$. A partir disso, podemos relacionar esse fenômeno social de interesse com outros fenômenos -- outras $v.a.$
+
+## [Tipos de Variável Aleatória]{.theme-subtopic} {.smaller}
+
+As $v.a.$ podem ser divididas entre **discretas** e **contínuas**
+
+![](images/distributions.png){.absolute bottom="10" right="75" width="1000" height="550"}
+
+# Conceitos e definições estatísticas importantes {.theme-first}
+
+::: {style="text-align: left;"}
+Algumas nomenclaturas
+:::
+
+## [Algumas nomenclaturas]{.theme-subtopic} {.smaller}
+
+#### Variável a ser estudada
+
+$Y$: Variável dependente - variável a ser medida - variável a ser testada - variável resposta - variável resultado
+
+#### Variáveis que explicam a variável de estudo
+
+$X$: Variável independente - variável explicativa - variável preditora
+
+#### Variáveis independentes que não estamos interessados em analisar
+
+Há muitos casos em que estamos interessados em uma -- ou um conjunto de -- variável(is) independente(s). Todavia, por razões das propriedades dos modelos e questões teóricas, é importante que insiramos outras variáveis na análise.
+
+Estas são chamadas de **variáveis controle/confundidoras/co-variáveis**[^1].
+
+[^1]: *Em geral*, seus resultados não são explicados, mas são explicitados.
+
+# Modelo de regressão Linear {.theme-first}
+
+::: {style="text-align: left;"}
+Modelo de Regressão Linear Simples (RLS)
+:::
+
+## [Modelo de Regressão Linear Simples (RLS)]{.theme-subtopic} {.smaller}
+
+Como a variação de uma determinada variável (independente) afeta a variação de uma outra variável (resposta)?
+
+No caso simplificado do modelo RLS, temos as seguintes características:
+
+- Uma variável aleatória resposta/dependente de natureza contínua: $Y$
+
+- Uma variável aleatória explicativa: $X$
+
+- Um fator de erro do modelo que nos diz quanto da variabilidade de $Y$ que continua não explicado por $X$: $\epsilon$
+
+## [RLS: Exemplo de ontem]{.theme-subtopic} {.smaller}
+
+```{r, echo=FALSE}
+# import package
+
+library(pacman)
+p_load(tidyverse) # importando pacote que usaremos, tidyverse
+
+# data
+base <- tibble(
+  anos = c(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009),
+  margarina = c(8.2,7.0,6.5,5.3,5.2,4.0,4.6,4.5,4.2,3.7),
+  divorcio = c(5.0,4.7,4.6,4.4,4.3,4.1,4.2,4.2,4.2,4.1)
+)
+label_margarina = "Consumo per capita de margarina nos EUA" # rótulo da variavel
+label_divorcio = "Taxa de divórcio no estado de Maine (EUA)" # rótulo da variavel
+
+# graph
+base |>
+  ggplot() +
+  aes(x = margarina, y = divorcio, color = anos) +
+  geom_point( size = 4, alpha = .5) +
+  labs(
+    x = label_margarina,
+    y = label_divorcio,
+    caption = "Fonte: https://www.tylervigen.com/spurious/correlation/5920"
+  ) +
+  coord_cartesian(
+    ylim = c(min(base$divorcio)*.95,max(base$divorcio)*1.05),
+    xlim = c(c(min(base$margarina)*.95,max(base$margarina)*1.05))
+  ) +
+  theme_classic() +
+  theme(
+    legend.title = element_blank(),
+    axis.title.y = element_text(color = "grey33",face = "bold"),
+    axis.title.x = element_text(color = "grey33",face = "bold")
+  )
+```
+
+## [RLS: Exemplo de ontem]{.theme-subtopic} {.smaller}
+
+```{r, echo=FALSE}
+options(scipen = 99999)
+# import package
+
+library(pacman)
+p_load(tidyverse) # importando pacote que usaremos, tidyverse
+
+# data
+base <- tibble(
+  anos = c(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009),
+  margarina = c(8.2,7.0,6.5,5.3,5.2,4.0,4.6,4.5,4.2,3.7),
+  divorcio = c(5.0,4.7,4.6,4.4,4.3,4.1,4.2,4.2,4.2,4.1)
+)
+label_margarina = "Consumo per capita de margarina nos EUA" # rótulo da variavel
+label_divorcio = "Taxa de divórcio no estado de Maine (EUA)" # rótulo da variavel
+
+# graph
+base |>
+  ggplot() +
+  aes(x = margarina, y = divorcio, color = anos) +
+  geom_point( size = 4, alpha = .5) +
+  geom_smooth(method = "lm", color = "red4", linewidth = 1.1, linetype = "dashed", se = FALSE) +
+  labs(
+    x = label_margarina,
+    y = label_divorcio,
+    caption = "Fonte: https://www.tylervigen.com/spurious/correlation/5920"
+  ) +
+  coord_cartesian(
+    ylim = c(min(base$divorcio)*.95,max(base$divorcio)*1.05),
+    xlim = c(c(min(base$margarina)*.95,max(base$margarina)*1.05))
+  ) +
+  theme_classic() +
+  theme(
+    legend.title = element_blank(),
+    axis.title.y = element_text(color = "grey33",face = "bold"),
+    axis.title.x = element_text(color = "grey33",face = "bold")
+  )
+```
+
+##  {.smaller}
+
+### Formalização de um MRLS
+
+Dizemos que a representação geral (ou populacional) de um determinado modelo de regressão é dada por:
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i$$
+
+Em que:
+
+- $\beta_0$: intercepto do modelo.
+
+  - Nos diz qual valor $Y$ assume quando $X$ é igualado a $0$.
+
+- $\beta_1$: coeficiente do modelo associado à variável $X$.
+
+  - Nos diz qual a magnitude da mudança em $Y$ quando $X$ varia uma unidade para cima ou para baixo.
+
+  - É também chamado de **inclinação da reta**, devido à suas propriedades estatísticas do modo em que é calculado\*.
+
+- $\epsilon_i$: como descrito anteriormente, é o quanto não está sendo explicado em $Y_i$ devido à variação estimada em $X_i$.
+
+## [RLS: Exemplo de ontem]{.theme-subtopic} {.smaller}
+
+```{r, echo=FALSE}
+options(scipen = 99999)
+# import package
+
+library(pacman)
+p_load(tidyverse) # importando pacote que usaremos, tidyverse
+
+# Data
+base <- tibble(
+   anos = c(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009),
+   margarina = c(8.2,7.0,6.5,5.3,5.2,4.0,4.6,4.5,4.2,3.7),
+   divorcio = c(5.0,4.7,4.6,4.4,4.3,4.1,4.2,4.2,4.2,4.1) 
+)
+
+label_margarina <- "Consumo per capita de margarina nos EUA"
+label_divorcio <- "Taxa de divórcio no estado de Maine (EUA)"
+
+# Modelo
+
+modelo <- lm(divorcio ~ margarina, data = base)
+
+# coeficientes
+beta_0 <- coef(modelo)[1]
+beta_1 <- coef(modelo)[2]
+
+# Observacao de 2005 para mostrar o erro
+
+obs <- base |>
+  filter(anos == 2004) |>
+  mutate(y_hat = predict(modelo, newdata = cur_data()),
+         erro = divorcio - y_hat)
+
+# Dados para ilustrar beta 1
+x1 <- 4
+x2 <- 5
+beta1_df <- tibble(x = c(x1, x2), y = beta_0 + beta_1 * c(x1, x2))
+
+# ponto médio para posicionar o texto
+beta1_label <- tibble(x = mean(c(x1, x2)) * 1.1,
+                      y = mean(beta1_df$y) * 0.95,
+                      label = paste0( "\u03B2\u2081 = ",
+                                      round(beta_1, 2)) ) # Dados para ilustrar beta 0
+beta0_df <- tibble(x = 0, y = c(0, beta_0) )
+beta0_label <- tibble(x = 0.25,
+                      y = 3.5,
+                      label = paste0( "\u03B2\u2080 = ",
+                                      round(beta_0, 2) ) )
+
+# Dados para o erro/residuo
+erro_label <- obs |>
+  mutate( x_label = margarina + 0.15, y_label = (divorcio + y_hat) / 2 )
+
+# GRÁFICO
+base |> 
+  ggplot(aes(x = margarina, y = divorcio)) + 
+  geom_point( size = 4, alpha = .5 ) + 
+  geom_smooth(method = "lm", se = FALSE, color = "red4", linewidth = 1.2 ) +
+  geom_segment(data = beta0_df,
+               aes( x = x, xend = x, y = y, yend = lead(y) ),
+               color = "steelblue", linewidth = 1.3, linetype = "dashed" ) +
+  geom_point(data = tibble( x = 0, y = beta_0 ),
+             aes(x = x, y = y),
+             color = "steelblue", size = 4 ) +
+  geom_text( data = beta0_label,
+             aes( x = x, y = y, label = label ),
+             color = "steelblue", fontface = "bold", hjust = 0, size = 5 ) +
+  geom_segment( data = beta1_df,
+                aes( x = x[1], xend = x[2], y = y[1], yend = y[1] ),
+                color = "darkgreen", linewidth = 1.1, linetype = "dashed" ) + 
+  geom_segment( data = beta1_df, 
+                aes( x = x[2], xend = x[2], y = y[1], yend = y[2] ),
+                color = "darkgreen", linewidth = 1.1, linetype = "dashed" ) +
+  geom_point( data = beta1_df, 
+              aes(x = x, y = y), color = "darkgreen", size = 3 ) +
+  geom_text( data = beta1_label,
+             aes( x = x, y = y, label = label ),
+             color = "darkgreen", 
+             fontface = "bold", size = 5, hjust = -0.1, vjust = -0.5 ) +
+  geom_segment( data = obs,
+                aes(x = margarina,xend = margarina,y = divorcio, yend = y_hat ),
+                color = "purple4", linewidth = 1.3, linetype = "dashed" ) +
+  geom_point(data = obs,
+             aes(x = margarina, y = divorcio), color = "purple4", size = 5 ) +
+  geom_point( data = obs,
+              aes(x = margarina, y = y_hat),
+              color = "purple4", size = 3, shape = 1, stroke = 1.3 ) + 
+  geom_text( data = erro_label, 
+             aes( x = x_label, y = y_label, label = "eᵢ = yᵢ − ŷᵢ" ), 
+             color = "purple4", fontface = "bold", hjust = 0, size = 5 ) +
+  labs( x = label_margarina,
+        y = label_divorcio, 
+        title = "Regressão linear simples",
+        subtitle = "Interpretação geométrica dos parâmetros e do erro", caption = "Fonte: Tyler Vigen — Spurious Correlations" ) + 
+  coord_cartesian( xlim = c(0, 9), ylim = c(3.5, 5.3), clip = "off" ) + 
+  theme_classic() + 
+  theme(legend.position = "none",
+        plot.title = element_text( face = "bold", size = 16 ),
+        plot.subtitle = element_text( color = "grey40", size = 12 ),
+        axis.title = element_text( color = "grey33", face = "bold" ),
+        plot.caption = element_text( color = "grey50", hjust = 0 ) )
+```
+
+# Modelo de regressão Linear {.theme-first}
+
+::: {style="text-align: left;"}
+Hipóteses dos modelos RLS
+:::
+
+##  {.smaller}
+
+#### Hipótese: independência entre erro e variáveis observadas
+
+Partindo do nosso modelo RLS para a população, $$Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i$$
+
+A **hipótese-chave** é que a média dos erros condicionada na variável explicativa $X_i$ é igual a zero, ou seja: $$E[\epsilon_i|X_i]=0$$
+
+Em outras palavras, estamos assumindo que não há nenhum fator contido em $\epsilon$ que seja correlacionado com $X$, de modo que $\beta$ seja um efeito *puro* de $X$.
+
+##  {.smaller}
+
+Modelo populacional: $$Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i$$
+
+Quando vamos *estimar* os nossos parâmetros para a nossa amostra, assumimos os valores médios para os nossos $i$ casos observados, isto é:
+
+$$\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X} + \hat{\epsilon_i}$$
+
+Os únicos valores que não conhecemos são referentes a $\beta_0$ e $\beta_1$, uma vez que $\epsilon$ é obtido residualmente.
+
+Tudo o que precisamos fazer é **estimar os parâmetros desconhecidos do modelo populacional**.
+
+##  {.smaller}
+
+### Estimando parâmetros do modelo
+
+O modelo a ser estimado consiste em:
+
+$$\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X} + \hat{\epsilon_i}$$
+
+#### Estimadores de Mínimos Quadrados Ordinários (MQO)
+
+Os estimadores de MQO asseguram, via relações estatísticas, que tenhamos valores para nossos parâmetros desconhecidos que **minimizem o desvio dos resíduos**.
+
+Isto é, temos a reta que melhor se ajusta aos nossos dados de modo que passe mais perto possível de cada ponto.
+
+##  {.smaller}
+
+### Estimando parâmetros do modelo
+
+Acionando a **hipótese descrita anteriormente**, temos:
+
+$$\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X}$$
+
+- $\hat{\beta_0} = \bar{Y} - [\hat{\beta_1} \cdot \bar{X}]$
+
+- $\hat{\beta_1} = \frac{Cov(x,y)}{Var(x)}$
+
+- Valores preditos: $\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1} \cdot X_i$ para cada observação $i = 1,...,n$.
+
+- Resíduos: $\hat{u_i}=y_i-\hat{Y_i}$, para cada observação $i=1,...,n$
+
+##  {.smaller}
+
+Para o exemplo anterior, se partimos do modelo a ser estimado:
+
+$$\overline{Divorcio} = \hat{\beta_0} + \hat{\beta_1} \cdot \overline{Margarina} + \hat{\epsilon}$$
+
+Aplicando em R:
+
+```{r}
+modelo <- lm(divorcio ~ margarina, data = base)
+modelo
+```
+
+##  {.smaller}
+
+Para o exemplo anterior, se partimos do modelo a ser estimado:
+
+$$\overline{Divorcio} = \hat{\beta_0} + \hat{\beta_1} \cdot \overline{Margarina} + \hat{\epsilon}$$
+
+Aplicando em R:
+
+```{r}
+modelo <- lm(divorcio ~ margarina, data = base)
+summary(modelo) # indo além nos resultados
+```
+
+# Pausa! {.theme-stop}
+
+::: {style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;"}
+```{=html}
+<img src="images/stop.gif" 
+       style="border-radius: 50%; border:5px solid #708d81; width:400px; height:auto;" />
+```
+:::
+
+# Modelo de regressão Linear {.theme-first}
+
+Propriedades do MRL
+
+## [Propriedades do MRL]{.theme-subtopic} {.smaller}
+
+Para assegurar que, através do MQO, tenhamos estimadores **não viesados** e **mais eficientes**, devemos assegurar que 6 hipóteses sejam asseguradas:
+
+1.  O modelo é linear nos parâmetros;
+
+2.  Amostra é aleatória e segue o modelo populacional descrito em H1;
+
+3.  Inexistência variáveis constantes ou que não tenham uma relação linear exata com outra variável explicativa;
+
+4.  Independência entre erro e variáveis observadas;
+
+5.  Variância do erro constante para todas as variáveis explicativas;
+
+6.  O erro segue uma distribuição normal com média 0 e variância constante
+
+## 
+
+### H1: O modelo é linear nos parâmetros
+
+Os parâmetros -- $\beta$s -- se relacionam de forma linear.
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i$$
+
+É por essa propriedade que chamamos os modelos de **modelos lineares**.
+
+## 
+
+### H2: Amostra é aleatória e segue o modelo populacional descrito em H1
+
+Para uma dada amostra de tamanho $N$ qualquer, seu processo gerador seguiu uma distribuição aleatória, seguindo o modelo populacional descrito em H1.
+
+Todavia, *em casos onde temos problemas de seletividade amostral*, isso pode afetar essa hipótese.
+
+- Exemplo: desigualdades salariais.
+
+##  {.smaller}
+
+### H3: Inexistência variáveis constantes ou que não tenham uma relação linear exata com outra variável explicativa
+
+Para qualquer variável explicativa $X$, há uma variabilidade de seus resultados em relação a $Y$.
+
+Além disso, determinada variável $X$ não pode estar totalmente correlacionada com outra variável $X$.
+
+- Assegura que não haja perfeita colinearidade, i.e., que toda a variação em $X_1$ esteja associada a $X_2$.
+
+## 
+
+### H4: Independência entre erro e variáveis observadas
+
+Mencionado anteriormente: a média dos erros condicionada na variável explicativa $X_i$ é igual a zero, ou seja: $$E[\epsilon_i|X_i]=0$$
+
+Para um determinado valor de $X$, os outros fatores não observados no modelo não afetam o resultado de $X$.
+
+**Não é que** $\epsilon$ não afete $Y$, e sim que $\epsilon$ não está condicionado a $X$.
+
+##  {.smaller}
+
+### H5: Variância do erro constante para todas as variáveis explicativas
+
+$$Var[\epsilon|X]=\sigma^2$$ Chamamos essa hipótese de **homocedasticidade** ou **variância constante do erro**.
+
+Pode ser violada em situações de:
+
+- **Outliers para uma variável específica**
+
+- **Distribuições de alguma variável específica** que seguem um distinto padrão.
+
+- ...
+
+## 
+
+### H6: O erro segue uma distribuição normal com média 0 e variância constante
+
+Assumindo isso, podemos também assumir, *por propriedades estatísticas*, que qualquer um de nossos parâmetros também têm distribuição normal.
+
+Por que assumimos essa hipótese para o erro e não para os parâmetros?
+
+- O erro pode ser estudado e avaliado, os parâmetros não.
+
+##  {.smaller}
+
+#### Assegurando a existência de H1-H4
+
+Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em $N$ diferentes amostras.
+
+- $E[\hat{\beta_0}|X]=\beta_0$
+
+- $E[\hat{\beta_1}|X]=\beta_1$
+
+##  {.smaller}
+::::: nonincremental
+#### Assegurando a existência de H1-H4
+
+Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em $N$ diferentes amostras.
+
+- $E[\hat{\beta_0}|X]=\beta_0$
+
+- $E[\hat{\beta_1}|X]=\beta_1$
+
+#### Assegurando a existência de H5
+
+Estimadores MQO sendo **os mais eficientes**. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.
+:::::
+##  {.smaller}
+::::: nonincremental
+#### Assegurando a existência de H1-H4
+
+Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em $N$ diferentes amostras.
+
+- $E[\hat{\beta_0}|X]=\beta_0$
+
+- $E[\hat{\beta_1}|X]=\beta_1$
+
+#### Assegurando a existência de H5
+
+Estimadores MQO sendo **os mais eficientes**. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.
+
+#### Assegurando a existência de H1-H5
+
+Temos os melhores estimadores para o modelo populacional. À medida que aumenta o tamanho da amostra, aproxima-se mais do valor do parâmetro na população e com menor incerteza sobre ele.
+:::::
+##  {.smaller}
+::::: nonincremental
+#### Assegurando a existência de H1-H4
+
+Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em $N$ diferentes amostras.
+
+- $E[\hat{\beta_0}|X]=\beta_0$
+
+- $E[\hat{\beta_1}|X]=\beta_1$
+
+#### Assegurando a existência de H5
+
+Estimadores MQO sendo **os mais eficientes**. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.
+
+#### Assegurando a existência de H1-H5
+
+Temos os melhores estimadores para o modelo populacional. À medida que aumenta o tamanho da amostra, aproxima-se mais do valor do parâmetro na população e com menor incerteza sobre ele.
+
+#### Assegurando a existência de H1-H6
+
+É possível fazer inferência sob a significância estatística dos coeficientes estimados em comparação com o valor do parâmetro na população.
+:::::
+# Exemplo da aula! {.theme-first}
+
+...
+
+## 
+
+### Acesso ao esgotamento sanitário
+
+**Pergunta**: Quais os fatores associados ao acesso ao esgotamento sanitário de populações vulneráveis no Brasil?
+
+Mais especificamente, qual a associação entre acesso ao Programa Bolsa Família para famílias com jovens entre 15-29 anos e o acesso ao esgotamento sanitário?
+
+#### Dados
+
+Uma base de dados construída com dados do CadÚnico e Censo Demográfico 2010.
+
+## [Vamos lá!]{.theme-subtopic}
+
+...
+
+::: {style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;"}
+```{=html}
+<img src="images/hands-on.gif" 
+       style="border-radius: 50%; border:5px solid #708d81; width:400px; height:auto;" />
+```
+:::
+
+# Modelo de regressão Linear {.theme-first}
+
+Modelo de Regressão Linear Múltipla (RLM)
+
+## [Modelo de Regressão Linear Múltipla (RLM)]{.theme-subtopic}
+
+No caso dos modelos RLS, havia somente uma variável explicativa.
+
+Todavia, pode ser que haja outros fenômenos sociais que estejam:
+
+1.  Associados com a nossa variável de interesse $Y$
+
+2.  Associados com a nossa variável explicativa $X$
+
+## 
+
+### No cenário **1**
+
+Se temos na base de dados a variável explicativa que **sabemos que está associada com** $Y$, por que não a incluir?
+
+::::: columns
+::: {.column width="50%"}
+#### Ganhos de incluir {style="text-align: center;"}
+
+- Reduz a variância não explicada do modelo -- contida em $\epsilon$
+
+- Aumenta a capacidade de predição do modelo
+:::
+
+::: {.column width="50%"}
+#### Perdas de incluir {style="text-align: center;"}
+
+- Parcimônia do modelo: *the simpler, the better!*
+:::
+:::::
+
+## 
+
+### No cenário **2**
+
+Se **sabemos que está associada com** $X$, ela deve ser incluída.
+
+::::: columns
+::: {.column width="50%"}
+#### Ganhos de incluir {style="text-align: center;"}
+
+- Não violação de H4 -- independência entre o erro e as variáveis observadas.
+
+- Reduz a variância não explicada do modelo -- contida em $\epsilon$
+:::
+
+::: {.column width="50%"}
+#### Perdas de incluir {style="text-align: center;"}
+
+- Neste caso, não há.
+:::
+:::::
+
+## 
+
+### Formalização
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i$$
+
+Em que:
+
+- $k$ é o número de parâmetros associados às variáveis explicativas incluídas no modelo.
+
+## 
+
+### O que muda entre RLS e RLM?
+
+Em RLS, temos o modelo populacional descrito como:
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i$$
+
+Enquanto em RLM, temos:
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i$$
+
+## 
+
+### O que muda entre RLS e RLM?
+
+Em RLS, temos o modelo populacional descrito como:
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i$$
+
+Enquanto em RLM, temos:
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i$$
+
+Adicionar mais variáveis ao modelo nos dá maior confiança de que estaremos cumprindo os pressupostos para se ter estimadores **não viesados** e **mais eficientes**.
+
+## 
+
+### O que muda entre RLS e RLM?
+
+Em RLS, temos o modelo populacional descrito como:
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i$$
+
+Enquanto em RLM, temos:
+
+$$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i$$
+
+Adicionar mais variáveis ao modelo nos dá maior confiança de que estaremos cumprindo os pressupostos para se ter estimadores **não viesados** e **mais eficientes**. Aumenta a complexidade dos modelos também...
+
+## 
+
+### O que muda entre RLS e RLM?
+
+#### Interpretação dos modelos RLM
+
+Nos modelos RLM, temos que invocar a noção de *ceteris paribus* para uma correta interpretação dos resultados.
+
+**CETERIS PARIBUS**: "tudo o mais é constante".
+
+- Mantendo-se todos os outros fatores fixos, constantes, pode-se interpretar como a variação em determinada variável explicativa $X_k$ se relaciona com $Y$.
+
+# Exemplo da aula! {.theme-first}
+
+Parte 2
+
+## [Vamos fazer o nosso modelo um pouco mais complexo]{.theme-subtopic} {.smaller}
+
+Vamos estimar 3 diferentes modelos:
+
+#### Modelo 1
+
+O mesmo estimado no exercício anterior - já temos código e tudo mais!
+
+#### Modelo 2
+
+Adicione ao **Modelo 1**, a variável informalidade (`informalidade`)
+
+#### Modelo 3
+
+Adicione ao **Modelo 1**, variável frequência ao ensino médio (`em`)
+
+#### Modelo 4
+
+Adicione ao **Modelo 1**, as variáveis que adicionamos no **Modelo 2 e 3**
+
+## Vamos lá! {.theme-subtopic}
+
+Dica (código em R para modelo com 2 variáveis explicativas):
+
+`modelo2 = lm(Var_Y ~ Var_X1 + Var_X2, data = dados)`
+
+::: {style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;"}
+```{=html}
+<img src="images/hands-on.gif" 
+       style="border-radius: 50%; border:5px solid #708d81; width:400px; height:auto;" />
+```
+:::
+
+## Isso é tudo para hoje! {.theme-next}
+
+Para próxima aula:
+
+1.  Exercício sobre Regressão Linear Múltipla (próximo slide)
+2.  Leitura de material para aula de hoje (caso não tenha lido)
+3.  Leitura de material para a aula seguinte (Ver ementa)
+
+## Orientações sobre o exercício {.smaller}
+
+Utilizaremos os mesmos dados que utilizamos na aula de hoje.
+
+- Rode o Modelo 1 da aula de hoje e interprete os resultados
+
+- Adicione ao modelo 1, a variável do Modelo 2 da aula de hoje e interprete os resultados de cada variável;
+
+- Adicione ao Modelo 2, a variável do Modelo 3 da aula de hoje e interprete os resultados de cada variável;
+
+- Adicione a variável `municipio_rural` e interprete os resultados dela;
+
+- Volte às estatísticas do modelo -- obtidas com `summary()` -- e compare se houve muita mudança nos coeficientes de cada uma das variáveis quando incluída outras variáveis ao modelo. **O que isso nos diz?**
+
+- Observe se o $R^2$ -- obtidos com `summary()` -- apresentou muita mudança entre os modelos. **O que isso nos diz?**
+
+#  {.cebrap-fim .smaller}
+
+![](images/cebrap50.png){.absolute top="-90" right="460" width="100" height="100"}
+
+:::::: columns
+:::: {.column width="50%"}
+::: {style="text-align: right;"}
+**Presidência**
+
+**Diretoria Administrativa**
+
+**Diretoria Científica**
+
+**Coordenação de Seminários**
+
+**Coordenação de Cursos**
+:::
+::::
+
+::: {.column width="50%"}
+Adrian Gurza Lavalle
+
+Victor Callil
+
+Arilson Favareto
+
+Bianca Tavolari
+
+Monise Fernandes Picanço
+:::
+::::::
+
+::: {style="text-align: center;"}
+**Curso**
+
+Introdução à análise de regressão para pesquisas sociais
+
+**Ministrante**
+
+Thiago Cordeiro Almeida
+
+E-mail: [thiagocordalmeida\@gmail.com](thiagocordalmeida@gmail.com)
+
+Github: [\@thiagocalm](github.com/thiagocalm)
+:::

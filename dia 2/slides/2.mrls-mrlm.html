@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="2.mrls-mrlm_files/libs/clipboard/clipboard.min.js"></script>
+<script src="2.mrls-mrlm_files/libs/quarto-html/tabby.min.js"></script>
+<script src="2.mrls-mrlm_files/libs/quarto-html/popper.min.js"></script>
+<script src="2.mrls-mrlm_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="2.mrls-mrlm_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="2.mrls-mrlm_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="2.mrls-mrlm_files/libs/quarto-html/quarto-syntax-highlighting-be8263ff1b6b897a8d97feb209c764ac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+<meta name="author" content="Thiago Cordeiro Almeida">
+<meta name="dcterms.date" content="2026-09-08">
+<title>Regressão para pesquisas sociais</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="2.mrls-mrlm_files/libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="2.mrls-mrlm_files/libs/revealjs/dist/reveal.css">
+<style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cbccc6; background-color: #1f2430; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cbccc6; } /* Normal */
+    code span.al { color: #ff3333; background-color: #332430; font-weight: bold; } /* Alert */
+    code span.an { color: #ffe6b3; } /* Annotation */
+    code span.at { color: #73d0ff; } /* Attribute */
+    code span.bn { color: #ffcc66; } /* BaseN */
+    code span.bu { color: #95e6cb; } /* BuiltIn */
+    code span.cf { color: #ffa759; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #95e6cb; } /* Char */
+    code span.cn { color: #d4bfff; } /* Constant */
+    code span.co { color: #5c6773; font-style: italic; } /* Comment */
+    code span.cv { color: #d4bfff; } /* CommentVar */
+    code span.do { color: #5c6773; } /* Documentation */
+    code span.dt { color: #ffa759; } /* DataType */
+    code span.dv { color: #ffcc66; } /* DecVal */
+    code span.er { color: #ff3333; text-decoration: underline; } /* Error */
+    code span.ex { color: #73d0ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #ffcc66; } /* Float */
+    code span.fu { color: #ffd580; } /* Function */
+    code span.im { color: #bae67e; } /* Import */
+    code span.in { color: #ffcc66; } /* Information */
+    code span.kw { color: #ffa759; font-weight: bold; } /* Keyword */
+    code span.op { color: #f29e74; } /* Operator */
+    code span.ot { color: #5ccfe6; } /* Other */
+    code span.pp { color: #f28779; } /* Preprocessor */
+    code span.re { color: #73d0ff; background-color: #2a4254; } /* RegionMarker */
+    code span.sc { color: #95e6cb; } /* SpecialChar */
+    code span.ss { color: #95e6cb; } /* SpecialString */
+    code span.st { color: #bae67e; } /* String */
+    code span.va { color: #5ccfe6; } /* Variable */
+    code span.vs { color: #bae67e; } /* VerbatimString */
+    code span.wa { color: #f28779; } /* Warning */
+  </style>
+<link rel="stylesheet" href="2.mrls-mrlm_files/libs/revealjs/dist/theme/quarto-58354c6c92279b4d453c3bab48d3786f.css">
+<link href="2.mrls-mrlm_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="2.mrls-mrlm_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="2.mrls-mrlm_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="2.mrls-mrlm_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+<link href="2.mrls-mrlm_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+<link href="2.mrls-mrlm_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+<script src="2.mrls-mrlm_files/libs/kePrint-0.0.1/kePrint.js"></script><link href="2.mrls-mrlm_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Regressão para pesquisas sociais</h1>
+  <p class="subtitle"><span style="font-size:1em;"> Aula 2 - Modelagem de dados de natureza contínua </span></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Thiago Cordeiro Almeida 
+</div>
+        <p class="quarto-title-affiliation">
+            Doutorando, Centre d’Estudis Demogràfics (CED, Espanha) <br> Pesquisador Assistente, Cebrap <br></p>
+    </div>
+</div>
+
+  <p class="date">September 8, 2026</p>
+</section><section id="antes-de-começar" class="title-slide slide level1 center"><h1>Antes de começar…</h1>
+<p>lista de presença!</p>
+<p><img data-src="images/attention.gif" class="absolute" style="bottom: 10px; right: 50px; width: 240px; height: 240px; "></p>
+</section><section><section id="antes-de-começar-2" class="title-slide slide level1 center"><h1>Antes de começar (2)…</h1>
+<ul>
+<li class="fragment"><p>Dúvidas gerais sobre a aula anterior?</p></li>
+<li class="fragment"><p>Exercício da aula anterior: dúvidas, comentários, considerações?</p></li>
+</ul>
+<p><img data-src="images/question.gif" class="absolute" style="bottom: -150px; right: 0px; width: 200px; height: 200px; "></p>
+</section><section id="estrutura-da-aula" class="slide level2 theme-next smaller"><h2>Estrutura da aula</h2>
+<div class="columns">
+<div class="column" style="width:30%;">
+<p>Tópicos que vamos cobrir hoje são:</p>
+</div><div class="column" style="width:70%;">
+<div style="text-align: left;">
+<ul>
+<li class="fragment"><p>Fluxo de análise de dados contínuos com o uso de modelagem</p></li>
+<li class="fragment"><p>Conceitos, noções (e jargões) econométricos</p></li>
+<li class="fragment"><p>Exemplo empírico do dia</p></li>
+<li class="fragment">
+<p>Regressão linear simples</p>
+<ul>
+<li class="fragment"><p>Intuição e formalização</p></li>
+<li class="fragment"><p>Propriedade e pressupostos</p></li>
+<li class="fragment"><p>Mão na massa!</p></li>
+</ul>
+</li>
+<li class="fragment">
+<p>Regressão linear multivariada</p>
+<ul>
+<li class="fragment"><p>Intuição e formalização</p></li>
+<li class="fragment"><p>Novidades em relação à regressão linear simples</p></li>
+<li class="fragment"><p>Mão na massa!: interpretação</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+</section></section><section><section id="fluxo-de-análise-de-dados-contínuos" class="title-slide slide level1 theme-first center"><h1>Fluxo de análise de dados contínuos</h1>
+<div style="text-align: left;">
+<p>A partir do uso de modelos</p>
+</div>
+</section><section id="fluxo-de-análise-de-dados" class="slide level2 theme-subtopic smaller"><h2>Fluxo de análise de dados</h2>
+<p><img data-src="images/fluxo-analise.png" class="absolute" style="bottom: 10px; right: 75px; width: 1300px; height: 650px; "></p>
+</section></section><section><section id="conceitos-e-definições-estatísticas-importantes" class="title-slide slide level1 theme-first center"><h1>Conceitos e definições estatísticas importantes</h1>
+<div style="text-align: left;">
+<p>Modelos probabilísticos</p>
+</div>
+</section><section id="modelos-probabilísticos" class="slide level2"><h2><span class="theme-subtopic smaller">Modelos probabilísticos</span></h2>
+<ul>
+<li class="fragment"><p>Na aula anterior, exploramos diferentes formas de analisar descritivamente a distribuição de determinado fenômeno através de diferentes tipos de medida.</p></li>
+<li class="fragment"><p>Em termos estatísticos, para cada distribuição observada em uma amostra, há (<em>ou haveria</em>) um modelo teórico que descreveria estatísticamente essa mesma distribuição.</p></li>
+</ul></section><section id="section" class="slide level2 font-size-smallest"><h2><span class="theme-subtopic"></span></h2>
+<p><strong>Exemplo:</strong> programa pé-de-meia.</p>
+<p>Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="abordagem-empírica">Abordagem empírica</h4>
+</div><div class="column" style="width:50%;">
+<h4 id="abordagem-probabilística">Abordagem probabilística</h4>
+</div></div>
+</section><section id="section-1" class="slide level2 font-size-smallest"><h2><span class="theme-subtopic"></span></h2>
+<p><strong>Exemplo:</strong> programa pé-de-meia.</p>
+<p>Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="abordagem-empírica-1">Abordagem empírica</h4>
+<ol type="1">
+<li>Calcularia a proporção de pessoas que tiveram a média acima como: <span class="math display">\[p(X)=\frac{e}{n}\]</span>
+</li>
+</ol>
+<p>Em que,</p>
+<ul>
+<li>
+<span class="math inline">\(e\)</span>: evento, no caso, num. acima da média;</li>
+<li>
+<span class="math inline">\(n\)</span>: observações, no caso, num. estudantes no ENEM.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 id="abordagem-probabilística-1">Abordagem probabilística</h4>
+<ol type="1">
+<li>Estabeleceria o evento de interesse e o universo amostral de análise</li>
+</ol>
+<ul>
+<li><p><strong>Evento</strong>: proporção de estudantes que participaram do ENEM <strong>e</strong> do programa os quais tiveram nota acima da média em matemática.</p></li>
+<li><p><strong>Universo amostral</strong>: estudantes que participaram do ENEM e do programa.</p></li>
+</ul>
+<ol start="2" type="1">
+<li><p>Estabeleceria o modelo probabilístico que se associa ao evento de interesse</p></li>
+<li><p>Estimaria a probabilidade desse evento de interesse ocorrer.</p></li>
+</ol>
+</div></div>
+</section><section id="abordagem-empírica-abordagem-probabilística" class="slide level2 smaller"><h2><span class="theme-subtopic">Abordagem empírica = Abordagem probabilística</span></h2>
+<p>Sob o pressuposto de que nossa amostra de estudantes que participaram do ENEM e do programa é <strong>i.i.d.</strong><sup>1</sup>, o que obteríamos calculando via abordagem empírica seria <em>exatamente</em> o mesmo ao calcular via abordagem probabilística!!!</p>
+<p>Ou seja,</p>
+<ul>
+<li><p>Podemos estudar propriedades estatísticas dos fenômenos sociais em que trabalhamos não só restritos a uma determinada amostra em que temos, mas fazendo <strong>generalizações</strong> desses fenômenos;</p></li>
+<li><p>Utilizando modelos que representem esses fenômenos, conseguimos ter estimativas do comportamento deles que incorporem <strong>incertezas</strong> inerentes a eles.</p></li>
+</ul>
+<p>Modelagens são formas de adicionar complexidade ao estudo desses fenômenos a partir das suas interações com outros fenômenos sociais.</p>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><em>Em geral</em>, seus resultados não são explicados, mas são explicitados.</p></li></ol></aside></section><section id="section-2" class="slide level2 smaller"><h2><span class="theme-subtopic"></span></h2>
+<h3 id="relação-entre-modelos-probabilísticos-e-modelos-de-regressão">Relação entre modelos probabilísticos e modelos de regressão</h3>
+<p>Estudo das propriedades da nossa <strong>variável de estudo</strong> através de relações associadas ao melhor modelo probabilístico que descreve essa variável.</p>
+<p>Com isso, podemos:</p>
+<ul>
+<li class="fragment"><p><strong>Predição</strong>: Prever resultados futuros condicionados a um conjunto de outras variáveis (probabilidade condicional a um conjunto de <span class="math inline">\(X\)</span>);</p></li>
+<li class="fragment"><p><strong>Associação/Causalidade</strong>: Estabelecer em que medida variando uma das variáveis, os valores da variável de interesse também varia (probabilidade condicional a um <span class="math inline">\(X\)</span>)</p></li>
+<li class="fragment"><p>Obter valores esperados e incerteza de seus resultados (esperança e variância)</p></li>
+</ul></section></section><section><section id="conceitos-e-definições-estatísticas-importantes-1" class="title-slide slide level1 theme-first center"><h1>Conceitos e definições estatísticas importantes</h1>
+<div style="text-align: left;">
+<p>Variável aleatória (<em>v.a.</em>)</p>
+</div>
+</section><section id="variável-aleatória" class="slide level2 smaller"><h2><span class="theme-subtopic">Variável aleatória</span></h2>
+<p>Uma variável <span class="math inline">\(X\)</span> é aleatória se cada um de seus valores – ou um intervalo entre valores – está associado a uma probabilidade <span class="math inline">\(p(X)\)</span>.</p>
+</section><section id="variável-aleatória-1" class="slide level2 smaller"><h2><span class="theme-subtopic">Variável aleatória</span></h2>
+<p>Uma variável <span class="math inline">\(X\)</span> é aleatória se cada um de seus valores – ou um intervalo entre valores – está associado a uma probabilidade <span class="math inline">\(p(X)\)</span>.</p>
+<h3 id="exemplo">Exemplo</h3>
+<p>Vamos voltar ao <strong>pé-de-meia</strong>.</p>
+<p>Poderíamos dizer que para a variável <span class="math inline">\(X\)</span> definida como ter nota de matemática no ENEM acima da média dos demais participantes do programa, há uma probabilidade <span class="math inline">\(p(X)\)</span>, de modo que:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table caption-top" style="margin-left: auto; margin-right: auto;">
+<thead><tr class="header">
+<th style="text-align: center;" data-quarto-table-cell-role="th">x</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">p(X)</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Abaixo (x = 0)</td>
+<td style="text-align: center;">0.67</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Acima (x = 1)</td>
+<td style="text-align: center;">0.33</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="section-3" class="slide level2 smaller"><h2></h2>
+<p>Variáveis aleatórias <span class="math inline">\(v.a.\)</span> apresentam algumas propiedades que serão importantes nos modelos que utilizaremos:</p>
+<h4 id="esperança-de-x">Esperança de X</h4>
+<p>Se uma determinada variável é aleatória e o seu seu modelo de probabilidade é conhecido, a sua <em>Esperança</em> – também chamada de média – pode ser conhecida.</p>
+<p>Geralmente é apresentada enquanto: <span class="math inline">\(E(X)\)</span>, sendo <span class="math inline">\(X\)</span> uma variável aleatória.</p>
+<h4 id="variabilidade-de-x">Variabilidade de X</h4>
+<p>Do mesmo modo, se uma determinada variável é aleatória e é conhecido o seu modelo de probabilidade, a sua <em>variância</em> – ou sua variabilidade em torno da média – também pode ser conhecido.</p>
+<p>Geralmente é apresentada enquanto: <span class="math inline">\(V(X) = E[X - E(X)]^2\)</span>, sendo <span class="math inline">\(X\)</span> uma variável aleatória.</p>
+</section><section id="section-4" class="slide level2 smaller"><h2></h2>
+<h3 id="relação-entre-variáveis-aleatórias">Relação entre variáveis aleatórias</h3>
+<p>Conhecendo-se as propriedades de uma variável aleatória, pode-se relacionar duas variáveis aleatórias, de modo que:</p>
+<p><span class="math display">\[Y = f(X_1, X_2) = X_1 + X_2\]</span></p>
+<p>Desse modo,</p>
+<p><span class="math display">\[E(Y) = E(X_1 + X_2)\]</span></p>
+<p><span class="math display">\[E(Y) = E(X_1) + E(X_2)\]</span></p>
+<p>Podemos ainda estender essa relação para mais variáveis aleatórias.</p>
+</section><section id="section-5" class="slide level2 smaller"><h2></h2>
+<h3 id="relação-entre-variáveis-aleatórias-1">Relação entre variáveis aleatórias</h3>
+<p>Estendendo a mesma relação:</p>
+<p><span class="math display">\[Y = f(X_1, X_2, X_3, X_4,...,X_n) = X_1 + X_2 + X_3 + X_4 + ... + X_n\]</span></p>
+<p>Desse modo,</p>
+<p><span class="math display">\[E(Y) = E(X_1 + X_2 + X_3 + X_4 + ... + X_n)\]</span></p>
+<p><span class="math display">\[E(Y) = E(X_1) + E(X_2) + E(X_3) + E(X_4) + ... + E(X_n)\]</span></p>
+<p>Portanto, tudo o que precisamos saber é qual o modelo probabilístico – <span class="math inline">\(f(\cdot)\)</span> – se associa a determinado fenômeno social, que trataremos como uma <span class="math inline">\(v.a.\)</span>. A partir disso, podemos relacionar esse fenômeno social de interesse com outros fenômenos – outras <span class="math inline">\(v.a.\)</span></p>
+</section><section id="tipos-de-variável-aleatória" class="slide level2 smaller"><h2><span class="theme-subtopic">Tipos de Variável Aleatória</span></h2>
+<p>As <span class="math inline">\(v.a.\)</span> podem ser divididas entre <strong>discretas</strong> e <strong>contínuas</strong></p>
+<p><img data-src="images/distributions.png" class="absolute" style="bottom: 10px; right: 75px; width: 1000px; height: 550px; "></p>
+</section></section><section><section id="conceitos-e-definições-estatísticas-importantes-2" class="title-slide slide level1 theme-first center"><h1>Conceitos e definições estatísticas importantes</h1>
+<div style="text-align: left;">
+<p>Algumas nomenclaturas</p>
+</div>
+</section><section id="algumas-nomenclaturas" class="slide level2 smaller"><h2><span class="theme-subtopic">Algumas nomenclaturas</span></h2>
+<h4 id="variável-a-ser-estudada">Variável a ser estudada</h4>
+<p><span class="math inline">\(Y\)</span>: Variável dependente - variável a ser medida - variável a ser testada - variável resposta - variável resultado</p>
+<h4 id="variáveis-que-explicam-a-variável-de-estudo">Variáveis que explicam a variável de estudo</h4>
+<p><span class="math inline">\(X\)</span>: Variável independente - variável explicativa - variável preditora</p>
+<h4 id="variáveis-independentes-que-não-estamos-interessados-em-analisar">Variáveis independentes que não estamos interessados em analisar</h4>
+<p>Há muitos casos em que estamos interessados em uma – ou um conjunto de – variável(is) independente(s). Todavia, por razões das propriedades dos modelos e questões teóricas, é importante que insiramos outras variáveis na análise.</p>
+<p>Estas são chamadas de <strong>variáveis controle/confundidoras/co-variáveis</strong><sup>1</sup>.</p>
+<aside><ol class="aside-footnotes"><li id="fn2"><p><em>Em geral</em>, seus resultados não são explicados, mas são explicitados.</p></li></ol></aside></section></section><section><section id="modelo-de-regressão-linear" class="title-slide slide level1 theme-first center"><h1>Modelo de regressão Linear</h1>
+<div style="text-align: left;">
+<p>Modelo de Regressão Linear Simples (RLS)</p>
+</div>
+</section><section id="modelo-de-regressão-linear-simples-rls" class="slide level2 smaller"><h2><span class="theme-subtopic">Modelo de Regressão Linear Simples (RLS)</span></h2>
+<p>Como a variação de uma determinada variável (independente) afeta a variação de uma outra variável (resposta)?</p>
+<p>No caso simplificado do modelo RLS, temos as seguintes características:</p>
+<ul>
+<li class="fragment"><p>Uma variável aleatória resposta/dependente de natureza contínua: <span class="math inline">\(Y\)</span></p></li>
+<li class="fragment"><p>Uma variável aleatória explicativa: <span class="math inline">\(X\)</span></p></li>
+<li class="fragment"><p>Um fator de erro do modelo que nos diz quanto da variabilidade de <span class="math inline">\(Y\)</span> que continua não explicado por <span class="math inline">\(X\)</span>: <span class="math inline">\(\epsilon\)</span></p></li>
+</ul></section><section id="rls-exemplo-de-ontem" class="slide level2 smaller"><h2><span class="theme-subtopic">RLS: Exemplo de ontem</span></h2>
+
+<img data-src="2.mrls-mrlm_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section><section id="rls-exemplo-de-ontem-1" class="slide level2 smaller"><h2><span class="theme-subtopic">RLS: Exemplo de ontem</span></h2>
+
+<img data-src="2.mrls-mrlm_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section><section id="section-6" class="slide level2 smaller"><h2></h2>
+<h3 id="formalização-de-um-mrls">Formalização de um MRLS</h3>
+<p>Dizemos que a representação geral (ou populacional) de um determinado modelo de regressão é dada por:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
+<p>Em que:</p>
+<ul>
+<li class="fragment">
+<p><span class="math inline">\(\beta_0\)</span>: intercepto do modelo.</p>
+<ul>
+<li class="fragment">Nos diz qual valor <span class="math inline">\(Y\)</span> assume quando <span class="math inline">\(X\)</span> é igualado a <span class="math inline">\(0\)</span>.</li>
+</ul>
+</li>
+<li class="fragment">
+<p><span class="math inline">\(\beta_1\)</span>: coeficiente do modelo associado à variável <span class="math inline">\(X\)</span>.</p>
+<ul>
+<li class="fragment"><p>Nos diz qual a magnitude da mudança em <span class="math inline">\(Y\)</span> quando <span class="math inline">\(X\)</span> varia uma unidade para cima ou para baixo.</p></li>
+<li class="fragment"><p>É também chamado de <strong>inclinação da reta</strong>, devido à suas propriedades estatísticas do modo em que é calculado*.</p></li>
+</ul>
+</li>
+<li class="fragment"><p><span class="math inline">\(\epsilon_i\)</span>: como descrito anteriormente, é o quanto não está sendo explicado em <span class="math inline">\(Y_i\)</span> devido à variação estimada em <span class="math inline">\(X_i\)</span>.</p></li>
+</ul></section><section id="rls-exemplo-de-ontem-2" class="slide level2 smaller"><h2><span class="theme-subtopic">RLS: Exemplo de ontem</span></h2>
+
+<img data-src="2.mrls-mrlm_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section></section><section><section id="modelo-de-regressão-linear-1" class="title-slide slide level1 theme-first center"><h1>Modelo de regressão Linear</h1>
+<div style="text-align: left;">
+<p>Hipóteses dos modelos RLS</p>
+</div>
+</section><section id="section-7" class="slide level2 smaller"><h2></h2>
+<h4 id="hipótese-independência-entre-erro-e-variáveis-observadas">Hipótese: independência entre erro e variáveis observadas</h4>
+<p>Partindo do nosso modelo RLS para a população, <span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
+<p>A <strong>hipótese-chave</strong> é que a média dos erros condicionada na variável explicativa <span class="math inline">\(X_i\)</span> é igual a zero, ou seja: <span class="math display">\[E[\epsilon_i|X_i]=0\]</span></p>
+<p>Em outras palavras, estamos assumindo que não há nenhum fator contido em <span class="math inline">\(\epsilon\)</span> que seja correlacionado com <span class="math inline">\(X\)</span>, de modo que <span class="math inline">\(\beta\)</span> seja um efeito <em>puro</em> de <span class="math inline">\(X\)</span>.</p>
+</section><section id="section-8" class="slide level2 smaller"><h2></h2>
+<p>Modelo populacional: <span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
+<p>Quando vamos <em>estimar</em> os nossos parâmetros para a nossa amostra, assumimos os valores médios para os nossos <span class="math inline">\(i\)</span> casos observados, isto é:</p>
+<p><span class="math display">\[\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X} + \hat{\epsilon_i}\]</span></p>
+<p>Os únicos valores que não conhecemos são referentes a <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span>, uma vez que <span class="math inline">\(\epsilon\)</span> é obtido residualmente.</p>
+<p>Tudo o que precisamos fazer é <strong>estimar os parâmetros desconhecidos do modelo populacional</strong>.</p>
+</section><section id="section-9" class="slide level2 smaller"><h2></h2>
+<h3 id="estimando-parâmetros-do-modelo">Estimando parâmetros do modelo</h3>
+<p>O modelo a ser estimado consiste em:</p>
+<p><span class="math display">\[\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X} + \hat{\epsilon_i}\]</span></p>
+<h4 id="estimadores-de-mínimos-quadrados-ordinários-mqo">Estimadores de Mínimos Quadrados Ordinários (MQO)</h4>
+<p>Os estimadores de MQO asseguram, via relações estatísticas, que tenhamos valores para nossos parâmetros desconhecidos que <strong>minimizem o desvio dos resíduos</strong>.</p>
+<p>Isto é, temos a reta que melhor se ajusta aos nossos dados de modo que passe mais perto possível de cada ponto.</p>
+</section><section id="section-10" class="slide level2 smaller"><h2></h2>
+<h3 id="estimando-parâmetros-do-modelo-1">Estimando parâmetros do modelo</h3>
+<p>Acionando a <strong>hipótese descrita anteriormente</strong>, temos:</p>
+<p><span class="math display">\[\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X}\]</span></p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(\hat{\beta_0} = \bar{Y} - [\hat{\beta_1} \cdot \bar{X}]\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(\hat{\beta_1} = \frac{Cov(x,y)}{Var(x)}\)</span></p></li>
+<li class="fragment"><p>Valores preditos: <span class="math inline">\(\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1} \cdot X_i\)</span> para cada observação <span class="math inline">\(i = 1,...,n\)</span>.</p></li>
+<li class="fragment"><p>Resíduos: <span class="math inline">\(\hat{u_i}=y_i-\hat{Y_i}\)</span>, para cada observação <span class="math inline">\(i=1,...,n\)</span></p></li>
+</ul></section><section id="section-11" class="slide level2 smaller"><h2></h2>
+<p>Para o exemplo anterior, se partimos do modelo a ser estimado:</p>
+<p><span class="math display">\[\overline{Divorcio} = \hat{\beta_0} + \hat{\beta_1} \cdot \overline{Margarina} + \hat{\epsilon}\]</span></p>
+<p>Aplicando em R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(divorcio <span class="sc">~</span> margarina, <span class="at">data =</span> base)</span>
+<span id="cb1-2"><a href=""></a>modelo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = divorcio ~ margarina, data = base)
+
+Coefficients:
+(Intercept)    margarina  
+     3.3086       0.2014  </code></pre>
+</div>
+</div>
+</section><section id="section-12" class="slide level2 smaller"><h2></h2>
+<p>Para o exemplo anterior, se partimos do modelo a ser estimado:</p>
+<p><span class="math display">\[\overline{Divorcio} = \hat{\beta_0} + \hat{\beta_1} \cdot \overline{Margarina} + \hat{\epsilon}\]</span></p>
+<p>Aplicando em R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(divorcio <span class="sc">~</span> margarina, <span class="at">data =</span> base)</span>
+<span id="cb3-2"><a href=""></a><span class="fu">summary</span>(modelo) <span class="co"># indo além nos resultados</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = divorcio ~ margarina, data = base)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.05583 -0.01816 -0.01452  0.03601  0.04625 
+
+Coefficients:
+            Estimate Std. Error t value        Pr(&gt;|t|)    
+(Intercept) 3.308626   0.048032   68.88 0.0000000000022 ***
+margarina   0.201386   0.008735   23.05 0.0000000132968 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.03841 on 8 degrees of freedom
+Multiple R-squared:  0.9852,    Adjusted R-squared:  0.9833 
+F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
+</div>
+</div>
+</section></section><section id="pausa" class="title-slide slide level1 theme-stop center"><h1>Pausa!</h1>
+<div style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;">
+<img src="images/stop.gif" style="border-radius: 50%; border:5px solid #708d81; width:400px; height:auto;">
+</div>
+</section><section><section id="modelo-de-regressão-linear-2" class="title-slide slide level1 theme-first center"><h1>Modelo de regressão Linear</h1>
+<p>Propriedades do MRL</p>
+</section><section id="propriedades-do-mrl" class="slide level2 smaller"><h2><span class="theme-subtopic">Propriedades do MRL</span></h2>
+<p>Para assegurar que, através do MQO, tenhamos estimadores <strong>não viesados</strong> e <strong>mais eficientes</strong>, devemos assegurar que 6 hipóteses sejam asseguradas:</p>
+<ol type="1">
+<li class="fragment"><p>O modelo é linear nos parâmetros;</p></li>
+<li class="fragment"><p>Amostra é aleatória e segue o modelo populacional descrito em H1;</p></li>
+<li class="fragment"><p>Inexistência variáveis constantes ou que não tenham uma relação linear exata com outra variável explicativa;</p></li>
+<li class="fragment"><p>Independência entre erro e variáveis observadas;</p></li>
+<li class="fragment"><p>Variância do erro constante para todas as variáveis explicativas;</p></li>
+<li class="fragment"><p>O erro segue uma distribuição normal com média 0 e variância constante</p></li>
+</ol></section><section id="section-13" class="slide level2"><h2></h2>
+<h3 id="h1-o-modelo-é-linear-nos-parâmetros">H1: O modelo é linear nos parâmetros</h3>
+<p>Os parâmetros – <span class="math inline">\(\beta\)</span>s – se relacionam de forma linear.</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
+<p>É por essa propriedade que chamamos os modelos de <strong>modelos lineares</strong>.</p>
+</section><section id="section-14" class="slide level2"><h2></h2>
+<h3 id="h2-amostra-é-aleatória-e-segue-o-modelo-populacional-descrito-em-h1">H2: Amostra é aleatória e segue o modelo populacional descrito em H1</h3>
+<p>Para uma dada amostra de tamanho <span class="math inline">\(N\)</span> qualquer, seu processo gerador seguiu uma distribuição aleatória, seguindo o modelo populacional descrito em H1.</p>
+<p>Todavia, <em>em casos onde temos problemas de seletividade amostral</em>, isso pode afetar essa hipótese.</p>
+<ul>
+<li class="fragment">Exemplo: desigualdades salariais.</li>
+</ul></section><section id="section-15" class="slide level2 smaller"><h2></h2>
+<h3 id="h3-inexistência-variáveis-constantes-ou-que-não-tenham-uma-relação-linear-exata-com-outra-variável-explicativa">H3: Inexistência variáveis constantes ou que não tenham uma relação linear exata com outra variável explicativa</h3>
+<p>Para qualquer variável explicativa <span class="math inline">\(X\)</span>, há uma variabilidade de seus resultados em relação a <span class="math inline">\(Y\)</span>.</p>
+<p>Além disso, determinada variável <span class="math inline">\(X\)</span> não pode estar totalmente correlacionada com outra variável <span class="math inline">\(X\)</span>.</p>
+<ul>
+<li class="fragment">Assegura que não haja perfeita colinearidade, i.e., que toda a variação em <span class="math inline">\(X_1\)</span> esteja associada a <span class="math inline">\(X_2\)</span>.</li>
+</ul></section><section id="section-16" class="slide level2"><h2></h2>
+<h3 id="h4-independência-entre-erro-e-variáveis-observadas">H4: Independência entre erro e variáveis observadas</h3>
+<p>Mencionado anteriormente: a média dos erros condicionada na variável explicativa <span class="math inline">\(X_i\)</span> é igual a zero, ou seja: <span class="math display">\[E[\epsilon_i|X_i]=0\]</span></p>
+<p>Para um determinado valor de <span class="math inline">\(X\)</span>, os outros fatores não observados no modelo não afetam o resultado de <span class="math inline">\(X\)</span>.</p>
+<p><strong>Não é que</strong> <span class="math inline">\(\epsilon\)</span> não afete <span class="math inline">\(Y\)</span>, e sim que <span class="math inline">\(\epsilon\)</span> não está condicionado a <span class="math inline">\(X\)</span>.</p>
+</section><section id="section-17" class="slide level2 smaller"><h2></h2>
+<h3 id="h5-variância-do-erro-constante-para-todas-as-variáveis-explicativas">H5: Variância do erro constante para todas as variáveis explicativas</h3>
+<p><span class="math display">\[Var[\epsilon|X]=\sigma^2\]</span> Chamamos essa hipótese de <strong>homocedasticidade</strong> ou <strong>variância constante do erro</strong>.</p>
+<p>Pode ser violada em situações de:</p>
+<ul>
+<li class="fragment"><p><strong>Outliers para uma variável específica</strong></p></li>
+<li class="fragment"><p><strong>Distribuições de alguma variável específica</strong> que seguem um distinto padrão.</p></li>
+<li class="fragment"><p>…</p></li>
+</ul></section><section id="section-18" class="slide level2"><h2></h2>
+<h3 id="h6-o-erro-segue-uma-distribuição-normal-com-média-0-e-variância-constante">H6: O erro segue uma distribuição normal com média 0 e variância constante</h3>
+<p>Assumindo isso, podemos também assumir, <em>por propriedades estatísticas</em>, que qualquer um de nossos parâmetros também têm distribuição normal.</p>
+<p>Por que assumimos essa hipótese para o erro e não para os parâmetros?</p>
+<ul>
+<li class="fragment">O erro pode ser estudado e avaliado, os parâmetros não.</li>
+</ul></section><section id="section-19" class="slide level2 smaller"><h2></h2>
+<h4 id="assegurando-a-existência-de-h1-h4">Assegurando a existência de H1-H4</h4>
+<p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
+<ul>
+<li class="fragment"><p><span class="math inline">\(E[\hat{\beta_0}|X]=\beta_0\)</span></p></li>
+<li class="fragment"><p><span class="math inline">\(E[\hat{\beta_1}|X]=\beta_1\)</span></p></li>
+</ul></section><section id="section-20" class="slide level2 smaller"><h2></h2>
+<h4 id="assegurando-a-existência-de-h1-h4-1">Assegurando a existência de H1-H4</h4>
+<p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
+<ul>
+<li><p><span class="math inline">\(E[\hat{\beta_0}|X]=\beta_0\)</span></p></li>
+<li><p><span class="math inline">\(E[\hat{\beta_1}|X]=\beta_1\)</span></p></li>
+</ul>
+<h4 id="assegurando-a-existência-de-h5">Assegurando a existência de H5</h4>
+<p>Estimadores MQO sendo <strong>os mais eficientes</strong>. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.</p>
+</section><section id="section-21" class="slide level2 smaller"><h2></h2>
+<h4 id="assegurando-a-existência-de-h1-h4-2">Assegurando a existência de H1-H4</h4>
+<p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
+<ul>
+<li><p><span class="math inline">\(E[\hat{\beta_0}|X]=\beta_0\)</span></p></li>
+<li><p><span class="math inline">\(E[\hat{\beta_1}|X]=\beta_1\)</span></p></li>
+</ul>
+<h4 id="assegurando-a-existência-de-h5-1">Assegurando a existência de H5</h4>
+<p>Estimadores MQO sendo <strong>os mais eficientes</strong>. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.</p>
+<h4 id="assegurando-a-existência-de-h1-h5">Assegurando a existência de H1-H5</h4>
+<p>Temos os melhores estimadores para o modelo populacional. À medida que aumenta o tamanho da amostra, aproxima-se mais do valor do parâmetro na população e com menor incerteza sobre ele.</p>
+</section><section id="section-22" class="slide level2 smaller"><h2></h2>
+<h4 id="assegurando-a-existência-de-h1-h4-3">Assegurando a existência de H1-H4</h4>
+<p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
+<ul>
+<li><p><span class="math inline">\(E[\hat{\beta_0}|X]=\beta_0\)</span></p></li>
+<li><p><span class="math inline">\(E[\hat{\beta_1}|X]=\beta_1\)</span></p></li>
+</ul>
+<h4 id="assegurando-a-existência-de-h5-2">Assegurando a existência de H5</h4>
+<p>Estimadores MQO sendo <strong>os mais eficientes</strong>. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.</p>
+<h4 id="assegurando-a-existência-de-h1-h5-1">Assegurando a existência de H1-H5</h4>
+<p>Temos os melhores estimadores para o modelo populacional. À medida que aumenta o tamanho da amostra, aproxima-se mais do valor do parâmetro na população e com menor incerteza sobre ele.</p>
+<h4 id="assegurando-a-existência-de-h1-h6">Assegurando a existência de H1-H6</h4>
+<p>É possível fazer inferência sob a significância estatística dos coeficientes estimados em comparação com o valor do parâmetro na população.</p>
+</section></section><section><section id="exemplo-da-aula" class="title-slide slide level1 theme-first center"><h1>Exemplo da aula!</h1>
+<p>…</p>
+</section><section id="section-23" class="slide level2"><h2></h2>
+<h3 id="acesso-ao-esgotamento-sanitário">Acesso ao esgotamento sanitário</h3>
+<p><strong>Pergunta</strong>: Quais os fatores associados ao acesso ao esgotamento sanitário de populações vulneráveis no Brasil?</p>
+<p>Mais especificamente, qual a associação entre acesso ao Programa Bolsa Família para famílias com jovens entre 15-29 anos e o acesso ao esgotamento sanitário?</p>
+<h4 id="dados">Dados</h4>
+<p>Uma base de dados construída com dados do CadÚnico e Censo Demográfico 2010.</p>
+</section><section id="vamos-lá" class="slide level2"><h2><span class="theme-subtopic">Vamos lá!</span></h2>
+<p>…</p>
+<div style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;">
+<img src="images/hands-on.gif" style="border-radius: 50%; border:5px solid #708d81; width:400px; height:auto;">
+</div>
+</section></section><section><section id="modelo-de-regressão-linear-3" class="title-slide slide level1 theme-first center"><h1>Modelo de regressão Linear</h1>
+<p>Modelo de Regressão Linear Múltipla (RLM)</p>
+</section><section id="modelo-de-regressão-linear-múltipla-rlm" class="slide level2"><h2><span class="theme-subtopic">Modelo de Regressão Linear Múltipla (RLM)</span></h2>
+<p>No caso dos modelos RLS, havia somente uma variável explicativa.</p>
+<p>Todavia, pode ser que haja outros fenômenos sociais que estejam:</p>
+<ol type="1">
+<li class="fragment"><p>Associados com a nossa variável de interesse <span class="math inline">\(Y\)</span></p></li>
+<li class="fragment"><p>Associados com a nossa variável explicativa <span class="math inline">\(X\)</span></p></li>
+</ol></section><section id="section-24" class="slide level2"><h2></h2>
+<h3 id="no-cenário-1">No cenário <strong>1</strong>
+</h3>
+<p>Se temos na base de dados a variável explicativa que <strong>sabemos que está associada com</strong> <span class="math inline">\(Y\)</span>, por que não a incluir?</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="ganhos-de-incluir">Ganhos de incluir</h4>
+<ul>
+<li class="fragment"><p>Reduz a variância não explicada do modelo – contida em <span class="math inline">\(\epsilon\)</span></p></li>
+<li class="fragment"><p>Aumenta a capacidade de predição do modelo</p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="perdas-de-incluir">Perdas de incluir</h4>
+<ul>
+<li class="fragment">Parcimônia do modelo: <em>the simpler, the better!</em>
+</li>
+</ul>
+</div></div>
+</section><section id="section-25" class="slide level2"><h2></h2>
+<h3 id="no-cenário-2">No cenário <strong>2</strong>
+</h3>
+<p>Se <strong>sabemos que está associada com</strong> <span class="math inline">\(X\)</span>, ela deve ser incluída.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="ganhos-de-incluir-1">Ganhos de incluir</h4>
+<ul>
+<li class="fragment"><p>Não violação de H4 – independência entre o erro e as variáveis observadas.</p></li>
+<li class="fragment"><p>Reduz a variância não explicada do modelo – contida em <span class="math inline">\(\epsilon\)</span></p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 style="text-align: center;" id="perdas-de-incluir-1">Perdas de incluir</h4>
+<ul>
+<li class="fragment">Neste caso, não há.</li>
+</ul>
+</div></div>
+</section><section id="section-26" class="slide level2"><h2></h2>
+<h3 id="formalização">Formalização</h3>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
+<p>Em que:</p>
+<ul>
+<li class="fragment">
+<span class="math inline">\(k\)</span> é o número de parâmetros associados às variáveis explicativas incluídas no modelo.</li>
+</ul></section><section id="section-27" class="slide level2"><h2></h2>
+<h3 id="o-que-muda-entre-rls-e-rlm">O que muda entre RLS e RLM?</h3>
+<p>Em RLS, temos o modelo populacional descrito como:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i\]</span></p>
+<p>Enquanto em RLM, temos:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
+</section><section id="section-28" class="slide level2"><h2></h2>
+<h3 id="o-que-muda-entre-rls-e-rlm-1">O que muda entre RLS e RLM?</h3>
+<p>Em RLS, temos o modelo populacional descrito como:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i\]</span></p>
+<p>Enquanto em RLM, temos:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
+<p>Adicionar mais variáveis ao modelo nos dá maior confiança de que estaremos cumprindo os pressupostos para se ter estimadores <strong>não viesados</strong> e <strong>mais eficientes</strong>.</p>
+</section><section id="section-29" class="slide level2"><h2></h2>
+<h3 id="o-que-muda-entre-rls-e-rlm-2">O que muda entre RLS e RLM?</h3>
+<p>Em RLS, temos o modelo populacional descrito como:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i\]</span></p>
+<p>Enquanto em RLM, temos:</p>
+<p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
+<p>Adicionar mais variáveis ao modelo nos dá maior confiança de que estaremos cumprindo os pressupostos para se ter estimadores <strong>não viesados</strong> e <strong>mais eficientes</strong>. Aumenta a complexidade dos modelos também…</p>
+</section><section id="section-30" class="slide level2"><h2></h2>
+<h3 id="o-que-muda-entre-rls-e-rlm-3">O que muda entre RLS e RLM?</h3>
+<h4 id="interpretação-dos-modelos-rlm">Interpretação dos modelos RLM</h4>
+<p>Nos modelos RLM, temos que invocar a noção de <em>ceteris paribus</em> para uma correta interpretação dos resultados.</p>
+<p><strong>CETERIS PARIBUS</strong>: “tudo o mais é constante”.</p>
+<ul>
+<li class="fragment">Mantendo-se todos os outros fatores fixos, constantes, pode-se interpretar como a variação em determinada variável explicativa <span class="math inline">\(X_k\)</span> se relaciona com <span class="math inline">\(Y\)</span>.</li>
+</ul></section></section><section><section id="exemplo-da-aula-1" class="title-slide slide level1 theme-first center"><h1>Exemplo da aula!</h1>
+<p>Parte 2</p>
+</section><section id="vamos-fazer-o-nosso-modelo-um-pouco-mais-complexo" class="slide level2 smaller"><h2><span class="theme-subtopic">Vamos fazer o nosso modelo um pouco mais complexo</span></h2>
+<p>Vamos estimar 3 diferentes modelos:</p>
+<h4 id="modelo-1">Modelo 1</h4>
+<p>O mesmo estimado no exercício anterior - já temos código e tudo mais!</p>
+<h4 id="modelo-2">Modelo 2</h4>
+<p>Adicione ao <strong>Modelo 1</strong>, a variável informalidade (<code>informalidade</code>)</p>
+<h4 id="modelo-3">Modelo 3</h4>
+<p>Adicione ao <strong>Modelo 1</strong>, variável frequência ao ensino médio (<code>em</code>)</p>
+<h4 id="modelo-4">Modelo 4</h4>
+<p>Adicione ao <strong>Modelo 1</strong>, as variáveis que adicionamos no <strong>Modelo 2 e 3</strong></p>
+</section><section id="vamos-lá-1" class="slide level2 theme-subtopic"><h2>Vamos lá!</h2>
+<p>Dica (código em R para modelo com 2 variáveis explicativas):</p>
+<p><code>modelo2 = lm(Var_Y ~ Var_X1 + Var_X2, data = dados)</code></p>
+<div style="display: flex; justify-content: flex-end; align-items: center; height: 100vh;">
+<img src="images/hands-on.gif" style="border-radius: 50%; border:5px solid #708d81; width:400px; height:auto;">
+</div>
+</section><section id="isso-é-tudo-para-hoje" class="slide level2 theme-next"><h2>Isso é tudo para hoje!</h2>
+<p>Para próxima aula:</p>
+<ol type="1">
+<li class="fragment">Exercício sobre Regressão Linear Múltipla (próximo slide)</li>
+<li class="fragment">Leitura de material para aula de hoje (caso não tenha lido)</li>
+<li class="fragment">Leitura de material para a aula seguinte (Ver ementa)</li>
+</ol></section><section id="orientações-sobre-o-exercício" class="slide level2 smaller"><h2>Orientações sobre o exercício</h2>
+<p>Utilizaremos os mesmos dados que utilizamos na aula de hoje.</p>
+<ul>
+<li class="fragment"><p>Rode o Modelo 1 da aula de hoje e interprete os resultados</p></li>
+<li class="fragment"><p>Adicione ao modelo 1, a variável do Modelo 2 da aula de hoje e interprete os resultados de cada variável;</p></li>
+<li class="fragment"><p>Adicione ao Modelo 2, a variável do Modelo 3 da aula de hoje e interprete os resultados de cada variável;</p></li>
+<li class="fragment"><p>Adicione a variável <code>municipio_rural</code> e interprete os resultados dela;</p></li>
+<li class="fragment"><p>Volte às estatísticas do modelo – obtidas com <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> – e compare se houve muita mudança nos coeficientes de cada uma das variáveis quando incluída outras variáveis ao modelo. <strong>O que isso nos diz?</strong></p></li>
+<li class="fragment"><p>Observe se o <span class="math inline">\(R^2\)</span> – obtidos com <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> – apresentou muita mudança entre os modelos. <strong>O que isso nos diz?</strong></p></li>
+</ul></section></section><section id="section-31" class="title-slide slide level1 cebrap-fim smaller center"><h1></h1>
+<p><img data-src="images/cebrap50.png" class="absolute" style="top: -90px; right: 460px; width: 100px; height: 100px; "></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="text-align: right;">
+<p><strong>Presidência</strong></p>
+<p><strong>Diretoria Administrativa</strong></p>
+<p><strong>Diretoria Científica</strong></p>
+<p><strong>Coordenação de Seminários</strong></p>
+<p><strong>Coordenação de Cursos</strong></p>
+</div>
+</div><div class="column" style="width:50%;">
+<p>Adrian Gurza Lavalle</p>
+<p>Victor Callil</p>
+<p>Arilson Favareto</p>
+<p>Bianca Tavolari</p>
+<p>Monise Fernandes Picanço</p>
+</div></div>
+<div style="text-align: center;">
+<p><strong>Curso</strong></p>
+<p>Introdução à análise de regressão para pesquisas sociais</p>
+<p><strong>Ministrante</strong></p>
+<p>Thiago Cordeiro Almeida</p>
+<p>E-mail: <a href="thiagocordalmeida@gmail.com">thiagocordalmeida@gmail.com</a></p>
+<p>Github: <a href="github.com/thiagocalm">@thiagocalm</a></p>
+</div>
+
+
+</section>
+</div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="images/cebrap-imagem.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>cebrap.lab - Introdução à análise de regressão para pesquisas sociais</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="2.mrls-mrlm_files/libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="2.mrls-mrlm_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/quarto-support/support.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/notes/notes.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/search/search.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/zoom/zoom.js"></script><script src="2.mrls-mrlm_files/libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script><script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+    
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+    
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+    
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+    
+      })();
+    </script><script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+
+
+</body></html>
