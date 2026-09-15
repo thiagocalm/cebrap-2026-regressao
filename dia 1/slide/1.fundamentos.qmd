@@ -70,10 +70,10 @@ Tópicos que vamos cobrir hoje são:
 # Algumas definições acerca de dados quantitativos {.theme-first}
 
 ::: {style="text-align: left;"}
-Natureza dos dados quantitativos
+Natureza dos dados
 :::
 
-## Natureza dos dados quantitativos {.theme-subtopic .smaller}
+## Natureza dos dados {.theme-subtopic .smaller}
 
 está ligada à forma de classificação dos tipos de dados existentes.
 
@@ -102,12 +102,12 @@ Quantitativa
 
 - Possível de ser **o**bjetivamente captada
 
-**Exemplos**: [Fluxos de atividades culturais, peso das pessoas ao nascer]{.gap}
+**Exemplos**: [Atividades culturais, peso das pessoas ao nascer]{.gap}
 :::
 ::::
 :::::::
 
-## Natureza dos dados quantitativos {.theme-subtopic .smaller}
+## Natureza dos dados {.theme-subtopic .smaller}
 
 está ligada à forma de classificação dos tipos de dados existentes.
 
@@ -136,7 +136,7 @@ Quantitativa
 
 - Possível de ser **o**bjetivamente captada
 
-**Exemplos**: [Fluxos de atividades culturais, peso das pessoas ao nascer]{.gap}
+**Exemplos**: [Atividades culturais, peso das pessoas ao nascer]{.gap}
 :::
 ::::
 :::::::
@@ -781,7 +781,7 @@ Para isso, precisamos:
 
 4.  Construir o modelo para a população a que queremos generalizar
 
-5.  Implementar o modelo populacionar para a amostra da população que temos acesso
+5.  Implementar o modelo populacional para a amostra da população que temos acesso
 
 6.  Avaliar a validade do nosso modelo
 
