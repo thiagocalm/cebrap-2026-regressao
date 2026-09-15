@@ -5,7 +5,7 @@ rm(list = ls())
 ## pacotes necessarios
 # instalando pacote de gerenciador de pacotes, pacman
 ifelse(!require(pacman),install.packages("pacman"),require(pacman))
-p_load(tidyverse, here) # importando pacote que usaremos, tidyverse
+p_load(tidyverse, here, skimr) # importando pacote que usaremos, tidyverse
 
 # importando dados
 # setwd() # CONFIGURE O SEU DIRETORIO DE TRABALHO
@@ -22,7 +22,6 @@ dados <- read_csv2(file.path(diretorio,"dados_acesso_esgoto.csv"))
 
 dados |> skim()
 
-
 # Modelos -----------------------------------------------------------------
 
 # modelo 1 - pbf
@@ -35,7 +34,6 @@ modelo1 <- lm(
 summary(modelo1)
 
 # modelo 2 - informalidade
-
 
 modelo2 <- lm(
   acesso_esgoto ~ pbf + informalidade,

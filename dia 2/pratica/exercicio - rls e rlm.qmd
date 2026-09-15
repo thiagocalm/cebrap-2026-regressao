@@ -77,11 +77,14 @@ diretorio <- file.path(here(),"dia 2","pratica")
 dados <- read_csv2(file.path(diretorio,"dados_acesso_esgoto.csv"))
 
 ```
+
 # Exploratória da base de dados
 
 Vamos fazer uma breve exploração dos dados, para compreender como a nossa base de dados está organizada.
 
-A começar, vamos usar o pacote que o Guilherme nos recomendou na última aula, chamado `skimr`^[Para mais informações sobre ele, você pode acessar [esse texto da Curso-R](https://blog.curso-r.com/posts/2022-05-05-skimr/).].
+A começar, vamos usar o pacote que o Guilherme nos recomendou na última aula, chamado `skimr`[^1].
+
+[^1]: Para mais informações sobre ele, você pode acessar [esse texto da Curso-R](https://blog.curso-r.com/posts/2022-05-05-skimr/).
 
 ```{r}
 dados |> 
@@ -96,8 +99,8 @@ Com base no que este código nos retorna, podemos ter uma visão geral da distri
 
 O nosso modelo 1 consiste em incluir somente PBF como variável explicativa. Pode ser descrito em sua forma populacional como:
 
-$$AcessoEsgoto = \beta_0 + \beta_1 \cdot PBF + \epsilon$$
-Para estimar, basta rodar:
+$$AcessoEsgoto = \beta_0 + \beta_1 \cdot PBF + \epsilon$$ Para estimar, basta rodar:
+
 ```{r}
 
 modelo1 <- lm(
@@ -119,8 +122,8 @@ Podemos observar que um aumento em 1% do percentual de famílias que recebem bol
 
 O nosso modelo 2 consiste em incluir a Informalidade, para além do PBF como variável explicativa. Pode ser descrito em sua forma populacional como:
 
-$$AcessoEsgoto = \beta_0 + \beta_1 \cdot PBF + \beta_2 \cdot Informalidade + \epsilon$$
-Para estimar, basta rodar:
+$$AcessoEsgoto = \beta_0 + \beta_1 \cdot PBF + \beta_2 \cdot Informalidade + \epsilon$$ Para estimar, basta rodar:
+
 ```{r}
 
 modelo2 <- lm(
@@ -142,8 +145,8 @@ Neste caso, o que obtemos é uma relação negativa em que, aumentando a informa
 
 O nosso modelo 3 consiste em incluir somente frequência ao Ensino Médio, para além de PBF, como variável explicativa. Pode ser descrito em sua forma populacional como:
 
-$$AcessoEsgoto = \beta_0 +  \beta_1 \cdot PBF + \beta_2 \cdot EnsinoMedio + \epsilon$$
-Para estimar, basta rodar:
+$$AcessoEsgoto = \beta_0 +  \beta_1 \cdot PBF + \beta_2 \cdot EnsinoMedio + \epsilon$$ Para estimar, basta rodar:
+
 ```{r}
 
 modelo3 <- lm(
@@ -165,8 +168,8 @@ Neste caso, o que obtemos é uma relação positiva em que, aumentando a frequê
 
 O nosso modelo 4 consiste em incluir todas as variáveis explicativas do acesso ao esgotamento sanitário. Pode ser descrito em sua forma populacional como:
 
-$$AcessoEsgoto = \beta_0 +  \beta_1 \cdot PBF + \beta_2 \cdot Informalidade + \beta_3 \cdot EnsinoMedio + \epsilon$$
-Para estimar, basta rodar:
+$$AcessoEsgoto = \beta_0 +  \beta_1 \cdot PBF + \beta_2 \cdot Informalidade + \beta_3 \cdot EnsinoMedio + \epsilon$$ Para estimar, basta rodar:
+
 ```{r}
 
 # modelo 4 - todos juntos
@@ -183,5 +186,11 @@ Para obter seus resultados, temos:
 ```{r}
 summary(modelo4)
 ```
+
 Os resultados parecem se manter semelhantes aos anteriores!
 
+# Interpretação dos resultados
+
+O que esses resultados nos dizem? Retomando a discussão das aulas anteriores, vale ressaltar que devemos os interpretar em termos de uma **associação**. Ou seja, a relação estabelecida entre essas variáveis não pode ser atribuída ao fato de que uma afeta a outra.
+
+Volte aos resultados dos modelos e tente compreender se faz sentido, em termos substantivos (teóricos) o sentido das relações que observamos neles. Podemos discutir isso na próxima aula!
