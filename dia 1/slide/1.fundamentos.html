@@ -6,9 +6,9 @@
 <script src="1.fundamentos_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="1.fundamentos_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="1.fundamentos_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="1.fundamentos_files/libs/quarto-html/quarto-syntax-highlighting-be8263ff1b6b897a8d97feb209c764ac.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="1.fundamentos_files/libs/quarto-html/quarto-syntax-highlighting-cb5a231d304dd5dad389faf132539d0d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 <meta name="author" content="Thiago Cordeiro Almeida">
 <meta name="dcterms.date" content="2026-09-15">
 <title>Regressão para pesquisas sociais</title>
@@ -21,10 +21,13 @@
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
     */
-    code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -204,7 +207,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Thiago Cordeiro Almeida 
+Thiago Cordeiro Almeida
 </div>
         <p class="quarto-title-affiliation">
             Doutorando, Centre d’Estudis Demogràfics (CED, Espanha) <br> Pesquisador Assistente, Cebrap <br></p>
@@ -580,19 +583,19 @@ Thiago Cordeiro Almeida
 </section><section id="formas-de-se-captar-a-interação-entre-fenômenos-sociais-10" class="slide level2 theme-subtopic smaller"><h2>Formas de se captar a interação entre fenômenos sociais</h2>
 <p>Quantificação da interação entre fenômenos sociais: <strong>O exemplo do programa pé-de-meia</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">cor.test</span>(renda, enem_mat) <span class="co"># teste de correlação, default 'Pearson'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="" aria-label="1"></a><span class="fu">cor.test</span>(renda, enem_mat) <span class="co"># teste de correlação, default 'Pearson'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
 
 data:  renda and enem_mat
-t = 17.083, df = 998, p-value &lt; 2.2e-16
+t = 17.774, df = 998, p-value &lt; 2.2e-16
 alternative hypothesis: true correlation is not equal to 0
 95 percent confidence interval:
- 0.4262428 0.5222595
+ 0.4417834 0.5360454
 sample estimates:
       cor 
-0.4756669 </code></pre>
+0.4903471 </code></pre>
 </div>
 </div>
 <p>Qual a conclusão que teríamos?</p>
@@ -602,7 +605,7 @@ sample estimates:
 </ol></section><section id="slide-extra" class="slide level2 theme-subtopic smaller"><h2>Slide extra!!!</h2>
 <p>Explicando o código <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">cor.test</span>(renda, enem_mat) <span class="co"># teste de correlação, default 'Pearson'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="" aria-label="1"></a><span class="fu">cor.test</span>(renda, enem_mat) <span class="co"># teste de correlação, default 'Pearson'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Conforme conversamos em aula, a depender da natureza da variável há tipos de testes de correlação mais adequados:</p>
 <ul>
