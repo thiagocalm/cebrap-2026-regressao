@@ -106,11 +106,11 @@ Modelos probabilísticos
 
 - Em termos estatísticos, para cada distribuição observada em uma amostra, há (*ou haveria*) um modelo teórico que descreveria estatísticamente essa mesma distribuição.
 
-## []{.theme-subtopic} {.font-size-smallest}
+##  {.font-size-smallest}
 
 **Exemplo:** programa pé-de-meia.
 
-Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.
+Qual a parcela dos estudantes que tiveram nota em matemática acima da média do ENEM dentro do universo de pessoas que participaram do programa?
 
 ::::: columns
 ::: {.column width="50%"}
@@ -122,24 +122,23 @@ Estamos interessados em saber a parcela dos estudantes que tiveram nota em matem
 :::
 :::::
 
-## []{.theme-subtopic} {.font-size-smallest}
+##  {.font-size-smallest}
 
 **Exemplo:** programa pé-de-meia.
 
-Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.
+Qual a parcela dos estudantes que tiveram nota em matemática acima da média do ENEM dentro do universo de pessoas que participaram do programa?
 
-::::: nonincremental
-:::: columns
+:::::: nonincremental
+::::: columns
 ::: {.column width="50%"}
-
 #### Abordagem empírica
 
-1.  Calcularia a proporção de pessoas que tiveram a média acima como: $$p(X)=\frac{e}{n}$$
+Calcularia a proporção de pessoas que tiveram a média acima como: $$p(X)=\frac{e}{n}$$
 
 Em que,
 
-- $e$: evento, no caso, num. acima da média;
-- $n$: observações, no caso, num. estudantes no ENEM.
+- $e$: evento -- num. estudantes com nota acima da média;
+- $n$: observações -- num. estudantes que fizeram o ENEM e participaram do programa.
 :::
 
 ::: {.column width="50%"}
@@ -147,7 +146,7 @@ Em que,
 
 1.  Estabeleceria o evento de interesse e o universo amostral de análise
 
-- **Evento**: proporção de estudantes que participaram do ENEM **e** do programa os quais tiveram nota acima da média em matemática.
+- **Evento**: parcela de estudantes que participaram do ENEM **e** do programa os quais tiveram nota acima da média em matemática.
 
 - **Universo amostral**: estudantes que participaram do ENEM e do programa.
 
@@ -155,40 +154,54 @@ Em que,
 
 3.  Estimaria a probabilidade desse evento de interesse ocorrer.
 :::
-::::
 :::::
+::::::
 
 ## [Abordagem empírica = Abordagem probabilística]{.theme-subtopic} {.smaller}
 
-::::: nonincremental
+::: nonincremental
+Sob o pressuposto de que nossa amostra de estudantes que participaram do ENEM e do programa é **i.i.d.**[^1], a abordagem empírica levaria a resultados *exatamente* iguais ao cálculo via abordagem probabilística!!!
 
-Sob o pressuposto de que nossa amostra de estudantes que participaram do ENEM e do programa é **i.i.d.**[^1], o que obteríamos calculando via abordagem empírica seria *exatamente* o mesmo ao calcular via abordagem probabilística!!!
-
-[^1]: **i.i.d.** = **i**ndependente e **i**dênticamente **d**istribuída.
-
-Ou seja,
+Isso nos diz que:
 
 - Podemos estudar propriedades estatísticas dos fenômenos sociais em que trabalhamos não só restritos a uma determinada amostra em que temos, mas fazendo **generalizações** desses fenômenos;
 
 - Utilizando modelos que representem esses fenômenos, conseguimos ter estimativas do comportamento deles que incorporem **incertezas** inerentes a eles.
 
 Modelagens são formas de adicionar complexidade ao estudo desses fenômenos a partir das suas interações com outros fenômenos sociais.
+:::
 
-:::::
+[^1]: *i.i.d.*: idêntica e igualmente distribuída. Diz sobre o processo gerador dos nossos dados.
 
-## []{.theme-subtopic} {.smaller}
+##  {.smaller}
 
 ### Relação entre modelos probabilísticos e modelos de regressão
 
-Estudo das propriedades da nossa **variável de estudo** através de relações associadas ao melhor modelo probabilístico que descreve essa variável.
+Conhecendo o modelo probabilístico que melhor descreve determinada **variável de interesse**, podemos entender suas propriedades, uma vez que são as mesmas propriedades do modelo probabilístico.
 
 Com isso, podemos:
 
 - **Predição**: Prever resultados futuros condicionados a um conjunto de outras variáveis (probabilidade condicional a um conjunto de $X$);
 
-- **Associação/Causalidade**: Estabelecer em que medida variando uma das variáveis, os valores da variável de interesse também varia (probabilidade condicional a um $X$)
+- **Associação/Causalidade**: Estabelecer em que medida variando uma outra variável(is), os valores da variável de interesse também variam (probabilidade condicional a um $X$).
 
-- Obter valores esperados e incerteza de seus resultados (esperança e variância)
+- Obter valores esperados e incerteza de seus resultados (esperança e variância).
+
+##  {.smaller}
+
+### Relação entre modelos probabilísticos e modelos de regressão
+
+Conhecendo o modelo probabilístico que melhor descreve determinada **variável de interesse**, podemos entender suas propriedades, uma vez que são as mesmas propriedades do modelo probabilístico.
+
+Com isso, podemos:
+
+- **Predição**: Prever resultados futuros condicionados a um conjunto de outras variáveis (probabilidade condicional a um conjunto de $X$);
+
+- **Associação/Causalidade**: Estabelecer em que medida variando uma outra variável(is), os valores da variável de interesse também variam (probabilidade condicional a um $X$).
+
+- Obter valores esperados e incerteza de seus resultados (esperança e variância).
+
+Tudo isso é o que fazemos nos modelos de regressão, graças às propriedades dos modelos probabilísticos subjacentes à variável que estamos interessados.
 
 # Conceitos e definições estatísticas importantes {.theme-first}
 
@@ -196,7 +209,7 @@ Com isso, podemos:
 Variável aleatória (*v.a.*)
 :::
 
-## [Variável aleatória]{.theme-subtopic} {.smaller}
+## [Variável aleatória (v.a.)]{.theme-subtopic} {.smaller}
 
 Uma variável $X$ é aleatória se cada um de seus valores -- ou um intervalo entre valores -- está associado a uma probabilidade $p(X)$.
 
@@ -241,7 +254,7 @@ Geralmente é apresentada enquanto: $E(X)$, sendo $X$ uma variável aleatória.
 
 #### Variabilidade de X
 
-Do mesmo modo, se uma determinada variável é aleatória e é conhecido o seu modelo de probabilidade, a sua *variância* -- ou sua variabilidade em torno da média -- também pode ser conhecido.
+Se uma determinada variável é aleatória e é conhecido o seu modelo de probabilidade, a sua *variância* -- ou sua variabilidade em torno da média -- também pode ser conhecida.
 
 Geralmente é apresentada enquanto: $V(X) = E[X - E(X)]^2$, sendo $X$ uma variável aleatória.
 
@@ -249,15 +262,13 @@ Geralmente é apresentada enquanto: $V(X) = E[X - E(X)]^2$, sendo $X$ uma variá
 
 ### Relação entre variáveis aleatórias
 
-Conhecendo-se as propriedades de uma variável aleatória, pode-se relacionar duas variáveis aleatórias, de modo que:
+Conhecendo-se as propriedades de uma variável aleatória de interesse, pode-se relacionar duas variáveis aleatórias $X$ e $Y$, de modo que:
 
-$$Y = f(X_1, X_2) = X_1 + X_2$$
+$$Y = f(X_1) = X_1$$
 
 Desse modo,
 
-$$E(Y) = E(X_1 + X_2)$$
-
-$$E(Y) = E(X_1) + E(X_2)$$
+$$E(Y) = E(X_1)$$
 
 Podemos ainda estender essa relação para mais variáveis aleatórias.
 
@@ -275,7 +286,9 @@ $$E(Y) = E(X_1 + X_2 + X_3 + X_4 + ... + X_n)$$
 
 $$E(Y) = E(X_1) + E(X_2) + E(X_3) + E(X_4) + ... + E(X_n)$$
 
-Portanto, tudo o que precisamos saber é qual o modelo probabilístico -- $f(\cdot)$ -- se associa a determinado fenômeno social, que trataremos como uma $v.a.$. A partir disso, podemos relacionar esse fenômeno social de interesse com outros fenômenos -- outras $v.a.$
+Portanto, tudo o que precisamos saber é qual o modelo probabilístico -- $f(\cdot)$ -- se associa a determinado fenômeno social $Y$, que o trataremos como uma $v.a.$
+
+A partir disso, podemos relacionar esse fenômeno social de interesse com outros fenômenos -- outras $v.a.$
 
 ## [Tipos de Variável Aleatória]{.theme-subtopic} {.smaller}
 
@@ -303,9 +316,9 @@ $X$: Variável independente - variável explicativa - variável preditora
 
 Há muitos casos em que estamos interessados em uma -- ou um conjunto de -- variável(is) independente(s). Todavia, por razões das propriedades dos modelos e questões teóricas, é importante que insiramos outras variáveis na análise.
 
-Estas são chamadas de **variáveis controle/confundidoras/co-variáveis**[^1].
+Estas são chamadas de **variáveis controle/confundidoras/co-variáveis**[^2].
 
-[^1]: *Em geral*, seus resultados não são explicados, mas são explicitados.
+[^2]: *Em geral*, seus resultados não são explicados, mas são explicitados.
 
 # Modelo de regressão Linear {.theme-first}
 
@@ -319,9 +332,9 @@ Como a variação de uma determinada variável (independente) afeta a variação
 
 No caso simplificado do modelo RLS, temos as seguintes características:
 
-- Uma variável aleatória resposta/dependente de natureza contínua: $Y$
+- Uma *v.a.* resposta/dependente de **natureza contínua**: $Y$
 
-- Uma variável aleatória explicativa: $X$
+- Uma *v.a.* explicativa: $X$
 
 - Um fator de erro do modelo que nos diz quanto da variabilidade de $Y$ que continua não explicado por $X$: $\epsilon$
 
@@ -423,7 +436,7 @@ Em que:
 
   - Nos diz qual a magnitude da mudança em $Y$ quando $X$ varia uma unidade para cima ou para baixo.
 
-  - É também chamado de **inclinação da reta**, devido à suas propriedades estatísticas do modo em que é calculado\*.
+  - É também chamado de **inclinação da reta**, devido à suas propriedades estatísticas do modo em que é calculado.
 
 - $\epsilon_i$: como descrito anteriormente, é o quanto não está sendo explicado em $Y_i$ devido à variação estimada em $X_i$.
 
@@ -682,7 +695,7 @@ Mencionado anteriormente: a média dos erros condicionada na variável explicati
 
 Para um determinado valor de $X$, os outros fatores não observados no modelo não afetam o resultado de $X$.
 
-**Não é que** $\epsilon$ não afete $Y$, e sim que $\epsilon$ não está condicionado a $X$.
+**Não é que** $\epsilon$ não se relacione com $Y$, e sim que $\epsilon$ não está condicionado a $X$.
 
 ##  {.smaller}
 
@@ -719,7 +732,8 @@ Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a se
 - $E[\hat{\beta_1}|X]=\beta_1$
 
 ##  {.smaller}
-::::: nonincremental
+
+::: nonincremental
 #### Assegurando a existência de H1-H4
 
 Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em $N$ diferentes amostras.
@@ -731,9 +745,11 @@ Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a se
 #### Assegurando a existência de H5
 
 Estimadores MQO sendo **os mais eficientes**. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.
-:::::
+:::
+
 ##  {.smaller}
-::::: nonincremental
+
+::: nonincremental
 #### Assegurando a existência de H1-H4
 
 Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em $N$ diferentes amostras.
@@ -749,9 +765,11 @@ Estimadores MQO sendo **os mais eficientes**. Isto é, asseguram a menor variân
 #### Assegurando a existência de H1-H5
 
 Temos os melhores estimadores para o modelo populacional. À medida que aumenta o tamanho da amostra, aproxima-se mais do valor do parâmetro na população e com menor incerteza sobre ele.
-:::::
+:::
+
 ##  {.smaller}
-::::: nonincremental
+
+::: nonincremental
 #### Assegurando a existência de H1-H4
 
 Estimadores MQO **não viesados**. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em $N$ diferentes amostras.
@@ -771,7 +789,8 @@ Temos os melhores estimadores para o modelo populacional. À medida que aumenta 
 #### Assegurando a existência de H1-H6
 
 É possível fazer inferência sob a significância estatística dos coeficientes estimados em comparação com o valor do parâmetro na população.
-:::::
+:::
+
 # Exemplo da aula! {.theme-first}
 
 ...
@@ -865,7 +884,7 @@ $$Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \c
 
 Em que:
 
-- $k$ é o número de parâmetros associados às variáveis explicativas incluídas no modelo.
+- $k$ é o número de parâmetros associados às variáveis explicativas/independentes incluídas no modelo.
 
 ## 
 

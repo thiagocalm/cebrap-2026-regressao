@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.38">
 <meta name="author" content="Thiago Cordeiro Almeida">
-<meta name="dcterms.date" content="2026-09-08">
+<meta name="dcterms.date" content="2026-09-17">
 <title>Regressão para pesquisas sociais</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -212,7 +212,7 @@ Thiago Cordeiro Almeida
     </div>
 </div>
 
-  <p class="date">September 8, 2026</p>
+  <p class="date">September 17, 2026</p>
 </section><section id="antes-de-começar" class="title-slide slide level1 center"><h1>Antes de começar…</h1>
 <p>lista de presença!</p>
 <p><img data-src="images/attention.gif" class="absolute" style="bottom: 10px; right: 50px; width: 240px; height: 240px; "></p>
@@ -265,31 +265,28 @@ Thiago Cordeiro Almeida
 <ul>
 <li class="fragment"><p>Na aula anterior, exploramos diferentes formas de analisar descritivamente a distribuição de determinado fenômeno através de diferentes tipos de medida.</p></li>
 <li class="fragment"><p>Em termos estatísticos, para cada distribuição observada em uma amostra, há (<em>ou haveria</em>) um modelo teórico que descreveria estatísticamente essa mesma distribuição.</p></li>
-</ul></section><section id="section" class="slide level2 font-size-smallest"><h2><span class="theme-subtopic"></span></h2>
+</ul></section><section id="section" class="slide level2 font-size-smallest"><h2></h2>
 <p><strong>Exemplo:</strong> programa pé-de-meia.</p>
-<p>Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.</p>
+<p>Qual a parcela dos estudantes que tiveram nota em matemática acima da média do ENEM dentro do universo de pessoas que participaram do programa?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="abordagem-empírica">Abordagem empírica</h4>
 </div><div class="column" style="width:50%;">
 <h4 id="abordagem-probabilística">Abordagem probabilística</h4>
 </div></div>
-</section><section id="section-1" class="slide level2 font-size-smallest"><h2><span class="theme-subtopic"></span></h2>
+</section><section id="section-1" class="slide level2 font-size-smallest"><h2></h2>
 <p><strong>Exemplo:</strong> programa pé-de-meia.</p>
-<p>Estamos interessados em saber a parcela dos estudantes que tiveram nota em matemática acima da média no ENEM dentro do universo de pessoas que participaram do programa.</p>
+<p>Qual a parcela dos estudantes que tiveram nota em matemática acima da média do ENEM dentro do universo de pessoas que participaram do programa?</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <h4 id="abordagem-empírica-1">Abordagem empírica</h4>
-<ol type="1">
-<li>Calcularia a proporção de pessoas que tiveram a média acima como: <span class="math display">\[p(X)=\frac{e}{n}\]</span>
-</li>
-</ol>
+<p>Calcularia a proporção de pessoas que tiveram a média acima como: <span class="math display">\[p(X)=\frac{e}{n}\]</span></p>
 <p>Em que,</p>
 <ul>
 <li>
-<span class="math inline">\(e\)</span>: evento, no caso, num. acima da média;</li>
+<span class="math inline">\(e\)</span>: evento – num. estudantes com nota acima da média;</li>
 <li>
-<span class="math inline">\(n\)</span>: observações, no caso, num. estudantes no ENEM.</li>
+<span class="math inline">\(n\)</span>: observações – num. estudantes que fizeram o ENEM e participaram do programa.</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <h4 id="abordagem-probabilística-1">Abordagem probabilística</h4>
@@ -297,7 +294,7 @@ Thiago Cordeiro Almeida
 <li>Estabeleceria o evento de interesse e o universo amostral de análise</li>
 </ol>
 <ul>
-<li><p><strong>Evento</strong>: proporção de estudantes que participaram do ENEM <strong>e</strong> do programa os quais tiveram nota acima da média em matemática.</p></li>
+<li><p><strong>Evento</strong>: parcela de estudantes que participaram do ENEM <strong>e</strong> do programa os quais tiveram nota acima da média em matemática.</p></li>
 <li><p><strong>Universo amostral</strong>: estudantes que participaram do ENEM e do programa.</p></li>
 </ul>
 <ol start="2" type="1">
@@ -306,28 +303,38 @@ Thiago Cordeiro Almeida
 </ol>
 </div></div>
 </section><section id="abordagem-empírica-abordagem-probabilística" class="slide level2 smaller"><h2><span class="theme-subtopic">Abordagem empírica = Abordagem probabilística</span></h2>
-<p>Sob o pressuposto de que nossa amostra de estudantes que participaram do ENEM e do programa é <strong>i.i.d.</strong><sup>1</sup>, o que obteríamos calculando via abordagem empírica seria <em>exatamente</em> o mesmo ao calcular via abordagem probabilística!!!</p>
-<p>Ou seja,</p>
+<p>Sob o pressuposto de que nossa amostra de estudantes que participaram do ENEM e do programa é <strong>i.i.d.</strong><sup>1</sup>, a abordagem empírica levaria a resultados <em>exatamente</em> iguais ao cálculo via abordagem probabilística!!!</p>
+<p>Isso nos diz que:</p>
 <ul>
 <li><p>Podemos estudar propriedades estatísticas dos fenômenos sociais em que trabalhamos não só restritos a uma determinada amostra em que temos, mas fazendo <strong>generalizações</strong> desses fenômenos;</p></li>
 <li><p>Utilizando modelos que representem esses fenômenos, conseguimos ter estimativas do comportamento deles que incorporem <strong>incertezas</strong> inerentes a eles.</p></li>
 </ul>
 <p>Modelagens são formas de adicionar complexidade ao estudo desses fenômenos a partir das suas interações com outros fenômenos sociais.</p>
-<aside><ol class="aside-footnotes"><li id="fn1"><p><em>Em geral</em>, seus resultados não são explicados, mas são explicitados.</p></li></ol></aside></section><section id="section-2" class="slide level2 smaller"><h2><span class="theme-subtopic"></span></h2>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><em>i.i.d.</em>: idêntica e igualmente distribuída. Diz sobre o processo gerador dos nossos dados.</p></li></ol></aside></section><section id="section-2" class="slide level2 smaller"><h2></h2>
 <h3 id="relação-entre-modelos-probabilísticos-e-modelos-de-regressão">Relação entre modelos probabilísticos e modelos de regressão</h3>
-<p>Estudo das propriedades da nossa <strong>variável de estudo</strong> através de relações associadas ao melhor modelo probabilístico que descreve essa variável.</p>
+<p>Conhecendo o modelo probabilístico que melhor descreve determinada <strong>variável de interesse</strong>, podemos entender suas propriedades, uma vez que são as mesmas propriedades do modelo probabilístico.</p>
 <p>Com isso, podemos:</p>
 <ul>
 <li class="fragment"><p><strong>Predição</strong>: Prever resultados futuros condicionados a um conjunto de outras variáveis (probabilidade condicional a um conjunto de <span class="math inline">\(X\)</span>);</p></li>
-<li class="fragment"><p><strong>Associação/Causalidade</strong>: Estabelecer em que medida variando uma das variáveis, os valores da variável de interesse também varia (probabilidade condicional a um <span class="math inline">\(X\)</span>)</p></li>
-<li class="fragment"><p>Obter valores esperados e incerteza de seus resultados (esperança e variância)</p></li>
-</ul></section></section><section><section id="conceitos-e-definições-estatísticas-importantes-1" class="title-slide slide level1 theme-first center"><h1>Conceitos e definições estatísticas importantes</h1>
+<li class="fragment"><p><strong>Associação/Causalidade</strong>: Estabelecer em que medida variando uma outra variável(is), os valores da variável de interesse também variam (probabilidade condicional a um <span class="math inline">\(X\)</span>).</p></li>
+<li class="fragment"><p>Obter valores esperados e incerteza de seus resultados (esperança e variância).</p></li>
+</ul></section><section id="section-3" class="slide level2 smaller"><h2></h2>
+<h3 id="relação-entre-modelos-probabilísticos-e-modelos-de-regressão-1">Relação entre modelos probabilísticos e modelos de regressão</h3>
+<p>Conhecendo o modelo probabilístico que melhor descreve determinada <strong>variável de interesse</strong>, podemos entender suas propriedades, uma vez que são as mesmas propriedades do modelo probabilístico.</p>
+<p>Com isso, podemos:</p>
+<ul>
+<li class="fragment"><p><strong>Predição</strong>: Prever resultados futuros condicionados a um conjunto de outras variáveis (probabilidade condicional a um conjunto de <span class="math inline">\(X\)</span>);</p></li>
+<li class="fragment"><p><strong>Associação/Causalidade</strong>: Estabelecer em que medida variando uma outra variável(is), os valores da variável de interesse também variam (probabilidade condicional a um <span class="math inline">\(X\)</span>).</p></li>
+<li class="fragment"><p>Obter valores esperados e incerteza de seus resultados (esperança e variância).</p></li>
+</ul>
+<p>Tudo isso é o que fazemos nos modelos de regressão, graças às propriedades dos modelos probabilísticos subjacentes à variável que estamos interessados.</p>
+</section></section><section><section id="conceitos-e-definições-estatísticas-importantes-1" class="title-slide slide level1 theme-first center"><h1>Conceitos e definições estatísticas importantes</h1>
 <div style="text-align: left;">
 <p>Variável aleatória (<em>v.a.</em>)</p>
 </div>
-</section><section id="variável-aleatória" class="slide level2 smaller"><h2><span class="theme-subtopic">Variável aleatória</span></h2>
+</section><section id="variável-aleatória-v.a." class="slide level2 smaller"><h2><span class="theme-subtopic">Variável aleatória (v.a.)</span></h2>
 <p>Uma variável <span class="math inline">\(X\)</span> é aleatória se cada um de seus valores – ou um intervalo entre valores – está associado a uma probabilidade <span class="math inline">\(p(X)\)</span>.</p>
-</section><section id="variável-aleatória-1" class="slide level2 smaller"><h2><span class="theme-subtopic">Variável aleatória</span></h2>
+</section><section id="variável-aleatória" class="slide level2 smaller"><h2><span class="theme-subtopic">Variável aleatória</span></h2>
 <p>Uma variável <span class="math inline">\(X\)</span> é aleatória se cada um de seus valores – ou um intervalo entre valores – está associado a uma probabilidade <span class="math inline">\(p(X)\)</span>.</p>
 <h3 id="exemplo">Exemplo</h3>
 <p>Vamos voltar ao <strong>pé-de-meia</strong>.</p>
@@ -352,30 +359,30 @@ Thiago Cordeiro Almeida
 </table>
 </div>
 </div>
-</section><section id="section-3" class="slide level2 smaller"><h2></h2>
+</section><section id="section-4" class="slide level2 smaller"><h2></h2>
 <p>Variáveis aleatórias <span class="math inline">\(v.a.\)</span> apresentam algumas propiedades que serão importantes nos modelos que utilizaremos:</p>
 <h4 id="esperança-de-x">Esperança de X</h4>
 <p>Se uma determinada variável é aleatória e o seu seu modelo de probabilidade é conhecido, a sua <em>Esperança</em> – também chamada de média – pode ser conhecida.</p>
 <p>Geralmente é apresentada enquanto: <span class="math inline">\(E(X)\)</span>, sendo <span class="math inline">\(X\)</span> uma variável aleatória.</p>
 <h4 id="variabilidade-de-x">Variabilidade de X</h4>
-<p>Do mesmo modo, se uma determinada variável é aleatória e é conhecido o seu modelo de probabilidade, a sua <em>variância</em> – ou sua variabilidade em torno da média – também pode ser conhecido.</p>
+<p>Se uma determinada variável é aleatória e é conhecido o seu modelo de probabilidade, a sua <em>variância</em> – ou sua variabilidade em torno da média – também pode ser conhecida.</p>
 <p>Geralmente é apresentada enquanto: <span class="math inline">\(V(X) = E[X - E(X)]^2\)</span>, sendo <span class="math inline">\(X\)</span> uma variável aleatória.</p>
-</section><section id="section-4" class="slide level2 smaller"><h2></h2>
-<h3 id="relação-entre-variáveis-aleatórias">Relação entre variáveis aleatórias</h3>
-<p>Conhecendo-se as propriedades de uma variável aleatória, pode-se relacionar duas variáveis aleatórias, de modo que:</p>
-<p><span class="math display">\[Y = f(X_1, X_2) = X_1 + X_2\]</span></p>
-<p>Desse modo,</p>
-<p><span class="math display">\[E(Y) = E(X_1 + X_2)\]</span></p>
-<p><span class="math display">\[E(Y) = E(X_1) + E(X_2)\]</span></p>
-<p>Podemos ainda estender essa relação para mais variáveis aleatórias.</p>
 </section><section id="section-5" class="slide level2 smaller"><h2></h2>
+<h3 id="relação-entre-variáveis-aleatórias">Relação entre variáveis aleatórias</h3>
+<p>Conhecendo-se as propriedades de uma variável aleatória de interesse, pode-se relacionar duas variáveis aleatórias <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>, de modo que:</p>
+<p><span class="math display">\[Y = f(X_1) = X_1\]</span></p>
+<p>Desse modo,</p>
+<p><span class="math display">\[E(Y) = E(X_1)\]</span></p>
+<p>Podemos ainda estender essa relação para mais variáveis aleatórias.</p>
+</section><section id="section-6" class="slide level2 smaller"><h2></h2>
 <h3 id="relação-entre-variáveis-aleatórias-1">Relação entre variáveis aleatórias</h3>
 <p>Estendendo a mesma relação:</p>
 <p><span class="math display">\[Y = f(X_1, X_2, X_3, X_4,...,X_n) = X_1 + X_2 + X_3 + X_4 + ... + X_n\]</span></p>
 <p>Desse modo,</p>
 <p><span class="math display">\[E(Y) = E(X_1 + X_2 + X_3 + X_4 + ... + X_n)\]</span></p>
 <p><span class="math display">\[E(Y) = E(X_1) + E(X_2) + E(X_3) + E(X_4) + ... + E(X_n)\]</span></p>
-<p>Portanto, tudo o que precisamos saber é qual o modelo probabilístico – <span class="math inline">\(f(\cdot)\)</span> – se associa a determinado fenômeno social, que trataremos como uma <span class="math inline">\(v.a.\)</span>. A partir disso, podemos relacionar esse fenômeno social de interesse com outros fenômenos – outras <span class="math inline">\(v.a.\)</span></p>
+<p>Portanto, tudo o que precisamos saber é qual o modelo probabilístico – <span class="math inline">\(f(\cdot)\)</span> – se associa a determinado fenômeno social <span class="math inline">\(Y\)</span>, que o trataremos como uma <span class="math inline">\(v.a.\)</span></p>
+<p>A partir disso, podemos relacionar esse fenômeno social de interesse com outros fenômenos – outras <span class="math inline">\(v.a.\)</span></p>
 </section><section id="tipos-de-variável-aleatória" class="slide level2 smaller"><h2><span class="theme-subtopic">Tipos de Variável Aleatória</span></h2>
 <p>As <span class="math inline">\(v.a.\)</span> podem ser divididas entre <strong>discretas</strong> e <strong>contínuas</strong></p>
 <p><img data-src="images/distributions.png" class="absolute" style="bottom: 10px; right: 75px; width: 1000px; height: 550px; "></p>
@@ -399,14 +406,14 @@ Thiago Cordeiro Almeida
 <p>Como a variação de uma determinada variável (independente) afeta a variação de uma outra variável (resposta)?</p>
 <p>No caso simplificado do modelo RLS, temos as seguintes características:</p>
 <ul>
-<li class="fragment"><p>Uma variável aleatória resposta/dependente de natureza contínua: <span class="math inline">\(Y\)</span></p></li>
-<li class="fragment"><p>Uma variável aleatória explicativa: <span class="math inline">\(X\)</span></p></li>
+<li class="fragment"><p>Uma <em>v.a.</em> resposta/dependente de <strong>natureza contínua</strong>: <span class="math inline">\(Y\)</span></p></li>
+<li class="fragment"><p>Uma <em>v.a.</em> explicativa: <span class="math inline">\(X\)</span></p></li>
 <li class="fragment"><p>Um fator de erro do modelo que nos diz quanto da variabilidade de <span class="math inline">\(Y\)</span> que continua não explicado por <span class="math inline">\(X\)</span>: <span class="math inline">\(\epsilon\)</span></p></li>
 </ul></section><section id="rls-exemplo-de-ontem" class="slide level2 smaller"><h2><span class="theme-subtopic">RLS: Exemplo de ontem</span></h2>
 
 <img data-src="2.mrls-mrlm_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section><section id="rls-exemplo-de-ontem-1" class="slide level2 smaller"><h2><span class="theme-subtopic">RLS: Exemplo de ontem</span></h2>
 
-<img data-src="2.mrls-mrlm_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section><section id="section-6" class="slide level2 smaller"><h2></h2>
+<img data-src="2.mrls-mrlm_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section><section id="section-7" class="slide level2 smaller"><h2></h2>
 <h3 id="formalização-de-um-mrls">Formalização de um MRLS</h3>
 <p>Dizemos que a representação geral (ou populacional) de um determinado modelo de regressão é dada por:</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
@@ -422,7 +429,7 @@ Thiago Cordeiro Almeida
 <p><span class="math inline">\(\beta_1\)</span>: coeficiente do modelo associado à variável <span class="math inline">\(X\)</span>.</p>
 <ul>
 <li class="fragment"><p>Nos diz qual a magnitude da mudança em <span class="math inline">\(Y\)</span> quando <span class="math inline">\(X\)</span> varia uma unidade para cima ou para baixo.</p></li>
-<li class="fragment"><p>É também chamado de <strong>inclinação da reta</strong>, devido à suas propriedades estatísticas do modo em que é calculado*.</p></li>
+<li class="fragment"><p>É também chamado de <strong>inclinação da reta</strong>, devido à suas propriedades estatísticas do modo em que é calculado.</p></li>
 </ul>
 </li>
 <li class="fragment"><p><span class="math inline">\(\epsilon_i\)</span>: como descrito anteriormente, é o quanto não está sendo explicado em <span class="math inline">\(Y_i\)</span> devido à variação estimada em <span class="math inline">\(X_i\)</span>.</p></li>
@@ -432,25 +439,25 @@ Thiago Cordeiro Almeida
 <div style="text-align: left;">
 <p>Hipóteses dos modelos RLS</p>
 </div>
-</section><section id="section-7" class="slide level2 smaller"><h2></h2>
+</section><section id="section-8" class="slide level2 smaller"><h2></h2>
 <h4 id="hipótese-independência-entre-erro-e-variáveis-observadas">Hipótese: independência entre erro e variáveis observadas</h4>
 <p>Partindo do nosso modelo RLS para a população, <span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
 <p>A <strong>hipótese-chave</strong> é que a média dos erros condicionada na variável explicativa <span class="math inline">\(X_i\)</span> é igual a zero, ou seja: <span class="math display">\[E[\epsilon_i|X_i]=0\]</span></p>
 <p>Em outras palavras, estamos assumindo que não há nenhum fator contido em <span class="math inline">\(\epsilon\)</span> que seja correlacionado com <span class="math inline">\(X\)</span>, de modo que <span class="math inline">\(\beta\)</span> seja um efeito <em>puro</em> de <span class="math inline">\(X\)</span>.</p>
-</section><section id="section-8" class="slide level2 smaller"><h2></h2>
+</section><section id="section-9" class="slide level2 smaller"><h2></h2>
 <p>Modelo populacional: <span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
 <p>Quando vamos <em>estimar</em> os nossos parâmetros para a nossa amostra, assumimos os valores médios para os nossos <span class="math inline">\(i\)</span> casos observados, isto é:</p>
 <p><span class="math display">\[\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X} + \hat{\epsilon_i}\]</span></p>
 <p>Os únicos valores que não conhecemos são referentes a <span class="math inline">\(\beta_0\)</span> e <span class="math inline">\(\beta_1\)</span>, uma vez que <span class="math inline">\(\epsilon\)</span> é obtido residualmente.</p>
 <p>Tudo o que precisamos fazer é <strong>estimar os parâmetros desconhecidos do modelo populacional</strong>.</p>
-</section><section id="section-9" class="slide level2 smaller"><h2></h2>
+</section><section id="section-10" class="slide level2 smaller"><h2></h2>
 <h3 id="estimando-parâmetros-do-modelo">Estimando parâmetros do modelo</h3>
 <p>O modelo a ser estimado consiste em:</p>
 <p><span class="math display">\[\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X} + \hat{\epsilon_i}\]</span></p>
 <h4 id="estimadores-de-mínimos-quadrados-ordinários-mqo">Estimadores de Mínimos Quadrados Ordinários (MQO)</h4>
 <p>Os estimadores de MQO asseguram, via relações estatísticas, que tenhamos valores para nossos parâmetros desconhecidos que <strong>minimizem o desvio dos resíduos</strong>.</p>
 <p>Isto é, temos a reta que melhor se ajusta aos nossos dados de modo que passe mais perto possível de cada ponto.</p>
-</section><section id="section-10" class="slide level2 smaller"><h2></h2>
+</section><section id="section-11" class="slide level2 smaller"><h2></h2>
 <h3 id="estimando-parâmetros-do-modelo-1">Estimando parâmetros do modelo</h3>
 <p>Acionando a <strong>hipótese descrita anteriormente</strong>, temos:</p>
 <p><span class="math display">\[\bar{Y} = \hat{\beta_0} + \hat{\beta_1} \cdot \bar{X}\]</span></p>
@@ -459,7 +466,7 @@ Thiago Cordeiro Almeida
 <li class="fragment"><p><span class="math inline">\(\hat{\beta_1} = \frac{Cov(x,y)}{Var(x)}\)</span></p></li>
 <li class="fragment"><p>Valores preditos: <span class="math inline">\(\hat{Y_i} = \hat{\beta_0} + \hat{\beta_1} \cdot X_i\)</span> para cada observação <span class="math inline">\(i = 1,...,n\)</span>.</p></li>
 <li class="fragment"><p>Resíduos: <span class="math inline">\(\hat{u_i}=y_i-\hat{Y_i}\)</span>, para cada observação <span class="math inline">\(i=1,...,n\)</span></p></li>
-</ul></section><section id="section-11" class="slide level2 smaller"><h2></h2>
+</ul></section><section id="section-12" class="slide level2 smaller"><h2></h2>
 <p>Para o exemplo anterior, se partimos do modelo a ser estimado:</p>
 <p><span class="math display">\[\overline{Divorcio} = \hat{\beta_0} + \hat{\beta_1} \cdot \overline{Margarina} + \hat{\epsilon}\]</span></p>
 <p>Aplicando em R:</p>
@@ -476,7 +483,7 @@ Coefficients:
      3.3086       0.2014  </code></pre>
 </div>
 </div>
-</section><section id="section-12" class="slide level2 smaller"><h2></h2>
+</section><section id="section-13" class="slide level2 smaller"><h2></h2>
 <p>Para o exemplo anterior, se partimos do modelo a ser estimado:</p>
 <p><span class="math display">\[\overline{Divorcio} = \hat{\beta_0} + \hat{\beta_1} \cdot \overline{Margarina} + \hat{\epsilon}\]</span></p>
 <p>Aplicando em R:</p>
@@ -519,29 +526,29 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 <li class="fragment"><p>Independência entre erro e variáveis observadas;</p></li>
 <li class="fragment"><p>Variância do erro constante para todas as variáveis explicativas;</p></li>
 <li class="fragment"><p>O erro segue uma distribuição normal com média 0 e variância constante</p></li>
-</ol></section><section id="section-13" class="slide level2"><h2></h2>
+</ol></section><section id="section-14" class="slide level2"><h2></h2>
 <h3 id="h1-o-modelo-é-linear-nos-parâmetros">H1: O modelo é linear nos parâmetros</h3>
 <p>Os parâmetros – <span class="math inline">\(\beta\)</span>s – se relacionam de forma linear.</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_i + \epsilon_i\]</span></p>
 <p>É por essa propriedade que chamamos os modelos de <strong>modelos lineares</strong>.</p>
-</section><section id="section-14" class="slide level2"><h2></h2>
+</section><section id="section-15" class="slide level2"><h2></h2>
 <h3 id="h2-amostra-é-aleatória-e-segue-o-modelo-populacional-descrito-em-h1">H2: Amostra é aleatória e segue o modelo populacional descrito em H1</h3>
 <p>Para uma dada amostra de tamanho <span class="math inline">\(N\)</span> qualquer, seu processo gerador seguiu uma distribuição aleatória, seguindo o modelo populacional descrito em H1.</p>
 <p>Todavia, <em>em casos onde temos problemas de seletividade amostral</em>, isso pode afetar essa hipótese.</p>
 <ul>
 <li class="fragment">Exemplo: desigualdades salariais.</li>
-</ul></section><section id="section-15" class="slide level2 smaller"><h2></h2>
+</ul></section><section id="section-16" class="slide level2 smaller"><h2></h2>
 <h3 id="h3-inexistência-variáveis-constantes-ou-que-não-tenham-uma-relação-linear-exata-com-outra-variável-explicativa">H3: Inexistência variáveis constantes ou que não tenham uma relação linear exata com outra variável explicativa</h3>
 <p>Para qualquer variável explicativa <span class="math inline">\(X\)</span>, há uma variabilidade de seus resultados em relação a <span class="math inline">\(Y\)</span>.</p>
 <p>Além disso, determinada variável <span class="math inline">\(X\)</span> não pode estar totalmente correlacionada com outra variável <span class="math inline">\(X\)</span>.</p>
 <ul>
 <li class="fragment">Assegura que não haja perfeita colinearidade, i.e., que toda a variação em <span class="math inline">\(X_1\)</span> esteja associada a <span class="math inline">\(X_2\)</span>.</li>
-</ul></section><section id="section-16" class="slide level2"><h2></h2>
+</ul></section><section id="section-17" class="slide level2"><h2></h2>
 <h3 id="h4-independência-entre-erro-e-variáveis-observadas">H4: Independência entre erro e variáveis observadas</h3>
 <p>Mencionado anteriormente: a média dos erros condicionada na variável explicativa <span class="math inline">\(X_i\)</span> é igual a zero, ou seja: <span class="math display">\[E[\epsilon_i|X_i]=0\]</span></p>
 <p>Para um determinado valor de <span class="math inline">\(X\)</span>, os outros fatores não observados no modelo não afetam o resultado de <span class="math inline">\(X\)</span>.</p>
-<p><strong>Não é que</strong> <span class="math inline">\(\epsilon\)</span> não afete <span class="math inline">\(Y\)</span>, e sim que <span class="math inline">\(\epsilon\)</span> não está condicionado a <span class="math inline">\(X\)</span>.</p>
-</section><section id="section-17" class="slide level2 smaller"><h2></h2>
+<p><strong>Não é que</strong> <span class="math inline">\(\epsilon\)</span> não se relacione com <span class="math inline">\(Y\)</span>, e sim que <span class="math inline">\(\epsilon\)</span> não está condicionado a <span class="math inline">\(X\)</span>.</p>
+</section><section id="section-18" class="slide level2 smaller"><h2></h2>
 <h3 id="h5-variância-do-erro-constante-para-todas-as-variáveis-explicativas">H5: Variância do erro constante para todas as variáveis explicativas</h3>
 <p><span class="math display">\[Var[\epsilon|X]=\sigma^2\]</span> Chamamos essa hipótese de <strong>homocedasticidade</strong> ou <strong>variância constante do erro</strong>.</p>
 <p>Pode ser violada em situações de:</p>
@@ -549,19 +556,19 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 <li class="fragment"><p><strong>Outliers para uma variável específica</strong></p></li>
 <li class="fragment"><p><strong>Distribuições de alguma variável específica</strong> que seguem um distinto padrão.</p></li>
 <li class="fragment"><p>…</p></li>
-</ul></section><section id="section-18" class="slide level2"><h2></h2>
+</ul></section><section id="section-19" class="slide level2"><h2></h2>
 <h3 id="h6-o-erro-segue-uma-distribuição-normal-com-média-0-e-variância-constante">H6: O erro segue uma distribuição normal com média 0 e variância constante</h3>
 <p>Assumindo isso, podemos também assumir, <em>por propriedades estatísticas</em>, que qualquer um de nossos parâmetros também têm distribuição normal.</p>
 <p>Por que assumimos essa hipótese para o erro e não para os parâmetros?</p>
 <ul>
 <li class="fragment">O erro pode ser estudado e avaliado, os parâmetros não.</li>
-</ul></section><section id="section-19" class="slide level2 smaller"><h2></h2>
+</ul></section><section id="section-20" class="slide level2 smaller"><h2></h2>
 <h4 id="assegurando-a-existência-de-h1-h4">Assegurando a existência de H1-H4</h4>
 <p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
 <ul>
 <li class="fragment"><p><span class="math inline">\(E[\hat{\beta_0}|X]=\beta_0\)</span></p></li>
 <li class="fragment"><p><span class="math inline">\(E[\hat{\beta_1}|X]=\beta_1\)</span></p></li>
-</ul></section><section id="section-20" class="slide level2 smaller"><h2></h2>
+</ul></section><section id="section-21" class="slide level2 smaller"><h2></h2>
 <h4 id="assegurando-a-existência-de-h1-h4-1">Assegurando a existência de H1-H4</h4>
 <p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
 <ul>
@@ -570,7 +577,7 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 </ul>
 <h4 id="assegurando-a-existência-de-h5">Assegurando a existência de H5</h4>
 <p>Estimadores MQO sendo <strong>os mais eficientes</strong>. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.</p>
-</section><section id="section-21" class="slide level2 smaller"><h2></h2>
+</section><section id="section-22" class="slide level2 smaller"><h2></h2>
 <h4 id="assegurando-a-existência-de-h1-h4-2">Assegurando a existência de H1-H4</h4>
 <p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
 <ul>
@@ -581,7 +588,7 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 <p>Estimadores MQO sendo <strong>os mais eficientes</strong>. Isto é, asseguram a menor variância possível dentre outros processos de estimação dos parâmetros.</p>
 <h4 id="assegurando-a-existência-de-h1-h5">Assegurando a existência de H1-H5</h4>
 <p>Temos os melhores estimadores para o modelo populacional. À medida que aumenta o tamanho da amostra, aproxima-se mais do valor do parâmetro na população e com menor incerteza sobre ele.</p>
-</section><section id="section-22" class="slide level2 smaller"><h2></h2>
+</section><section id="section-23" class="slide level2 smaller"><h2></h2>
 <h4 id="assegurando-a-existência-de-h1-h4-3">Assegurando a existência de H1-H4</h4>
 <p>Estimadores MQO <strong>não viesados</strong>. Isto é, representam o que seria o valor a ser obtido na população estudada, mesmo depois de implementar em <span class="math inline">\(N\)</span> diferentes amostras.</p>
 <ul>
@@ -596,7 +603,7 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 <p>É possível fazer inferência sob a significância estatística dos coeficientes estimados em comparação com o valor do parâmetro na população.</p>
 </section></section><section><section id="exemplo-da-aula" class="title-slide slide level1 theme-first center"><h1>Exemplo da aula!</h1>
 <p>…</p>
-</section><section id="section-23" class="slide level2"><h2></h2>
+</section><section id="section-24" class="slide level2"><h2></h2>
 <h3 id="acesso-ao-esgotamento-sanitário">Acesso ao esgotamento sanitário</h3>
 <p><strong>Pergunta</strong>: Quais os fatores associados ao acesso ao esgotamento sanitário de populações vulneráveis no Brasil?</p>
 <p>Mais especificamente, qual a associação entre acesso ao Programa Bolsa Família para famílias com jovens entre 15-29 anos e o acesso ao esgotamento sanitário?</p>
@@ -615,7 +622,7 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 <ol type="1">
 <li class="fragment"><p>Associados com a nossa variável de interesse <span class="math inline">\(Y\)</span></p></li>
 <li class="fragment"><p>Associados com a nossa variável explicativa <span class="math inline">\(X\)</span></p></li>
-</ol></section><section id="section-24" class="slide level2"><h2></h2>
+</ol></section><section id="section-25" class="slide level2"><h2></h2>
 <h3 id="no-cenário-1">No cenário <strong>1</strong>
 </h3>
 <p>Se temos na base de dados a variável explicativa que <strong>sabemos que está associada com</strong> <span class="math inline">\(Y\)</span>, por que não a incluir?</p>
@@ -633,7 +640,7 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 </li>
 </ul>
 </div></div>
-</section><section id="section-25" class="slide level2"><h2></h2>
+</section><section id="section-26" class="slide level2"><h2></h2>
 <h3 id="no-cenário-2">No cenário <strong>2</strong>
 </h3>
 <p>Se <strong>sabemos que está associada com</strong> <span class="math inline">\(X\)</span>, ela deve ser incluída.</p>
@@ -650,34 +657,34 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 <li class="fragment">Neste caso, não há.</li>
 </ul>
 </div></div>
-</section><section id="section-26" class="slide level2"><h2></h2>
+</section><section id="section-27" class="slide level2"><h2></h2>
 <h3 id="formalização">Formalização</h3>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
 <p>Em que:</p>
 <ul>
 <li class="fragment">
-<span class="math inline">\(k\)</span> é o número de parâmetros associados às variáveis explicativas incluídas no modelo.</li>
-</ul></section><section id="section-27" class="slide level2"><h2></h2>
+<span class="math inline">\(k\)</span> é o número de parâmetros associados às variáveis explicativas/independentes incluídas no modelo.</li>
+</ul></section><section id="section-28" class="slide level2"><h2></h2>
 <h3 id="o-que-muda-entre-rls-e-rlm">O que muda entre RLS e RLM?</h3>
 <p>Em RLS, temos o modelo populacional descrito como:</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i\]</span></p>
 <p>Enquanto em RLM, temos:</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
-</section><section id="section-28" class="slide level2"><h2></h2>
+</section><section id="section-29" class="slide level2"><h2></h2>
 <h3 id="o-que-muda-entre-rls-e-rlm-1">O que muda entre RLS e RLM?</h3>
 <p>Em RLS, temos o modelo populacional descrito como:</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i\]</span></p>
 <p>Enquanto em RLM, temos:</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
 <p>Adicionar mais variáveis ao modelo nos dá maior confiança de que estaremos cumprindo os pressupostos para se ter estimadores <strong>não viesados</strong> e <strong>mais eficientes</strong>.</p>
-</section><section id="section-29" class="slide level2"><h2></h2>
+</section><section id="section-30" class="slide level2"><h2></h2>
 <h3 id="o-que-muda-entre-rls-e-rlm-2">O que muda entre RLS e RLM?</h3>
 <p>Em RLS, temos o modelo populacional descrito como:</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \epsilon_i\]</span></p>
 <p>Enquanto em RLM, temos:</p>
 <p><span class="math display">\[Y_i = \beta_0 + \beta_1 \cdot X_{1i} + \beta_2 \cdot X_{2i} + ... + \beta_k \cdot X_{ki}  + \epsilon_i\]</span></p>
 <p>Adicionar mais variáveis ao modelo nos dá maior confiança de que estaremos cumprindo os pressupostos para se ter estimadores <strong>não viesados</strong> e <strong>mais eficientes</strong>. Aumenta a complexidade dos modelos também…</p>
-</section><section id="section-30" class="slide level2"><h2></h2>
+</section><section id="section-31" class="slide level2"><h2></h2>
 <h3 id="o-que-muda-entre-rls-e-rlm-3">O que muda entre RLS e RLM?</h3>
 <h4 id="interpretação-dos-modelos-rlm">Interpretação dos modelos RLM</h4>
 <p>Nos modelos RLM, temos que invocar a noção de <em>ceteris paribus</em> para uma correta interpretação dos resultados.</p>
@@ -717,7 +724,7 @@ F-statistic: 531.5 on 1 and 8 DF,  p-value: 0.0000000133</code></pre>
 <li class="fragment"><p>Adicione a variável <code>municipio_rural</code> e interprete os resultados dela;</p></li>
 <li class="fragment"><p>Volte às estatísticas do modelo – obtidas com <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> – e compare se houve muita mudança nos coeficientes de cada uma das variáveis quando incluída outras variáveis ao modelo. <strong>O que isso nos diz?</strong></p></li>
 <li class="fragment"><p>Observe se o <span class="math inline">\(R^2\)</span> – obtidos com <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> – apresentou muita mudança entre os modelos. <strong>O que isso nos diz?</strong></p></li>
-</ul></section></section><section id="section-31" class="title-slide slide level1 cebrap-fim smaller center"><h1></h1>
+</ul></section></section><section id="section-32" class="title-slide slide level1 cebrap-fim smaller center"><h1></h1>
 <p><img data-src="images/cebrap50.png" class="absolute" style="top: -90px; right: 460px; width: 100px; height: 100px; "></p>
 <div class="columns">
 <div class="column" style="width:50%;">
